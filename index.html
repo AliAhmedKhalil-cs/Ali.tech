@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Software Engineer & AI Specialist at El Sewedy University of Technology. Expertise in Python, JS, C++, and scalable architectures.">
+    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Enterprise Software Engineer & AI Specialist at El Sewedy University.">
     <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil Gamil, El Sewedy University, AI Engineer Egypt, Software Developer Al Khusus, Python Developer, Smart Pharmacy AI, علي كساب">
     <meta name="author" content="Ali Kassap">
     <meta property="og:title" content="Ali Kassap | Premium AI & Software Engineering">
@@ -11,24 +11,25 @@
     <title>Ali Kassap | Software Engineer & AI Specialist</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
 
     <style>
-        /* ================= 1. CSS VARIABLES & RESET ================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* ================= 1. CORE VARIABLES & SETUP ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         :root {
-            --bg-main: #030305; 
-            --bg-card: rgba(15, 15, 20, 0.6);
-            --bg-card-hover: rgba(25, 25, 35, 0.8);
+            --bg-main: #020203; 
+            --bg-card: rgba(12, 12, 16, 0.6);
+            --bg-nav: rgba(2, 2, 3, 0.85);
             --primary: #4f46e5; 
-            --primary-glow: rgba(79, 70, 229, 0.6);
+            --primary-glow: rgba(79, 70, 229, 0.5);
             --secondary: #06b6d4; 
-            --secondary-glow: rgba(6, 182, 212, 0.5);
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa; 
-            --border-color: rgba(255, 255, 255, 0.08);
-            --success: #22c55e;
+            --secondary-glow: rgba(6, 182, 212, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8; 
+            --border-color: rgba(255, 255, 255, 0.06);
+            --success: #10b981;
         }
         
         body { 
@@ -36,182 +37,199 @@
             background-color: var(--bg-main); 
             color: var(--text-main); 
             overflow-x: hidden; 
-            cursor: none; /* Custom Cursor */
+            cursor: none;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* ================= 2. PRELOADER (SMART BOOT) ================= */
+        /* ================= 2. ENTERPRISE ANIMATIONS (INTERSECTION OBSERVER) ================= */
+        .reveal-up {
+            opacity: 0;
+            transform: translate3d(0, 40px, 0);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-up.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        /* Delay utility classes for staggered animations */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* ================= 3. SMART BOOT PRELOADER ================= */
         #preloader { 
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background-color: #000; z-index: 999999999; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             transition: opacity 0.6s ease, visibility 0.6s ease; 
         }
-        .loader-text { font-family: 'Fira Code', monospace; color: var(--secondary); font-size: 1.2rem; margin-bottom: 20px; text-shadow: 0 0 10px var(--secondary-glow);}
-        .loader-bar-bg { width: 300px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative;}
-        .loader-bar-fill { width: 0%; height: 100%; background: var(--secondary); box-shadow: 0 0 20px var(--secondary); transition: width 0.2s ease; }
+        .loader-text { font-family: 'Fira Code', monospace; color: var(--secondary); font-size: 1.1rem; margin-bottom: 25px; letter-spacing: 1px;}
+        .loader-bar-bg { width: 300px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative;}
+        .loader-bar-fill { width: 0%; height: 100%; background: var(--secondary); box-shadow: 0 0 15px var(--secondary); transition: width 0.3s ease; }
 
-        /* ================= 3. CUSTOM CURSOR & CANVAS ================= */
-        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999999; pointer-events: none; will-change: transform; }
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
-        .cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(6, 182, 212, 0.5); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+        /* ================= 4. HARDWARE ACCELERATED CURSOR ================= */
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 9999999; pointer-events: none; transform: translate3d(-50%, -50%, 0); will-change: transform; }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--secondary); box-shadow: 0 0 8px var(--secondary); }
+        .cursor-outline { width: 36px; height: 36px; border: 1px solid rgba(6, 182, 212, 0.4); transition: width 0.2s, height 0.2s, background-color 0.2s; }
         
-        /* Optimized Canvas Background */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; }
-        .bg-glow { position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
-        .bg-glow-2 { position: fixed; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.6; }
 
-        /* ================= 4. NAVBAR & STATUS ================= */
-        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 9999; transition: width 0.1s; }
-        .navbar { position: fixed; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s ease; }
-        .navbar.scrolled { padding: 15px 5%; background: rgba(3, 3, 5, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; } 
+        /* ================= 5. PREMIUM NAVBAR ================= */
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 2px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 9999; transition: width 0.1s ease-out; }
+        .navbar { position: fixed; width: 100%; padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .navbar.scrolled { padding: 15px 6%; background: var(--bg-nav); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-color); }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; } 
         .logo span { color: var(--primary); }
         
         .nav-right { display: flex; align-items: center; gap: 30px; }
-        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--secondary); background: rgba(6, 182, 212, 0.05); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.2); font-weight: 600; letter-spacing: 0.5px;}
-        .pulse-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--secondary); background: rgba(6, 182, 212, 0.05); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.15); font-weight: 500; letter-spacing: 0.5px;}
+        .pulse-dot { width: 6px; height: 6px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        /* ================= 5. HERO SECTION ================= */
+        /* ================= 6. HERO SECTION (ENTERPRISE TYPOGRAPHY) ================= */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; }
-        .container { width: 90%; max-width: 1250px; margin: 0 auto; position: relative; z-index: 10; }
-        .badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; background: rgba(79, 70, 229, 0.1); color: #a5b4fc; border: 1px solid rgba(79, 70, 229, 0.3); border-radius: 30px; margin-bottom: 30px; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; }
-        .title { font-size: 5.5rem; font-weight: 800; margin-bottom: 25px; line-height: 1.1; letter-spacing: -2px; text-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .typing-wrapper { display: inline-block; min-width: 300px; text-align: left; }
-        .typing-text { background: linear-gradient(135deg, #fff, var(--secondary)); -webkit-background-clip: text; color: transparent; }
-        .cursor-blink { display: inline-block; width: 4px; height: 1em; background-color: var(--secondary); vertical-align: middle; animation: blink 1s step-end infinite; margin-left: 5px; }
-        @keyframes blink { 50% { opacity: 0; } }
-        .description { font-size: 1.25rem; color: var(--text-muted); max-width: 750px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300; }
-
-        /* Buttons */
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 40px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; border: none; font-size: 1.05rem; cursor: none; }
-        .btn-primary { background: linear-gradient(45deg, var(--primary), #3730a3); color: white; box-shadow: 0 15px 35px var(--primary-glow); }
-        .btn-outline { background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid var(--border-color); margin-left: 20px; backdrop-filter: blur(10px); }
-        .btn:hover { transform: translateY(-5px); }
-        .btn-primary:hover { box-shadow: 0 20px 40px rgba(79, 70, 229, 0.5); }
-        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
-
-        /* ================= 6. INFINITE MARQUEE ================= */
-        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(10, 10, 15, 0.95); padding: 25px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; }
-        .marquee-content { display: flex; white-space: nowrap; animation: marquee 35s linear infinite; }
-        .marquee-item { font-size: 1.1rem; color: var(--text-muted); margin: 0 40px; display: flex; align-items: center; gap: 12px; font-weight: 600; letter-spacing: 1px; }
-        .marquee-item i { color: var(--secondary); font-size: 1.4rem; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* ================= 7. EXPERTISE & SKILLS ================= */
-        section { padding: 130px 0; position: relative; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-subtitle { color: var(--secondary); font-family: 'Fira Code', monospace; font-size: 1rem; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
-        .section-title { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; color: transparent; line-height: 1.2; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 10; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(79, 70, 229, 0.05); color: #818cf8; border: 1px solid rgba(79, 70, 229, 0.2); border-radius: 30px; margin-bottom: 30px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .title { font-size: clamp(3.5rem, 6vw, 6.5rem); font-weight: 800; margin-bottom: 20px; line-height: 1.05; letter-spacing: -2px; }
         
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .skill-card { background: var(--bg-card); padding: 45px; border-radius: 20px; border: 1px solid var(--border-color); transition: 0.4s; position: relative; z-index: 1; overflow: hidden; }
-        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(6,182,212,0.1), transparent); opacity: 0; transition: 0.4s; z-index: -1; }
-        .skill-card:hover { transform: translateY(-10px); border-color: rgba(6, 182, 212, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .skill-card:hover::before { opacity: 1; }
-        .skill-icon { width: 70px; height: 70px; background: rgba(6, 182, 212, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--secondary); margin-bottom: 25px; border: 1px solid rgba(6, 182, 212, 0.2); }
-        .skill-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; }
-        .skill-card p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; }
+        /* The Fixed Typing Effect Container */
+        .typing-wrapper { display: inline-block; min-width: 350px; text-align: left; }
+        .typing-text { background: linear-gradient(135deg, #fff 20%, var(--secondary) 100%); -webkit-background-clip: text; color: transparent; }
+        .cursor-blink { display: inline-block; width: 3px; height: 1em; background-color: var(--secondary); vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 2px; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .description { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; line-height: 1.7; font-weight: 400; }
 
-        /* ================= 8. EXPERIENCE & VOLUNTEERING (NEW VIP SECTION) ================= */
-        .timeline { position: relative; max-width: 900px; margin: 0 auto; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.1); }
+        /* Enterprise Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 35px; font-weight: 600; border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative; font-size: 1rem; cursor: none; }
+        .btn-primary { background: var(--text-main); color: var(--bg-main); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1); }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+
+        /* ================= 7. INFINITE MARQUEE ================= */
+        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(5, 5, 8, 0.9); padding: 20px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 40s linear infinite; }
+        .marquee-item { font-size: 0.95rem; color: var(--text-muted); margin: 0 40px; display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+        .marquee-item i { color: var(--secondary); font-size: 1.2rem; }
+        @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        /* ================= 8. SECTIONS & GRIDS ================= */
+        section { padding: 120px 0; position: relative; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-subtitle { color: var(--secondary); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.2; }
+
+        /* Cards */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .skill-card { background: var(--bg-card); padding: 45px; border-radius: 16px; border: 1px solid var(--border-color); transition: all 0.4s ease; position: relative; z-index: 1; overflow: hidden; }
+        .skill-card:hover { transform: translateY(-5px); border-color: rgba(6, 182, 212, 0.3); background: var(--bg-card-hover); }
+        .skill-icon { width: 60px; height: 60px; background: rgba(6, 182, 212, 0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--secondary); margin-bottom: 25px; border: 1px solid rgba(6, 182, 212, 0.1); }
+        .skill-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 600; }
+        .skill-card p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; font-weight: 300; }
+
+        /* Timeline (Experience) */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 30px; border-left: 1px solid var(--border-color); }
         .timeline-item { position: relative; padding-bottom: 50px; padding-left: 30px; }
-        .timeline-item::before { content: ''; position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-main); border: 2px solid var(--secondary); box-shadow: 0 0 10px var(--secondary); }
-        .timeline-date { font-family: 'Fira Code', monospace; color: var(--primary); font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .timeline-item::before { content: ''; position: absolute; left: -35px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--secondary); box-shadow: 0 0 10px var(--secondary-glow); border: 4px solid var(--bg-main); }
+        .timeline-date { font-family: 'Fira Code', monospace; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; display: block; }
         .timeline-content { background: var(--bg-card); padding: 35px; border-radius: 16px; border: 1px solid var(--border-color); transition: 0.3s; }
-        .timeline-content:hover { border-color: rgba(79, 70, 229, 0.4); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .timeline-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .timeline-content h4 { font-size: 1rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 400; }
-        .timeline-content p { color: #888; line-height: 1.6; }
+        .timeline-content:hover { border-color: rgba(79, 70, 229, 0.3); background: var(--bg-card-hover); }
+        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 600; }
+        .timeline-content h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 15px; font-weight: 500; }
+        .timeline-content p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; font-weight: 300; }
 
-        /* ================= 9. PORTFOLIO ================= */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .project-card { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.5s; display: flex; flex-direction: column; }
-        .project-img { width: 100%; height: 260px; position: relative; overflow: hidden; background: #111; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.8s ease; }
+        /* Portfolio */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .project-card { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.4s ease; display: flex; flex-direction: column; }
+        .project-img { width: 100%; height: 240px; position: relative; overflow: hidden; background: #0a0a0a; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 0.8s ease, opacity 0.4s ease; will-change: transform; }
         .project-card:hover .project-img img { opacity: 1; transform: scale(1.05); }
-        .project-info { padding: 40px; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-info h3 { font-size: 1.6rem; margin-bottom: 15px; }
-        .project-info p { color: var(--text-muted); line-height: 1.7; flex-grow: 1; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .tag { font-size: 0.8rem; font-family: 'Fira Code', monospace; background: rgba(255,255,255,0.03); color: #ccc; padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); }
-        .project-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .project-card:hover .tag { border-color: var(--secondary); color: var(--secondary); background: rgba(6,182,212,0.05); }
+        .project-info { padding: 35px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-info h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 600; }
+        .project-info p { color: var(--text-muted); line-height: 1.6; flex-grow: 1; font-size: 0.95rem; font-weight: 300; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .tag { font-size: 0.75rem; font-family: 'Fira Code', monospace; background: rgba(255,255,255,0.02); color: #cbd5e1; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.3); background: var(--bg-card-hover); }
+        .project-card:hover .tag { color: var(--text-main); border-color: rgba(255,255,255,0.2); }
 
-        /* ================= 10. TERMINAL EASTER EGG ================= */
-        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); opacity: 0; transition: opacity 0.3s; }
+        /* ================= 9. TERMINAL EASTER EGG ================= */
+        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
         #terminal-overlay.active { display: flex; opacity: 1; }
-        .terminal-window { width: 90%; max-width: 800px; height: 500px; background: #0a0a0c; border-radius: 12px; border: 1px solid #333; box-shadow: 0 30px 60px rgba(0,0,0,0.8); display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: 0.4s; }
+        .terminal-window { width: 90%; max-width: 750px; height: 480px; background: #0a0a0c; border-radius: 12px; border: 1px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,0.8); display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
         #terminal-overlay.active .terminal-window { transform: translateY(0); }
-        .terminal-header { background: #1a1a1f; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .terminal-header { background: #141418; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .term-dots { display: flex; gap: 8px; }
         .term-dot { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
-        .terminal-body { padding: 25px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #ddd; font-size: 0.95rem; line-height: 1.6; }
+        .terminal-body { padding: 25px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; }
         .term-input-wrapper { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
-        #terminal-input { background: transparent; border: none; color: var(--text-main); outline: none; flex-grow: 1; font-family: inherit; font-size: 1rem; caret-color: var(--secondary); }
+        #terminal-input { background: transparent; border: none; color: var(--text-main); outline: none; flex-grow: 1; font-family: inherit; font-size: 0.95rem; caret-color: var(--secondary); }
 
-        /* ================= 11. CONTACT FORM (PAGECLIP) ================= */
-        .contact-wrapper { background: var(--bg-card); border-radius: 30px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
-        .contact-info { padding: 60px; background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(79,70,229,0.05) 100%); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
-        .contact-info-text h3 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .contact-info-text p { color: var(--text-muted); line-height: 1.7; font-size: 1.1rem; margin-bottom: 40px; }
+        /* ================= 10. ENTERPRISE CONTACT FORM (PAGECLIP) ================= */
+        .contact-wrapper { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .contact-info { padding: 60px; background: rgba(255,255,255,0.01); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-info-text h3 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1px; }
+        .contact-info-text p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 40px; font-weight: 300;}
         
-        .social-links { display: flex; gap: 15px; }
-        .social-btn { width: 55px; height: 55px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--text-main); font-size: 1.3rem; text-decoration: none; transition: 0.3s; cursor: none; }
-        .social-btn:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4); }
+        .social-links { display: flex; gap: 12px; }
+        .social-btn { width: 45px; height: 45px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; cursor: none; }
+        .social-btn:hover { background: var(--text-main); border-color: var(--text-main); color: var(--bg-main); transform: translateY(-3px); }
 
-        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 25px; }
+        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 20px; }
         .form-row { display: flex; gap: 20px; }
         .input-group { position: relative; width: 100%; }
-        input, select, textarea { width: 100%; padding: 18px 20px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 1rem; transition: 0.3s; }
-        input:focus, textarea:focus, select:focus { border-color: var(--secondary); background: rgba(6, 182, 212, 0.05); outline: none; box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1); }
-        select option { background: var(--bg-main); color: #fff; }
+        input, select, textarea { width: 100%; padding: 16px 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.95rem; transition: all 0.3s ease; }
+        input:focus, textarea:focus, select:focus { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.02); outline: none; }
+        select option { background: #111; color: #fff; }
 
         /* SUCCESS TOAST VIP */
-        #success-toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(150px); background: linear-gradient(90deg, #16a34a, #22c55e); color: #fff; padding: 16px 40px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; opacity: 0; transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 10000; box-shadow: 0 20px 40px rgba(34, 197, 94, 0.4); display: flex; align-items: center; gap: 12px; border: 1px solid rgba(255,255,255,0.2); }
-        #success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        #success-toast { position: fixed; bottom: 40px; left: 50%; transform: translate3d(-50%, 100px, 0); background: #fff; color: #000; padding: 14px 30px; border-radius: 40px; font-weight: 600; font-size: 0.95rem; opacity: 0; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: 10000; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); display: flex; align-items: center; gap: 10px; }
+        #success-toast i { color: var(--success); font-size: 1.2rem; }
+        #success-toast.show { transform: translate3d(-50%, 0, 0); opacity: 1; }
 
-        /* ================= 12. FOOTER & WHATSAPP ================= */
-        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.95rem; margin-top: 50px; }
+        /* ================= 11. FOOTER & WHATSAPP ================= */
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 50px; }
+        .footer-text { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
         
-        .whatsapp-fab { position: fixed; bottom: 40px; right: 40px; width: 65px; height: 65px; background: linear-gradient(135deg, #25d366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); text-decoration: none; transition: 0.3s; cursor: none; }
-        .whatsapp-fab i { color: white; font-size: 2.2rem; }
-        .whatsapp-fab:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 20px 40px rgba(37, 211, 102, 0.6); }
+        .whatsapp-fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); text-decoration: none; transition: 0.3s ease; cursor: none; }
+        .whatsapp-fab i { color: white; font-size: 1.8rem; }
+        .whatsapp-fab:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4); }
 
-        /* ================= 13. RESPONSIVE DESIGN ================= */
+        /* ================= 12. RESPONSIVE ================= */
         @media (max-width: 1024px) {
             .contact-wrapper { grid-template-columns: 1fr; }
-            .title { font-size: 4.5rem; }
-            .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on touch devices */
+            .title { font-size: clamp(3rem, 8vw, 4.5rem); }
+            .cursor-dot, .cursor-outline { display: none; }
             body, .btn, .social-btn, input, textarea, select { cursor: auto; }
-            .bg-glow, .bg-glow-2 { display: none; } /* Better performance on mobile */
+            .bg-glow, .bg-glow-2 { display: none; }
         }
         @media (max-width: 768px) {
-            .form-row { flex-direction: column; gap: 25px; }
-            .title { font-size: 3.2rem; }
-            .section-title { font-size: 2.5rem; }
+            .form-row { flex-direction: column; gap: 20px; }
             .navbar { padding: 20px 5%; }
-            .nav-right a.btn { display: none; } /* Hide hire me btn on mobile nav to save space */
-            .marquee-wrapper { display: none; } /* Hide marquee on mobile for clean look */
+            .nav-right a.btn { display: none; }
+            .marquee-wrapper { display: none; }
             .contact-info, .contact-form { padding: 40px 25px; }
+            section { padding: 80px 0; }
         }
     </style>
 </head>
 <body>
 
     <div id="success-toast">
-        <i class="fas fa-check-circle" style="font-size: 1.2rem;"></i> 
-        <span>Protocol Complete: Message delivered to Ali Kassap.</span>
+        <i class="fas fa-check-circle"></i> 
+        <span>Request received successfully. I'll be in touch.</span>
     </div>
 
     <div id="preloader">
-        <div class="loader-text" id="loader-text">root@ali-kassap:~$ initializing_neural_core...</div>
+        <div class="loader-text" id="loader-text">booting_system_environment...</div>
         <div class="loader-bar-bg">
             <div class="loader-bar-fill" id="loader-fill"></div>
         </div>
@@ -225,16 +243,16 @@
 
     <div class="scroll-progress"></div>
     <nav class="navbar" id="navbar">
-        <div class="logo">Ali<span>.Kassap</span></div>
+        <div class="logo">Ali<span>.</span></div>
         <div class="nav-right">
             <div class="status-indicator">
                 <div class="pulse-dot"></div>
                 <span style="font-family: 'Fira Code', monospace;">Status: Available</span>
             </div>
-            <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Open Command Center" style="width: 45px; height: 45px;">
-                <i class="fas fa-terminal" style="color: var(--secondary);"></i>
+            <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Terminal" style="border:none; background:transparent;">
+                <i class="fas fa-terminal" style="color: var(--text-muted); font-size: 1.2rem;"></i>
             </div>
-            <a href="#contact" class="btn btn-primary magnetic-btn" style="padding: 10px 25px; font-size: 0.95rem; border-radius: 8px;">Hire Me</a>
+            <a href="#contact" class="btn btn-primary magnetic-btn" style="padding: 10px 20px; font-size: 0.9rem;">Hire Me</a>
         </div>
     </nav>
 
@@ -242,19 +260,19 @@
         <div class="terminal-window">
             <div class="terminal-header">
                 <div class="term-dots">
-                    <div class="term-dot" style="background: #ff5f56; cursor: pointer;" onclick="closeTerminal()" title="Close"></div>
+                    <div class="term-dot" style="background: #ff5f56; cursor: pointer;" onclick="closeTerminal()"></div>
                     <div class="term-dot" style="background: #ffbd2e;"></div>
                     <div class="term-dot" style="background: #27c93f;"></div>
                 </div>
-                <div style="color: #666; font-size: 0.85rem; font-family: 'Fira Code';">ali@sut-server:~/portfolio</div>
+                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">ali@sut-server:~</div>
                 <div></div>
             </div>
             <div class="terminal-body" id="terminal-body">
-                <div style="color: var(--secondary); margin-bottom: 10px; font-weight: 800;">[SYSTEM SECURE] Ali Kassap OS v4.0.1</div>
-                <div style="color: #888; margin-bottom: 25px;">Type <span style="color:#fff;">'help'</span> to view system protocols.</div>
+                <div style="color: var(--secondary); margin-bottom: 10px; font-weight: 600;">Ali Kassap Shell v1.0.0</div>
+                <div style="color: #666; margin-bottom: 25px;">Type <span style="color:#fff;">'help'</span> to view commands.</div>
                 <div id="terminal-content"></div>
                 <div class="term-input-wrapper">
-                    <span style="color: #27c93f; font-weight: 600;">ali@kassap:~$</span>
+                    <span style="color: #27c93f;">guest@ali:~$</span>
                     <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
                 </div>
             </div>
@@ -262,61 +280,58 @@
     </div>
 
     <header class="hero" id="home">
-        <div class="container">
+        <div class="container reveal-up">
             <div class="badge">
-                <i class="fas fa-bolt" style="color: #fbbf24;"></i> Software Engineering & AI Student at SUT
+                <span style="width: 6px; height: 6px; background: #818cf8; border-radius: 50%;"></span>
+                CS & AI Specialist
             </div>
-            <h1 class="title">I Architect <br>
+            <h1 class="title">Architecting <br>
                 <span class="typing-wrapper">
                     <span class="typing-text"></span><span class="cursor-blink"></span>
                 </span>
             </h1>
             <p class="description">
-                I am Ali Ahmed Khalil Gamil. A passionate Computer Science & Artificial Intelligence student at El Sewedy University of Technology. I specialize in building scalable web platforms, intelligent drug systems, and complex hardware integrations.
+                I am Ali Ahmed Khalil. A Software Engineer and AI student at El Sewedy University. I transform complex logic into highly scalable enterprise platforms and intelligent embedded systems.
             </p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="#contact" class="btn btn-primary magnetic-btn">
-                    Initiate Project <i class="fas fa-arrow-right" style="margin-left: 8px; font-size: 0.9rem;"></i>
-                </a>
-                <a href="#portfolio" class="btn btn-outline magnetic-btn">
-                    <i class="fas fa-code-branch" style="margin-right: 8px;"></i> View Repositories
-                </a>
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary magnetic-btn">Start Project</a>
+                <a href="#portfolio" class="btn btn-outline magnetic-btn">View Portfolio</a>
             </div>
         </div>
         
         <div class="marquee-wrapper">
             <div class="marquee-content" id="marquee-content">
-                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON (AI & AUTOMATION)</div>
-                <div class="marquee-item"><i class="fab fa-js"></i> JAVASCRIPT (ADVANCED OOP)</div>
-                <div class="marquee-item"><i class="fas fa-database"></i> SQL / MYSQL ARCHITECTURE</div>
-                <div class="marquee-item"><i class="fas fa-microchip"></i> C++ & ARDUINO IOT</div>
-                <div class="marquee-item"><i class="fas fa-network-wired"></i> TCP SECURE NETWORKING</div>
-                <div class="marquee-item"><i class="fab fa-linux"></i> LINUX / UBUNTU ADMINISTRATION</div>
+                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON ENGINEERING</div>
+                <div class="marquee-item"><i class="fab fa-js"></i> ADVANCED JS / OOP</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> MYSQL ARCHITECTURE</div>
+                <div class="marquee-item"><i class="fas fa-microchip"></i> EMBEDDED C++ / IOT</div>
+                <div class="marquee-item"><i class="fas fa-network-wired"></i> TCP NETWORKING</div>
+                <div class="marquee-item"><i class="fab fa-linux"></i> LINUX SYSTEMS</div>
             </div>
         </div>
     </header>
 
     <section id="expertise">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">// Core Competencies</span>
-                <h2 class="section-title">Technological Arsenal</h2>
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">Core Capabilities</span>
+                <h2 class="section-title">Technical Expertise</h2>
             </div>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card reveal-up delay-100">
                     <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
-                    <h3>Platform Architecture</h3>
-                    <p>Designing high-performance, scalable management systems (Fleet & Employee tracking) utilizing deep Object-Oriented Programming (OOP) logic.</p>
+                    <h3>System Architecture</h3>
+                    <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust Object-Oriented principles.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card reveal-up delay-200">
                     <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI & Database Systems</h3>
-                    <p>Engineering intelligent data solutions, including "Smart Pharmacy" databases utilizing robust MySQL schemas and Python-based data analysis.</p>
+                    <h3>AI & Databases</h3>
+                    <p>Engineering smart pharmacy and healthcare data solutions, utilizing structured MySQL schemas integrated with Python analytics.</p>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card reveal-up delay-300">
                     <div class="skill-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>Hardware Integration</h3>
-                    <p>Bridging the physical and digital worlds. Experience in C++ and Arduino Nano for creating embedded IoT solutions like physics pendulum trackers.</p>
+                    <h3>Embedded IoT</h3>
+                    <p>Bridging hardware and software with C++ and Arduino. Developing real-time physics tracking intervals and embedded sensors.</p>
                 </div>
             </div>
         </div>
@@ -324,33 +339,33 @@
 
     <section id="experience" style="background: rgba(255,255,255,0.01);">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">// The Journey</span>
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">Career Path</span>
                 <h2 class="section-title">Experience & Impact</h2>
             </div>
             <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-date">Current</span>
+                <div class="timeline-item reveal-up">
+                    <span class="timeline-date">Academic Excellence</span>
                     <div class="timeline-content">
-                        <h3>Computer Science & AI Specialist</h3>
+                        <h3>Computer Science & AI Studies</h3>
                         <h4>El Sewedy University of Technology (SUT)</h4>
-                        <p>Pursuing a rigorous degree in CS & AI. Currently aiming to expand academic horizons by applying to the MSc Data Science program at the University of Liverpool.</p>
+                        <p>Specializing in Artificial Intelligence and scalable computing. Actively preparing for advanced MSc studies at the University of Liverpool.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">Community Leadership</span>
+                <div class="timeline-item reveal-up delay-100">
+                    <span class="timeline-date">Leadership</span>
                     <div class="timeline-content">
                         <h3>Official Organizer</h3>
-                        <h4>Ministry of Youth and Sports - Egypt</h4>
-                        <p>Leading and organizing official events, demonstrating strong leadership, teamwork, and project management skills on a national level.</p>
+                        <h4>Ministry of Youth and Sports, Egypt</h4>
+                        <p>Managing and executing national events, demonstrating elite project management, teamwork, and organizational capabilities.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">Humanitarian Impact</span>
+                <div class="timeline-item reveal-up delay-200">
+                    <span class="timeline-date">Social Responsibility</span>
                     <div class="timeline-content">
-                        <h3>Psychological Support & Art Therapy Volunteer</h3>
+                        <h3>Art Therapy Volunteer</h3>
                         <h4>Children's Cancer Hospital 57357 & Baheya Hospital</h4>
-                        <p>Utilizing my passion for hand-drawing cartoon characters to provide art therapy and psychological support to patients, proving that technology and empathy go hand-in-hand.</p>
+                        <p>Providing psychological support to patients through hand-drawn art, emphasizing the crucial intersection of empathy and technical skill.</p>
                     </div>
                 </div>
             </div>
@@ -359,61 +374,52 @@
 
     <section id="portfolio">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">// Selected Works</span>
-                <h2 class="section-title">Engineering Showcase</h2>
+            <div class="section-header reveal-up">
+                <span class="section-subtitle">Selected Works</span>
+                <h2 class="section-title">Featured Engineering</h2>
             </div>
             <div class="portfolio-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Smart Pharmacy">
-                    </div>
+                <div class="project-card reveal-up delay-100">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Pharmacy System" loading="lazy"></div>
                     <div class="project-info">
-                        <h3>Smart Pharmacy Architecture</h3>
-                        <p>An intelligent drug information system in development. Features dynamic inventory tracking and data-driven insights using Python and a structured MySQL backbone.</p>
+                        <h3>Smart Pharmacy AI</h3>
+                        <p>A dynamic drug information and inventory management ecosystem. Powered by Python analytics and a centralized MySQL backbone.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Data Analysis</span>
+                            <span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">AI Analytics</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking">
-                    </div>
+                <div class="project-card reveal-up delay-200">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking" loading="lazy"></div>
                     <div class="project-info">
-                        <h3>Advanced Fleet Booking System</h3>
-                        <p>A highly scalable car reservation platform engineered with pure JavaScript. Focuses on complex Object-Oriented design patterns and state management.</p>
+                        <h3>Fleet Booking Engine</h3>
+                        <p>A scalable, state-managed car reservation platform. Built entirely with pure JavaScript applying strict Object-Oriented design patterns.</p>
                         <div class="project-tags">
-                            <span class="tag">JavaScript</span><span class="tag">Advanced OOP</span><span class="tag">Algorithms</span>
+                            <span class="tag">JavaScript</span><span class="tag">OOP Design</span><span class="tag">System Arch</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="TCP Chat">
-                    </div>
+                <div class="project-card reveal-up delay-300">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Hardware" loading="lazy"></div>
                     <div class="project-info">
-                        <h3>Secure TCP Chat Protocol</h3>
-                        <p>A low-latency, highly secure chat communication system built directly over TCP sockets. Focuses on networking fundamentals and data encryption.</p>
+                        <h3>IoT Pendulum Tracker</h3>
+                        <p>Real-time embedded hardware interface built with C++ and Arduino Nano for high-precision physics interval monitoring.</p>
                         <div class="project-tags">
-                            <span class="tag">Networking</span><span class="tag">TCP Sockets</span><span class="tag">Cybersecurity</span>
+                            <span class="tag">C++</span><span class="tag">Arduino Nano</span><span class="tag">Hardware</span>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" class="btn btn-outline magnetic-btn">Explore More on GitHub</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="padding-bottom: 50px;">
+    <section id="contact" style="padding-bottom: 60px;">
         <div class="container">
-            <div class="contact-wrapper">
+            <div class="contact-wrapper reveal-up">
                 <div class="contact-info">
                     <div class="contact-info-text">
-                        <h3>Let's Execute <br>Your Vision</h3>
-                        <p>Whether you need a robust AI backend, a scalable web platform, or a reliable software architecture, I'm ready to code it into reality.</p>
+                        <h3>Start a Conversation</h3>
+                        <p>Looking for enterprise-grade software architecture or AI integrations? Send a brief outlining your requirements.</p>
                     </div>
                     <div class="social-links">
                         <a href="https://linkedin.com/in/ali-ahmed00" target="_blank" class="social-btn magnetic-btn"><i class="fab fa-linkedin-in"></i></a>
@@ -425,27 +431,27 @@
                 <form action="https://send.pageclip.co/0T79zesC0CK4msm712EJJYrhUW8WQ2lW" class="contact-form pageclip-form" method="post">
                     <div class="form-row">
                         <div class="input-group">
-                            <input type="text" name="name" placeholder="Your Name / Company" required>
+                            <input type="text" name="name" placeholder="Name or Company" required>
                         </div>
                         <div class="input-group">
-                            <input type="email" name="email" placeholder="Professional Email" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
                         </div>
                     </div>
                     <div class="input-group">
                         <select name="service_required" required>
-                            <option value="" disabled selected>Select Primary Engineering Need</option>
-                            <option value="AI_Data">AI & Data Science Solution</option>
-                            <option value="Web_Platform">Full-Stack Web Platform</option>
-                            <option value="System_Design">Management System Architecture</option>
-                            <option value="IoT_Hardware">Hardware / Embedded IoT</option>
+                            <option value="" disabled selected>Select Engineering Need</option>
+                            <option value="AI_Data">AI & Database Architecture</option>
+                            <option value="Web_Platform">Scalable Web Platform</option>
+                            <option value="System_Design">Backend / System Logic</option>
+                            <option value="IoT_Hardware">IoT Hardware Integration</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <textarea name="message" rows="5" placeholder="Detail your project specifications..." required></textarea>
+                        <textarea name="message" rows="4" placeholder="Describe project specifications..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary pageclip-form__submit magnetic-btn" style="width: 100%; margin-top: 10px;">
-                        <span>Compile & Send Request</span>
+                    <button type="submit" class="btn btn-primary pageclip-form__submit magnetic-btn" style="width: 100%; border-radius: 10px;">
+                        <span>Submit Proposal</span>
                     </button>
                 </form>
             </div>
@@ -453,219 +459,200 @@
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Ali Ahmed Khalil Gamil. Engineered with precision in Egypt.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #666;">ID: 240103144 | SUT</p>
-        </div>
+        <div class="container reveal-up">
+            <p class="footer-text">&copy; 2026 Ali Ahmed Khalil. Engineered with precision.</p>
+            </div>
     </footer>
 
-    <a href="https://wa.me/201220487626" target="_blank" class="whatsapp-fab magnetic-btn" title="Chat on WhatsApp">
+    <a href="https://wa.me/201220487626" target="_blank" class="whatsapp-fab magnetic-btn">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <script>
         /**
-         * 1. SMART BOOT PRELOADER (FAIL-SAFE)
-         * Solves the infinite loading issue by using DOMContentLoaded and a strict timeout.
+         * 1. SMART BOOT PRELOADER
+         * Ensures the site loads safely and triggers animations only AFTER load.
          */
-        let isLoaded = false;
-        const preloader = document.getElementById('preloader');
-        const loaderText = document.getElementById('loader-text');
-        const loaderFill = document.getElementById('loader-fill');
-
-        function executeBoot() {
-            if(isLoaded) return;
-            isLoaded = true;
+        let isBooted = false;
+        function executeSystemBoot() {
+            if(isBooted) return;
+            isBooted = true;
             
-            loaderFill.style.width = '100%';
-            loaderText.innerText = "System Ready. Welcome Ali.";
-            loaderText.style.color = "#27c93f";
+            const fill = document.getElementById('loader-fill');
+            const text = document.getElementById('loader-text');
+            const preloader = document.getElementById('preloader');
+            
+            fill.style.width = '100%';
+            text.innerText = "System_Ready();";
+            text.style.color = "var(--text-main)";
             
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => { 
                     preloader.style.visibility = 'hidden'; 
-                    startTypingEffect(); // Start typing only after screen is visible
+                    startEnterpriseTyping(); // Start typing safely
+                    initScrollObserver();    // Init reveal animations
                 }, 600);
-            }, 800);
+            }, 500);
         }
 
-        // Primary trigger: When HTML is fully parsed
-        window.addEventListener('DOMContentLoaded', () => {
-            // Fake delay for the "hacking" aesthetic, then boot
-            setTimeout(executeBoot, 1500); 
-        });
-
-        // Fail-safe trigger: Force boot after 3 seconds max
-        setTimeout(executeBoot, 3000);
+        window.addEventListener('DOMContentLoaded', () => { setTimeout(executeSystemBoot, 1000); });
+        window.addEventListener('load', executeSystemBoot);
+        setTimeout(executeSystemBoot, 3000); // Absolute fail-safe
 
 
         /**
-         * 2. PAGECLIP FORM HANDLER (VIP SUCCESS TOAST)
-         * Intercepts form submission to show the custom toast without redirecting.
+         * 2. INTERSECTION OBSERVER (Scroll Animations)
+         * Reveals elements as they scroll into the viewport for a premium feel.
          */
-        var form = document.querySelector('.pageclip-form');
-        PageClip.form(form, {
+        function initScrollObserver() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+        }
+
+
+        /**
+         * 3. PAGECLIP FORM HANDLER (Success Toast)
+         */
+        const formEl = document.querySelector('.pageclip-form');
+        PageClip.form(formEl, {
             onSubmit: function (event) { return true; },
             onResponse: function (error, response) {
                 if (response) {
                     const toast = document.getElementById('success-toast');
                     toast.classList.add('show');
-                    form.reset(); // Clear form
-                    setTimeout(() => { toast.classList.remove('show'); }, 5000);
-                } else {
-                    alert("Error sending message. Please try again or use WhatsApp.");
+                    formEl.reset();
+                    setTimeout(() => { toast.classList.remove('show'); }, 4000);
                 }
-                return false; // Prevent default redirect
+                return false; 
             }
         });
 
 
         /**
-         * 3. HARDWARE ACCELERATED PARTICLES (ZERO LAG)
-         * Optimized canvas drawing loop to prevent CPU spikes.
+         * 4. OPTIMIZED TYPING EFFECT
+         * Written purely in a self-contained class to prevent disappearing text bugs.
+         */
+        function startEnterpriseTyping() {
+            const el = document.querySelector('.typing-text');
+            if(!el) return;
+            const words = ["AI Solutions.", "Web Platforms.", "Enterprise Systems.", "Secure Networks."];
+            let wordIdx = 0; let charIdx = 0; let isDeleting = false;
+
+            function typeRoutine() {
+                const currentWord = words[wordIdx];
+                if (isDeleting) {
+                    el.textContent = currentWord.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    el.textContent = currentWord.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let speed = isDeleting ? 30 : 80;
+                
+                if (!isDeleting && charIdx === currentWord.length) {
+                    speed = 2500; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    wordIdx = (wordIdx + 1) % words.length;
+                    speed = 500; // Pause before new word
+                }
+                setTimeout(typeRoutine, speed);
+            }
+            typeRoutine();
+        }
+
+
+        /**
+         * 5. HARDWARE ACCELERATED CANVAS (Zero Lag)
+         * RequestAnimationFrame with minimal math for supreme performance.
          */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let particlesArray = [];
+        let particles = [];
         
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                // Reduced speed for elegant, lag-free movement
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 1.5 + 0.5;
+                this.dx = (Math.random() - 0.5) * 0.3; this.dy = (Math.random() - 0.5) * 0.3;
             }
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                this.x += this.dx; this.y += this.dy;
+                if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
             }
             draw() {
-                ctx.fillStyle = 'rgba(6, 182, 212, 0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
             }
         }
-
-        // Reduced particle count for performance (50 is perfect)
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < 50; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-        initParticles();
+        for (let i = 0; i < 40; i++) particles.push(new Particle()); // Kept low for high FPS
 
         function animateCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateCanvas);
         }
         animateCanvas();
 
 
         /**
-         * 4. SMOOTH CUSTOM CURSOR & MAGNETIC BUTTONS
+         * 6. MAGNETIC BUTTONS & CUSTOM CURSOR
+         * Using translate3d for GPU rendering.
          */
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        if(window.innerWidth > 1024) {
+        if (window.innerWidth > 1024) {
+            const dot = document.querySelector('.cursor-dot');
+            const outline = document.querySelector('.cursor-outline');
+            
             window.addEventListener('mousemove', (e) => {
-                cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-                // requestAnimationFrame makes the outline follow smoothly without layout thrashing
+                dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
                 requestAnimationFrame(() => {
-                    cursorOutline.animate({
-                        transform: `translate(${e.clientX}px, ${e.clientY}px)`
-                    }, { duration: 400, fill: "forwards" });
+                    outline.animate({ transform: `translate3d(${e.clientX}px, ${e.clientY}px, 0)` }, { duration: 300, fill: "forwards" });
                 });
             });
 
-            // Magnetic logic for buttons
             document.querySelectorAll('.magnetic-btn').forEach(btn => {
                 btn.addEventListener('mousemove', (e) => {
                     const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
-                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                    btn.style.transform = `translate(${x}px, ${y}px)`;
-                    cursorOutline.style.borderColor = 'var(--primary)';
-                    cursorOutline.style.width = '60px';
-                    cursorOutline.style.height = '60px';
+                    const x = (e.clientX - rect.left - rect.width / 2) * 0.2;
+                    const y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+                    btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+                    outline.style.width = '50px'; outline.style.height = '50px'; outline.style.borderColor = '#fff';
                 });
                 btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = `translate(0px, 0px)`;
-                    cursorOutline.style.borderColor = 'rgba(6, 182, 212, 0.5)';
-                    cursorOutline.style.width = '40px';
-                    cursorOutline.style.height = '40px';
+                    btn.style.transform = `translate3d(0, 0, 0)`;
+                    outline.style.width = '36px'; outline.style.height = '36px'; outline.style.borderColor = 'rgba(6, 182, 212, 0.4)';
                 });
             });
         }
 
 
         /**
-         * 5. FLAWLESS TYPING EFFECT
-         */
-        const textArray = ["AI Solutions.", "Web Platforms.", "Secure Networks.", "Smart Architectures."];
-        const typingElement = document.querySelector(".typing-text");
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function startTypingEffect() {
-            const currentText = textArray[textIndex];
-            
-            if (isDeleting) {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 40 : 100;
-
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000; // Pause at end of word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % textArray.length;
-                typeSpeed = 400; // Pause before new word
-            }
-            setTimeout(startTypingEffect, typeSpeed);
-        }
-
-
-        /**
-         * 6. INTERACTIVE TERMINAL PROTOCOL
+         * 7. TERMINAL LOGIC
          */
         const termOverlay = document.getElementById('terminal-overlay');
         const termInput = document.getElementById('terminal-input');
         const termContent = document.getElementById('terminal-content');
         
-        function openTerminal() { 
-            termOverlay.classList.add('active'); 
-            setTimeout(() => termInput.focus(), 100); 
-        }
-        function closeTerminal() { 
-            termOverlay.classList.remove('active'); 
-        }
+        function openTerminal() { termOverlay.classList.add('active'); setTimeout(() => termInput.focus(), 100); }
+        function closeTerminal() { termOverlay.classList.remove('active'); }
 
         termInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
@@ -673,44 +660,41 @@
                 let output = '';
                 
                 switch(cmd) {
-                    case 'help': output = "Commands: skills, whoami, projects, contact, clear"; break;
-                    case 'skills': output = "[OK] Loaded: Python, JavaScript, C++, SQL, Arduino, Linux/Termux."; break;
-                    case 'whoami': output = "Ali Ahmed Khalil Gamil. Born 2006. CS & AI Student @ SUT. Volunteer @ 57357."; break;
-                    case 'projects': output = "1. Smart Pharmacy (MySQL/Python) <br>2. Fleet Booking (JS) <br>3. Pendulum Tracker (C++)"; break;
-                    case 'contact': closeTerminal(); window.location.hash = 'contact'; return;
+                    case 'help': output = "Commands: skills, whoami, projects, clear"; break;
+                    case 'skills': output = "Python, JS, C++, SQL, Linux."; break;
+                    case 'whoami': output = "Ali Ahmed Khalil. CS & AI Student @ SUT."; break;
+                    case 'projects': output = "1. Smart Pharmacy <br>2. Fleet Booking <br>3. Pendulum Tracker"; break;
                     case 'clear': termContent.innerHTML = ''; this.value = ''; return;
                     case '': return;
                     default: output = `bash: command not found: ${cmd}`;
                 }
 
                 const newLine = document.createElement('div');
-                newLine.innerHTML = `<div style="margin-top:15px; color:#666;">> ${cmd}</div><div style="color:var(--secondary);">${output}</div>`;
+                newLine.innerHTML = `<div style="margin-top:10px; color:#666;">> ${cmd}</div><div style="color:var(--text-main);">${output}</div>`;
                 termContent.appendChild(newLine);
                 this.value = '';
                 document.getElementById('terminal-body').scrollTop = document.getElementById('terminal-body').scrollHeight;
             }
         });
 
-
         /**
-         * 7. NAVBAR SCROLL & INFINITE MARQUEE CLONE
+         * 8. NAVBAR SCROLL
          */
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.querySelector(".scroll-progress").style.width = scrolled + "%";
+            document.querySelector(".scroll-progress").style.width = (winScroll / height) * 100 + "%";
             
-            const navbar = document.getElementById('navbar');
-            if(window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
+            if(winScroll > 50) document.getElementById('navbar').classList.add('scrolled');
+            else document.getElementById('navbar').classList.remove('scrolled');
+        }, { passive: true }); // passive true for scroll optimization
 
-        // Clone marquee items to make it infinite
+        /**
+         * 9. INFINITE MARQUEE CLONE
+         */
         const marqueeContent = document.getElementById('marquee-content');
         if(marqueeContent) {
-            const clone = marqueeContent.cloneNode(true);
-            document.querySelector('.marquee-wrapper').appendChild(clone);
+            document.querySelector('.marquee-wrapper').appendChild(marqueeContent.cloneNode(true));
         }
 
     </script>
