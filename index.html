@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Enterprise Software Engineer & AI Specialist.">
-    <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil Gamil, El Sewedy University, AI Engineer Egypt, Future Academy Instructor, Software Developer Al Khusus, علي كساب">
+    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Enterprise Data Science & AI Specialist.">
+    <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil Gamil, El Sewedy University, Data Scientist Egypt, AI Engineer, Future Academy Instructor, Software Developer Al Khusus, علي كساب">
     <meta name="author" content="Ali Kassap">
-    <meta property="og:title" content="Ali Kassap | Premium AI & Software Engineering">
-    <meta property="og:description" content="Architecting high-performance software and intelligent systems.">
-    <title>Ali Kassap | Software Engineer & AI Specialist</title>
+    <meta property="og:title" content="Ali Kassap | Premium Data Science & AI">
+    <meta property="og:description" content="Architecting high-performance software and intelligent data systems.">
+    <title>Ali Kassap | Data Science & AI Specialist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
@@ -78,7 +78,7 @@
         .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(5px); }
         .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,255,255,0.2); }
         .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); border-color: var(--secondary); }
-        .marquee-wrapper { width: 100%; overflow: hidden; background: rgba(3, 3, 5, 0.9); padding: 15px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); z-index: 5; }
+        .marquee-wrapper { width: 100%; overflow: hidden; background: rgba(3, 3, 5, 0.9); padding: 15px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; }
         .marquee-content { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
         .marquee-item { font-size: 0.9rem; color: var(--text-muted); margin: 0 30px; display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
         .marquee-item i { color: var(--primary); font-size: 1.2rem; }
@@ -137,6 +137,11 @@
         #success-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px); background: #fff; color: #000; padding: 12px 25px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; opacity: 0; transition: 0.5s; z-index: 9999996; display: flex; align-items: center; gap: 10px; }
         #success-toast i { color: var(--linux-green); font-size: 1.2rem; }
         #success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        
+        .whatsapp-fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999999; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); text-decoration: none; transition: 0.3s ease; cursor: none; }
+        .whatsapp-fab i { color: white; font-size: 1.8rem; }
+        .whatsapp-fab:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5); }
+        
         footer { padding: 30px 0 80px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; }
         @media (max-width: 768px) {
             .contact-wrapper { grid-template-columns: 1fr; }
@@ -148,9 +153,8 @@
     </style>
 </head>
 <body>
-
     <div id="success-toast"><i class="fas fa-check-circle"></i> <span>Message Sent Successfully.</span></div>
-
+    
     <div id="preloader">
         <div id="boot-sequence"></div>
         <div style="margin-top: 15px;">
@@ -159,10 +163,8 @@
     </div>
 
     <canvas id="ai-canvas"></canvas>
-    
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
-
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-outline" id="cursor-outline"></div>
 
@@ -173,7 +175,7 @@
             <div class="status-indicator">
                 <div class="pulse-dot"></div><span>Online</span>
             </div>
-            <div class="social-btn magnetic-btn" onclick="openTerminal()" style="border:none; background:transparent;">
+            <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Terminal" style="border:none; background:transparent; cursor:none;">
                 <i class="fas fa-terminal" style="color: var(--text-muted); font-size: 1.2rem;"></i>
             </div>
             <a href="#contact" class="btn btn-primary magnetic-btn" style="padding: 10px 20px; font-size: 0.9rem;">Hire Me</a>
@@ -214,14 +216,14 @@
     <header class="hero" id="home">
         <div class="container reveal">
             <div class="hero-badge">
-                <i class="fas fa-shield-alt"></i> Software Engineer & AI Specialist
+                <i class="fas fa-shield-alt"></i> Data Science & AI Specialist
             </div>
             <h1 class="title">
                 <span class="decode-text" data-value="Engineering"></span> <br>
                 <span class="typing-text" id="typing-text"></span><span class="cursor-blink"></span>
             </h1>
             <p class="description">
-                I am Ali Ahmed Khalil Gamil. A dedicated developer crafting scalable enterprise platforms, intelligent algorithms, and optimizing system architectures at El Sewedy University.
+                I am Ali Ahmed Khalil Gamil. A dedicated Data Science & AI student crafting scalable enterprise platforms, intelligent algorithms, and optimizing data architectures at El Sewedy University.
             </p>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary magnetic-btn">Deploy Project</a>
@@ -231,10 +233,10 @@
         
         <div class="marquee-wrapper">
             <div class="marquee-content" id="marquee-content">
-                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON ARCHITECTURE</div>
-                <div class="marquee-item"><i class="fab fa-js"></i> ADVANCED JAVASCRIPT</div>
+                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON DATA SCIENCE</div>
+                <div class="marquee-item"><i class="fab fa-js"></i> FULL-STACK DEVELOPMENT</div>
                 <div class="marquee-item"><i class="fas fa-database"></i> RELATIONAL DATABASES</div>
-                <div class="marquee-item"><i class="fas fa-microchip"></i> EMBEDDED C++ / IOT</div>
+                <div class="marquee-item"><i class="fas fa-microchip"></i> DATA ANALYTICS</div>
                 <div class="marquee-item"><i class="fas fa-network-wired"></i> SECURE NETWORKING</div>
                 <div class="marquee-item"><i class="fab fa-linux"></i> LINUX ADMINISTRATION</div>
             </div>
@@ -251,17 +253,17 @@
                 <div class="skill-card reveal magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-server"></i></div>
                     <h3>Backend Architecture</h3>
-                    <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust Object-Oriented programming.</p>
+                    <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust programming concepts.</p>
                 </div>
                 <div class="skill-card reveal delay-100 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>AI & Data Engineering</h3>
+                    <h3>Data Science & AI</h3>
                     <p>Developing smart pharmacy systems and healthcare data solutions, utilizing structured MySQL schemas integrated with Python analytics.</p>
                 </div>
                 <div class="skill-card reveal delay-200 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-microchip"></i></div>
                     <h3>Hardware Integration</h3>
-                    <p>Bridging hardware and software with C++ and Arduino. Developing real-time physics tracking intervals and intelligent embedded sensors.</p>
+                    <p>Bridging hardware and software. Developing real-time physics tracking intervals and intelligent data-collecting embedded sensors.</p>
                 </div>
             </div>
         </div>
@@ -277,9 +279,9 @@
                 <div class="timeline-item reveal">
                     <span class="timeline-date">[ Current ]</span>
                     <div class="timeline-content">
-                        <h3>Computer Science & AI Studies</h3>
+                        <h3>Data Science & AI Studies</h3>
                         <h4>El Sewedy University of Technology (SUT)</h4>
-                        <p>Specializing in Artificial Intelligence and scalable computing. Actively preparing for advanced MSc studies at the University of Liverpool.</p>
+                        <p>Specializing in Artificial Intelligence and data science. Actively preparing for advanced MSc studies at the University of Liverpool.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal delay-100">
@@ -287,7 +289,7 @@
                     <div class="timeline-content">
                         <h3>Programming Instructor for Kids</h3>
                         <h4>Future Academy - Wadi Degla Club</h4>
-                        <p>Simplifying complex logic for young minds. Teaching core programming concepts, fostering the next generation of tech innovators through interactive methodologies.</p>
+                        <p>Simplifying complex logic for young minds. Teaching core programming concepts, fostering the next generation of tech innovators.</p>
                     </div>
                 </div>
                 <div class="timeline-item reveal delay-200">
@@ -303,7 +305,7 @@
                     <div class="timeline-content">
                         <h3>Art Therapy Volunteer</h3>
                         <h4>Children's Cancer Hospital 57357 & Baheya Hospital</h4>
-                        <p>Providing psychological support to patients through hand-drawn art, emphasizing the crucial intersection of empathy, art, and technical skill.</p>
+                        <p>Providing psychological support to patients through hand-drawn art, emphasizing the intersection of empathy, art, and technical skill.</p>
                     </div>
                 </div>
             </div>
@@ -323,7 +325,7 @@
                         <h3>Smart Pharmacy AI</h3>
                         <p>A dynamic drug information and inventory management ecosystem. Powered by Python analytics and a centralized MySQL backbone.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">AI Analytics</span>
+                            <span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Data Science</span>
                         </div>
                     </div>
                 </div>
@@ -331,9 +333,9 @@
                     <div class="project-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking"></div>
                     <div class="project-info">
                         <h3>Fleet Booking Engine</h3>
-                        <p>A scalable, state-managed car reservation platform. Built entirely with pure JavaScript applying strict Object-Oriented design patterns.</p>
+                        <p>A scalable, state-managed car reservation platform. Built entirely with robust technologies applying strict design patterns.</p>
                         <div class="project-tags">
-                            <span class="tag">JavaScript</span><span class="tag">OOP Design</span><span class="tag">System Arch</span>
+                            <span class="tag">JavaScript</span><span class="tag">System Design</span><span class="tag">Architecture</span>
                         </div>
                     </div>
                 </div>
@@ -341,12 +343,18 @@
                     <div class="project-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Hardware"></div>
                     <div class="project-info">
                         <h3>IoT Pendulum Tracker</h3>
-                        <p>Real-time embedded hardware interface built with C++ and Arduino Nano for high-precision physics interval monitoring.</p>
+                        <p>Real-time embedded hardware interface built for high-precision physics interval monitoring and data collection.</p>
                         <div class="project-tags">
-                            <span class="tag">C++</span><span class="tag">Arduino Nano</span><span class="tag">Hardware</span>
+                            <span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">Hardware</span>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" class="btn btn-outline magnetic-btn" style="border-radius: 30px;">
+                    <i class="fab fa-github" style="margin-right: 8px;"></i> Explore More on GitHub
+                </a>
             </div>
         </div>
     </section>
@@ -357,7 +365,7 @@
                 <div class="contact-info">
                     <div>
                         <h3>Initialize <br>Connection</h3>
-                        <p>Looking for enterprise-grade software architecture or AI integrations? Send a brief outlining your requirements.</p>
+                        <p>Looking for enterprise-grade software architecture or Data Science integrations? Send a brief outlining your requirements.</p>
                     </div>
                     <div class="social-links">
                         <a href="https://linkedin.com/in/ali-ahmed00" target="_blank" class="social-btn magnetic-btn"><i class="fab fa-linkedin-in"></i></a>
@@ -378,7 +386,7 @@
                     <div class="input-group">
                         <select name="service_required" required>
                             <option value="" disabled selected>Select Engineering Need</option>
-                            <option value="AI_Data">AI & Database Architecture</option>
+                            <option value="AI_Data">Data Science & AI</option>
                             <option value="Web_Platform">Scalable Web Platform</option>
                             <option value="System_Design">Backend / System Logic</option>
                             <option value="IoT_Hardware">IoT Hardware Integration</option>
@@ -401,9 +409,13 @@
         </div>
     </footer>
 
+    <a href="https://wa.me/201220487626" target="_blank" class="whatsapp-fab magnetic-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <script>
-        const bootLines = ["[ <span class='boot-ok'>OK</span> ] Started Initialize Hardware Components.", "[ <span class='boot-ok'>OK</span> ] Reached target Basic System.", "[ <span class='boot-ok'>OK</span> ] Started User Login Management.", "[ <span class='boot-ok'>OK</span> ] Granted Root Access to Ali_Kassap.", "[ <span class='boot-ok'>OK</span> ] Started Neural Network Modules.", "Mounting UI Interface..."];
+        const bootLines = ["[ <span class='boot-ok'>OK</span> ] Started Initialize Hardware Components.", "[ <span class='boot-ok'>OK</span> ] Reached target Basic System.", "[ <span class='boot-ok'>OK</span> ] Started User Login Management.", "[ <span class='boot-ok'>OK</span> ] Granted Root Access to Ali_Kassap.", "[ <span class='boot-ok'>OK</span> ] Started Data Science Modules.", "Mounting UI Interface..."];
         let isBooted = false;
         
         function runLinuxBoot() {
@@ -551,7 +563,7 @@
         function startTyping() {
             const el = document.getElementById('typing-text');
             if(!el) return;
-            const words = ["AI Architectures.", "Web Platforms.", "Secure Systems."];
+            const words = ["Data Science.", "AI Models.", "Robust Systems."];
             let wIdx = 0, cIdx = 0, isDel = false;
             function type() {
                 const current = words[wIdx];
@@ -602,8 +614,8 @@
                 let out = '';
                 switch(cmd) {
                     case 'help': out = "Commands: skills, whoami, projects, clear, exit"; break;
-                    case 'skills': out = "Python, JS, C++, SQL, Linux."; break;
-                    case 'whoami': out = "Ali Kassap. AI Specialist & Future Academy Instructor."; break;
+                    case 'skills': out = "Python, JS, C++, SQL, Linux, Data Analytics."; break;
+                    case 'whoami': out = "Ali Kassap. DS & AI Student @ SUT."; break;
                     case 'projects': out = "1. Smart Pharmacy <br>2. Fleet Booking <br>3. Pendulum Tracker"; break;
                     case 'exit': closeTerminal(); this.value = ''; return;
                     case 'clear': termContent.innerHTML = ''; this.value = ''; return;
