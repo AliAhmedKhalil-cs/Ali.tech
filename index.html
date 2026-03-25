@@ -46,7 +46,7 @@
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* ================= 2. ENTERPRISE ANIMATIONS (INTERSECTION OBSERVER) ================= */
+        /* ================= 2. ENTERPRISE ANIMATIONS ================= */
         .reveal-up {
             opacity: 0;
             transform: translate3d(0, 40px, 0);
@@ -54,11 +54,7 @@
                         transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
             will-change: opacity, transform;
         }
-        .reveal-up.is-visible {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-        /* Delay utility classes for staggered animations */
+        .reveal-up.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
@@ -74,12 +70,15 @@
         .loader-bar-bg { width: 300px; height: 2px; background: rgba(255,255,255,0.1); overflow: hidden; position: relative;}
         .loader-bar-fill { width: 0%; height: 100%; background: var(--secondary); box-shadow: 0 0 15px var(--secondary); transition: width 0.3s ease; }
 
-        /* ================= 4. HARDWARE ACCELERATED CURSOR ================= */
-        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 9999999; pointer-events: none; transform: translate3d(-50%, -50%, 0); will-change: transform; }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--secondary); box-shadow: 0 0 8px var(--secondary); }
-        .cursor-outline { width: 36px; height: 36px; border: 1px solid rgba(6, 182, 212, 0.4); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+        /* ================= 4. INTERACTIVE CANVAS & CURSOR ================= */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.8; }
         
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.6; }
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 9999999; pointer-events: none; transform: translate3d(-50%, -50%, 0); will-change: transform; }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--secondary); box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(6, 182, 212, 0.5); transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s; }
+        
+        .bg-glow { position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(79,70,229,0.08) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
+        .bg-glow-2 { position: fixed; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6,182,212,0.05) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
 
         /* ================= 5. PREMIUM NAVBAR ================= */
         .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 2px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 9999; transition: width 0.1s ease-out; }
@@ -93,13 +92,12 @@
         .pulse-dot { width: 6px; height: 6px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        /* ================= 6. HERO SECTION (ENTERPRISE TYPOGRAPHY) ================= */
+        /* ================= 6. HERO SECTION ================= */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 10; }
         .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(79, 70, 229, 0.05); color: #818cf8; border: 1px solid rgba(79, 70, 229, 0.2); border-radius: 30px; margin-bottom: 30px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
         .title { font-size: clamp(3.5rem, 6vw, 6.5rem); font-weight: 800; margin-bottom: 20px; line-height: 1.05; letter-spacing: -2px; }
         
-        /* The Fixed Typing Effect Container */
         .typing-wrapper { display: inline-block; min-width: 350px; text-align: left; }
         .typing-text { background: linear-gradient(135deg, #fff 20%, var(--secondary) 100%); -webkit-background-clip: text; color: transparent; }
         .cursor-blink { display: inline-block; width: 3px; height: 1em; background-color: var(--secondary); vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 2px; }
@@ -107,16 +105,15 @@
         
         .description { font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; line-height: 1.7; font-weight: 400; }
 
-        /* Enterprise Buttons */
         .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 35px; font-weight: 600; border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative; font-size: 1rem; cursor: none; }
-        .btn-primary { background: var(--text-main); color: var(--bg-main); }
-        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
-        .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1); }
-        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+        .btn-primary { background: var(--text-main); color: var(--bg-main); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(10px); }
+        .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2); }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); border-color: rgba(255,255,255,0.3); }
 
         /* ================= 7. INFINITE MARQUEE ================= */
-        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(5, 5, 8, 0.9); padding: 20px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; }
+        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(5, 5, 8, 0.8); padding: 20px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; backdrop-filter: blur(5px); }
         .marquee-content { display: flex; white-space: nowrap; animation: marquee 40s linear infinite; }
         .marquee-item { font-size: 0.95rem; color: var(--text-muted); margin: 0 40px; display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
         .marquee-item i { color: var(--secondary); font-size: 1.2rem; }
@@ -128,21 +125,21 @@
         .section-subtitle { color: var(--secondary); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
         .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.2; }
 
-        /* Cards */
+        /* Skills */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .skill-card { background: var(--bg-card); padding: 45px; border-radius: 16px; border: 1px solid var(--border-color); transition: all 0.4s ease; position: relative; z-index: 1; overflow: hidden; }
-        .skill-card:hover { transform: translateY(-5px); border-color: rgba(6, 182, 212, 0.3); background: var(--bg-card-hover); }
+        .skill-card:hover { transform: translateY(-5px); border-color: rgba(6, 182, 212, 0.3); background: var(--bg-card-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .skill-icon { width: 60px; height: 60px; background: rgba(6, 182, 212, 0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--secondary); margin-bottom: 25px; border: 1px solid rgba(6, 182, 212, 0.1); }
         .skill-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 600; }
         .skill-card p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; font-weight: 300; }
 
-        /* Timeline (Experience) */
+        /* Timeline */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 30px; border-left: 1px solid var(--border-color); }
         .timeline-item { position: relative; padding-bottom: 50px; padding-left: 30px; }
         .timeline-item::before { content: ''; position: absolute; left: -35px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--secondary); box-shadow: 0 0 10px var(--secondary-glow); border: 4px solid var(--bg-main); }
         .timeline-date { font-family: 'Fira Code', monospace; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; display: block; }
         .timeline-content { background: var(--bg-card); padding: 35px; border-radius: 16px; border: 1px solid var(--border-color); transition: 0.3s; }
-        .timeline-content:hover { border-color: rgba(79, 70, 229, 0.3); background: var(--bg-card-hover); }
+        .timeline-content:hover { border-color: rgba(79, 70, 229, 0.3); background: var(--bg-card-hover); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .timeline-content h3 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 600; }
         .timeline-content h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 15px; font-weight: 500; }
         .timeline-content p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; font-weight: 300; }
@@ -159,7 +156,7 @@
         .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-color); }
         .tag { font-size: 0.75rem; font-family: 'Fira Code', monospace; background: rgba(255,255,255,0.02); color: #cbd5e1; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border-color); transition: 0.3s; }
         .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.3); background: var(--bg-card-hover); }
-        .project-card:hover .tag { color: var(--text-main); border-color: rgba(255,255,255,0.2); }
+        .project-card:hover .tag { color: var(--text-main); border-color: rgba(255,255,255,0.2); background: rgba(6,182,212,0.1); }
 
         /* ================= 9. TERMINAL EASTER EGG ================= */
         #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
@@ -175,7 +172,7 @@
 
         /* ================= 10. ENTERPRISE CONTACT FORM (PAGECLIP) ================= */
         .contact-wrapper { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .contact-info { padding: 60px; background: rgba(255,255,255,0.01); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-info { padding: 60px; background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(79,70,229,0.05) 100%); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
         .contact-info-text h3 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1px; }
         .contact-info-text p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 40px; font-weight: 300;}
         
@@ -187,7 +184,7 @@
         .form-row { display: flex; gap: 20px; }
         .input-group { position: relative; width: 100%; }
         input, select, textarea { width: 100%; padding: 16px 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.95rem; transition: all 0.3s ease; }
-        input:focus, textarea:focus, select:focus { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.02); outline: none; }
+        input:focus, textarea:focus, select:focus { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.02); outline: none; box-shadow: 0 0 10px rgba(6, 182, 212, 0.1); }
         select option { background: #111; color: #fff; }
 
         /* SUCCESS TOAST VIP */
@@ -208,7 +205,7 @@
             .contact-wrapper { grid-template-columns: 1fr; }
             .title { font-size: clamp(3rem, 8vw, 4.5rem); }
             .cursor-dot, .cursor-outline { display: none; }
-            body, .btn, .social-btn, input, textarea, select { cursor: auto; }
+            body, .btn, .social-btn, input, textarea, select, .whatsapp-fab { cursor: auto; }
             .bg-glow, .bg-glow-2 { display: none; }
         }
         @media (max-width: 768px) {
@@ -225,17 +222,18 @@
 
     <div id="success-toast">
         <i class="fas fa-check-circle"></i> 
-        <span>Request received successfully. I'll be in touch.</span>
+        <span>Connection Established. I'll be in touch soon.</span>
     </div>
 
     <div id="preloader">
-        <div class="loader-text" id="loader-text">booting_system_environment...</div>
+        <div class="loader-text" id="loader-text">Initializing_Ali_Kassap_AI_Core...</div>
         <div class="loader-bar-bg">
             <div class="loader-bar-fill" id="loader-fill"></div>
         </div>
     </div>
 
     <canvas id="bg-canvas"></canvas>
+    
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
     <div class="bg-glow"></div>
@@ -247,7 +245,7 @@
         <div class="nav-right">
             <div class="status-indicator">
                 <div class="pulse-dot"></div>
-                <span style="font-family: 'Fira Code', monospace;">Status: Available</span>
+                <span style="font-family: 'Fira Code', monospace;">Status: Open for Projects</span>
             </div>
             <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Terminal" style="border:none; background:transparent;">
                 <i class="fas fa-terminal" style="color: var(--text-muted); font-size: 1.2rem;"></i>
@@ -264,11 +262,11 @@
                     <div class="term-dot" style="background: #ffbd2e;"></div>
                     <div class="term-dot" style="background: #27c93f;"></div>
                 </div>
-                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">ali@sut-server:~</div>
+                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">guest@sut-server:~</div>
                 <div></div>
             </div>
             <div class="terminal-body" id="terminal-body">
-                <div style="color: var(--secondary); margin-bottom: 10px; font-weight: 600;">Ali Kassap Shell v1.0.0</div>
+                <div style="color: var(--secondary); margin-bottom: 10px; font-weight: 600;">Ali Kassap Terminal v2.0</div>
                 <div style="color: #666; margin-bottom: 25px;">Type <span style="color:#fff;">'help'</span> to view commands.</div>
                 <div id="terminal-content"></div>
                 <div class="term-input-wrapper">
@@ -283,7 +281,7 @@
         <div class="container reveal-up">
             <div class="badge">
                 <span style="width: 6px; height: 6px; background: #818cf8; border-radius: 50%;"></span>
-                CS & AI Specialist
+                Software Engineer & AI Specialist
             </div>
             <h1 class="title">Architecting <br>
                 <span class="typing-wrapper">
@@ -291,7 +289,7 @@
                 </span>
             </h1>
             <p class="description">
-                I am Ali Ahmed Khalil. A Software Engineer and AI student at El Sewedy University. I transform complex logic into highly scalable enterprise platforms and intelligent embedded systems.
+                I am Ali Ahmed Khalil Gamil. A dedicated developer crafting scalable enterprise platforms, highly optimized backend systems, and intelligent solutions at El Sewedy University.
             </p>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary magnetic-btn">Start Project</a>
@@ -318,20 +316,20 @@
                 <h2 class="section-title">Technical Expertise</h2>
             </div>
             <div class="skills-grid">
-                <div class="skill-card reveal-up delay-100">
+                <div class="skill-card reveal-up delay-100 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
                     <h3>System Architecture</h3>
-                    <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust Object-Oriented principles.</p>
+                    <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust Object-Oriented programming.</p>
                 </div>
-                <div class="skill-card reveal-up delay-200">
+                <div class="skill-card reveal-up delay-200 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI & Databases</h3>
-                    <p>Engineering smart pharmacy and healthcare data solutions, utilizing structured MySQL schemas integrated with Python analytics.</p>
+                    <h3>AI & Data Engineering</h3>
+                    <p>Developing smart pharmacy systems and healthcare data solutions, utilizing structured MySQL schemas integrated with Python analytics.</p>
                 </div>
-                <div class="skill-card reveal-up delay-300">
+                <div class="skill-card reveal-up delay-300 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>Embedded IoT</h3>
-                    <p>Bridging hardware and software with C++ and Arduino. Developing real-time physics tracking intervals and embedded sensors.</p>
+                    <h3>Hardware Integration</h3>
+                    <p>Bridging hardware and software with C++ and Arduino. Developing real-time physics tracking intervals and intelligent embedded sensors.</p>
                 </div>
             </div>
         </div>
@@ -365,7 +363,7 @@
                     <div class="timeline-content">
                         <h3>Art Therapy Volunteer</h3>
                         <h4>Children's Cancer Hospital 57357 & Baheya Hospital</h4>
-                        <p>Providing psychological support to patients through hand-drawn art, emphasizing the crucial intersection of empathy and technical skill.</p>
+                        <p>Providing psychological support to patients through hand-drawn art, emphasizing the crucial intersection of empathy, art, and technical skill.</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +458,7 @@
 
     <footer>
         <div class="container reveal-up">
-            <p class="footer-text">&copy; 2026 Ali Ahmed Khalil. Engineered with precision.</p>
+            <p class="footer-text">&copy; 2026 Ali Ahmed Khalil Gamil. Engineered with precision.</p>
             </div>
     </footer>
 
@@ -472,7 +470,6 @@
     <script>
         /**
          * 1. SMART BOOT PRELOADER
-         * Ensures the site loads safely and triggers animations only AFTER load.
          */
         let isBooted = false;
         function executeSystemBoot() {
@@ -484,27 +481,25 @@
             const preloader = document.getElementById('preloader');
             
             fill.style.width = '100%';
-            text.innerText = "System_Ready();";
+            text.innerText = "Connection_Established();";
             text.style.color = "var(--text-main)";
             
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => { 
                     preloader.style.visibility = 'hidden'; 
-                    startEnterpriseTyping(); // Start typing safely
-                    initScrollObserver();    // Init reveal animations
+                    startEnterpriseTyping(); 
+                    initScrollObserver();    
                 }, 600);
             }, 500);
         }
 
         window.addEventListener('DOMContentLoaded', () => { setTimeout(executeSystemBoot, 1000); });
         window.addEventListener('load', executeSystemBoot);
-        setTimeout(executeSystemBoot, 3000); // Absolute fail-safe
-
+        setTimeout(executeSystemBoot, 3000); 
 
         /**
-         * 2. INTERSECTION OBSERVER (Scroll Animations)
-         * Reveals elements as they scroll into the viewport for a premium feel.
+         * 2. INTERSECTION OBSERVER
          */
         function initScrollObserver() {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
@@ -512,7 +507,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target); // Run once
+                        obs.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -520,9 +515,8 @@
             document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
         }
 
-
         /**
-         * 3. PAGECLIP FORM HANDLER (Success Toast)
+         * 3. PAGECLIP FORM HANDLER
          */
         const formEl = document.querySelector('.pageclip-form');
         PageClip.form(formEl, {
@@ -538,10 +532,8 @@
             }
         });
 
-
         /**
          * 4. OPTIMIZED TYPING EFFECT
-         * Written purely in a self-contained class to prevent disappearing text bugs.
          */
         function startEnterpriseTyping() {
             const el = document.querySelector('.typing-text');
@@ -562,71 +554,178 @@
                 let speed = isDeleting ? 30 : 80;
                 
                 if (!isDeleting && charIdx === currentWord.length) {
-                    speed = 2500; // Pause at end
+                    speed = 2500; 
                     isDeleting = true;
                 } else if (isDeleting && charIdx === 0) {
                     isDeleting = false;
                     wordIdx = (wordIdx + 1) % words.length;
-                    speed = 500; // Pause before new word
+                    speed = 500; 
                 }
                 setTimeout(typeRoutine, speed);
             }
             typeRoutine();
         }
 
-
         /**
-         * 5. HARDWARE ACCELERATED CANVAS (Zero Lag)
-         * RequestAnimationFrame with minimal math for supreme performance.
+         * 5. ENTERPRISE AI NETWORK CANVAS (BACKGROUND + MOUSE TRAIL)
+         * - Connects particles to form a network
+         * - Particles react to mouse position
+         * - Mouse leaves a glowing trail
          */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
         
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
+        let width, height;
+        let particles = [];
+        let trailParticles = [];
+        let mouse = { x: null, y: null, radius: 150 };
 
-        class Particle {
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', () => { initCanvas(); createParticles(); });
+        initCanvas();
+
+        // Background Network Particle
+        class NetworkParticle {
             constructor() {
-                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
-                this.s = Math.random() * 1.5 + 0.5;
-                this.dx = (Math.random() - 0.5) * 0.3; this.dy = (Math.random() - 0.5) * 0.3;
-            }
-            update() {
-                this.x += this.dx; this.y += this.dy;
-                if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.baseX = this.x;
+                this.baseY = this.y;
             }
             draw() {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill();
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.4)';
+                ctx.fill();
+            }
+            update() {
+                // Movement
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interaction (repel/attract)
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        // Move towards mouse slightly
+                        this.x += forceDirectionX * force * 2;
+                        this.y += forceDirectionY * force * 2;
+                    }
+                }
             }
         }
-        for (let i = 0; i < 40; i++) particles.push(new Particle()); // Kept low for high FPS
 
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateCanvas);
+        // Mouse Trail Emitter Particle
+        class TrailParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.life = 1; // 100% opacity
+                this.decay = Math.random() * 0.05 + 0.02;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(79, 70, 229, ${this.life})`;
+                ctx.fill();
+            }
         }
-        animateCanvas();
 
+        function createParticles() {
+            particles = [];
+            // Optimize count based on screen size (Max 60 for zero lag)
+            const count = Math.min(Math.floor((width * height) / 15000), 60);
+            for (let i = 0; i < count; i++) {
+                particles.push(new NetworkParticle());
+            }
+        }
+        createParticles();
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distanceSq = dx * dx + dy * dy;
+                    
+                    // Draw lines if close enough
+                    if (distanceSq < 15000) { 
+                        let opacity = 1 - (distanceSq / 15000);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(6, 182, 212, ${opacity * 0.3})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function renderCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Render Background Network
+            particles.forEach(p => { p.update(); p.draw(); });
+            connectParticles();
+
+            // Render Mouse Trail
+            for (let i = 0; i < trailParticles.length; i++) {
+                trailParticles[i].update();
+                trailParticles[i].draw();
+                // Remove dead particles to free memory
+                if (trailParticles[i].life <= 0) {
+                    trailParticles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(renderCanvas);
+        }
+        renderCanvas();
 
         /**
-         * 6. MAGNETIC BUTTONS & CUSTOM CURSOR
-         * Using translate3d for GPU rendering.
+         * 6. MAGNETIC BUTTONS, CURSOR & TRAIL EMITTER
          */
         if (window.innerWidth > 1024) {
             const dot = document.querySelector('.cursor-dot');
             const outline = document.querySelector('.cursor-outline');
             
             window.addEventListener('mousemove', (e) => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+
                 dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
                 requestAnimationFrame(() => {
                     outline.animate({ transform: `translate3d(${e.clientX}px, ${e.clientY}px, 0)` }, { duration: 300, fill: "forwards" });
                 });
+
+                // Emit trail particles on move
+                if(Math.random() > 0.4) { // throttle emission slightly
+                    trailParticles.push(new TrailParticle(e.clientX, e.clientY));
+                }
             });
+
+            window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
 
             document.querySelectorAll('.magnetic-btn').forEach(btn => {
                 btn.addEventListener('mousemove', (e) => {
@@ -635,14 +734,16 @@
                     const y = (e.clientY - rect.top - rect.height / 2) * 0.2;
                     btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
                     outline.style.width = '50px'; outline.style.height = '50px'; outline.style.borderColor = '#fff';
+                    outline.style.backgroundColor = 'rgba(255,255,255,0.05)';
                 });
                 btn.addEventListener('mouseleave', () => {
                     btn.style.transform = `translate3d(0, 0, 0)`;
-                    outline.style.width = '36px'; outline.style.height = '36px'; outline.style.borderColor = 'rgba(6, 182, 212, 0.4)';
+                    outline.style.width = '40px'; outline.style.height = '40px'; 
+                    outline.style.borderColor = 'rgba(6, 182, 212, 0.4)';
+                    outline.style.backgroundColor = 'transparent';
                 });
             });
         }
-
 
         /**
          * 7. TERMINAL LOGIC
@@ -687,7 +788,7 @@
             
             if(winScroll > 50) document.getElementById('navbar').classList.add('scrolled');
             else document.getElementById('navbar').classList.remove('scrolled');
-        }, { passive: true }); // passive true for scroll optimization
+        }, { passive: true });
 
         /**
          * 9. INFINITE MARQUEE CLONE
