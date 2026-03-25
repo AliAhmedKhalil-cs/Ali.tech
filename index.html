@@ -1,171 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Computer Science & AI Specialist at El Sewedy University.">
-<title>Ali Kassap | VIP Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Premium AI & Software Engineering Solutions.">
+    <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil, El Sewedy University, AI Engineer, Software Developer Al Khusus, علي كساب">
+    <title>Ali Kassap | VIP Pro Plus Portfolio</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
 
-<meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil, El Sewedy University, AI Engineer Egypt, Software Developer Al Khusus">
-<meta property="og:title" content="Ali Kassap | AI & Software Engineer">
-<meta property="og:description" content="Innovating the future with AI and robust software solutions.">
-<meta property="og:url" content="https://alikassap.website">
+    <style>
+        /* ================= CSS VARIABLES & RESET ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        :root {
+            --bg-main: #030305; --bg-card: rgba(17, 17, 17, 0.6);
+            --primary: #4f46e5; --primary-glow: rgba(79, 70, 229, 0.6);
+            --secondary: #06b6d4; --text-main: #ffffff;
+            --text-muted: #a1a1aa; --border-color: rgba(255, 255, 255, 0.08);
+        }
+        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; cursor: none; }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
+        /* [VIP GIFT] Live Status Indicator */
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--secondary); background: rgba(6, 182, 212, 0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .pulse-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
 
-<style>
-/* ================= CSS ================= */
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-:root {
-  --bg-main: #030305; --bg-card: rgba(17, 17, 17, 0.6);
-  --primary: #4f46e5; --primary-glow: rgba(79, 70, 229, 0.6);
-  --secondary: #06b6d4; --text-main: #ffffff;
-  --text-muted: #a1a1aa; --border-color: rgba(255, 255, 255, 0.08);
-}
-body { font-family: 'Outfit', sans-serif; background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; cursor: none; }
+        /* Preloader (Terminal Style) */
+        #preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000; z-index: 999999999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s; }
+        .loader-text { font-family: 'Fira Code', monospace; color: var(--secondary); font-size: 1.2rem; margin-bottom: 20px; }
+        .loader-bar-bg { width: 250px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .loader-bar-fill { width: 0%; height: 100%; background: var(--secondary); box-shadow: 0 0 15px var(--secondary); animation: loadBar 1.5s ease-in-out forwards; }
+        @keyframes loadBar { 100% { width: 100%; } }
 
-/* هدية VIP: Live Status Indicator */
-.status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--secondary); background: rgba(6, 182, 212, 0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.2); }
-.pulse-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite; }
-@keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+        /* Canvas & Cursor */
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; }
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999999; pointer-events: none; }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
+        .cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(6, 182, 212, 0.5); transition: width 0.2s, height 0.2s; }
 
-/* Preloader & Layout Elements (Simplified for speed) */
-#preloader { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 999999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s; }
-.loader-bar-bg { width: 200px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-top: 15px; }
-.loader-bar-fill { width: 0%; height: 100%; background: var(--secondary); animation: load 1.5s ease-in-out forwards; }
-@keyframes load { 100% { width: 100%; } }
+        /* Navbar */
+        .navbar { position: fixed; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
+        .navbar.scrolled { padding: 15px 5%; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); }
+        .logo { font-size: 1.8rem; font-weight: 800; cursor: none; }
+        .logo span { color: var(--primary); }
+        .nav-links { list-style: none; display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; cursor: none; }
+        .nav-links a:hover { color: var(--text-main); }
 
-#bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
-.cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999999; pointer-events: none; }
-.cursor-dot { width: 8px; height: 8px; background: var(--secondary); }
-.cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(6, 182, 212, 0.5); transition: 0.15s; }
+        /* Hero & Marquee */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+        .title { font-size: 5rem; font-weight: 800; margin-bottom: 25px; line-height: 1.1; }
+        .typing-text { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; color: transparent; }
+        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(17, 17, 17, 0.8); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; display: flex; position: absolute; bottom: 0; left: 0; }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 25s linear infinite; }
+        .marquee-item { font-size: 1.2rem; margin: 0 30px; display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* Navbar */
-.navbar { position: fixed; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
-.navbar.scrolled { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px); padding: 12px 5%; border-bottom: 1px solid var(--border-color); }
-.logo { font-size: 1.6rem; font-weight: 800; cursor: none; }
-.logo span { color: var(--primary); }
+        /* Cards & Portfolio */
+        .section-title { font-size: 3rem; margin-bottom: 60px; text-align: center; }
+        .container { width: 90%; max-width: 1250px; margin: 0 auto; position: relative; }
+        .services-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card, .portfolio-item { background: var(--bg-card); backdrop-filter: blur(15px); border-radius: 16px; border: 1px solid var(--border-color); padding: 40px; transition: 0.4s; }
+        .service-card:hover { border-color: var(--secondary); transform: translateY(-10px); }
 
-/* Hero Section */
-section { padding: 120px 0; }
-.container { width: 90%; max-width: 1200px; margin: 0 auto; }
-.hero { text-align: center; min-height: 80vh; display: flex; align-items: center; }
-.title { font-size: 4.5rem; font-weight: 800; margin-bottom: 20px; }
-.typing-text { color: var(--secondary); }
-.description { color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; }
+        /* Contact Form (Corrected with Success Toast) */
+        .contact-wrapper { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.2fr; overflow: hidden; }
+        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 20px; }
+        .input-row { display: flex; gap: 20px; }
+        input, select, textarea { width: 100%; padding: 16px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-size: 1rem; }
+        input:focus { border-color: var(--secondary); outline: none; }
+        .btn-primary { background: var(--primary); color: #fff; padding: 15px 35px; border-radius: 8px; border: none; font-weight: 800; cursor: none; transition: 0.3s; }
+        
+        #success-toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background: #22c55e; color: #fff; padding: 15px 30px; border-radius: 50px; font-weight: 700; opacity: 0; transition: 0.5s; z-index: 10000; }
+        #success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-/* Contact Form - PRECISE FIX */
-.contact-wrapper { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.5fr; overflow: hidden; }
-.contact-info { padding: 50px; background: rgba(255,255,255,0.02); }
-.contact-form { padding: 50px; display: flex; flex-direction: column; gap: 20px; }
-.input-row { display: flex; gap: 15px; }
-input, select, textarea { width: 100%; padding: 15px; background: #000; border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: inherit; }
-input:focus, textarea:focus { border-color: var(--secondary); outline: none; }
+        /* Terminal Overlay */
+        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+        .terminal-window { width: 80%; max-width: 700px; height: 450px; background: #1e1e1e; border-radius: 10px; border: 1px solid #333; display: flex; flex-direction: column; overflow: hidden; }
+        .terminal-header { background: #333; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .terminal-body { padding: 20px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; font-size: 0.95rem; }
+        #terminal-input { background: transparent; border: none; color: #fff; outline: none; width: 100%; font-family: inherit; }
 
-.btn-primary { background: var(--primary); color: #fff; padding: 15px 30px; border-radius: 10px; border: none; font-weight: 700; cursor: none; transition: 0.3s; }
-.btn-primary:hover { background: var(--secondary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3); }
-
-/* Toast */
-#success-toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #22c55e; color: #fff; padding: 12px 25px; border-radius: 50px; opacity: 0; transition: 0.4s; z-index: 10000; }
-#success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-@media (max-width: 768px) { .contact-wrapper { grid-template-columns: 1fr; } .input-row { flex-direction: column; } .title { font-size: 2.8rem; } }
-</style>
+        /* Mobile Fixes */
+        @media (max-width: 768px) {
+            .title { font-size: 3rem; } .contact-wrapper { grid-template-columns: 1fr; } 
+            .input-row { flex-direction: column; } .cursor-dot, .cursor-outline { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<div id="success-toast">✅ Message Sent to Ali!</div>
+<div id="success-toast">🚀 Mission Success! Message Delivered.</div>
 
 <div id="preloader">
-  <div class="loader-text">root@ali-kassap:~$ initializing_vips...</div>
-  <div class="loader-bar-bg"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text" id="loader-text">root@ali-kassap:~$ boot_system...</div>
+    <div class="loader-bar-bg"><div class="loader-bar-fill"></div></div>
 </div>
 
 <canvas id="bg-canvas"></canvas>
 <div class="cursor-dot"></div><div class="cursor-outline"></div>
 
+<div id="terminal-overlay">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <div style="display:flex; gap:8px;"><span style="background:#ff5f56; width:12px; height:12px; border-radius:50%; cursor:pointer;" onclick="closeTerminal()"></span><span style="background:#ffbd2e; width:12px; height:12px; border-radius:50%;"></span><span style="background:#27c93f; width:12px; height:12px; border-radius:50%;"></span></div>
+            <div style="color:#aaa; font-family:'Fira Code'; font-size:0.8rem;">guest@alikassap.website:~</div>
+            <div></div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div style="color:var(--secondary);">Welcome to Ali Kassap's Interactive Shell. Type 'help' to start.</div>
+            <div style="display:flex; margin-top:10px;"><span style="color:#27c93f; margin-right:10px;">guest@ali:~$</span><input type="text" id="terminal-input" autofocus autocomplete="off"></div>
+        </div>
+    </div>
+</div>
+
 <nav class="navbar" id="navbar">
-  <div class="logo">Ali<span>.Kassap</span></div>
-  <div class="status-indicator">
-    <div class="pulse-dot"></div>
-    <span>Status: Open for Projects</span>
-  </div>
+    <div class="logo">Ali<span>.Kassap</span></div>
+    <div class="nav-links">
+        <div class="status-indicator"><div class="pulse-dot"></div><span>Open for Projects</span></div>
+        <a href="#about" style="margin-left: 20px;"><i class="fas fa-terminal" onclick="openTerminal()" style="color:var(--secondary); cursor:pointer;"></i></a>
+        <a href="#contact" style="background:var(--primary); padding:10px 20px; border-radius:8px; margin-left:15px;">Hire Me</a>
+    </div>
 </nav>
 
 <section class="hero">
-  <div class="container">
-    <h1 class="title">I Engineer <span class="typing-text">AI Systems</span></h1>
-    <p class="description">CS Student & AI Specialist at SUT. Transforming complex ideas into scalable reality.</p>
-    <a href="#contact" class="btn-primary" style="text-decoration:none;">Let's Talk</a>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <div class="contact-wrapper">
-      <div class="contact-info">
-        <h3>Contact Info</h3>
-        <p style="margin: 20px 0; color: var(--text-muted);">Feel free to reach out for collaborations or project inquiries.</p>
-        <div style="font-size: 1.5rem; display:flex; gap:15px;">
-           <a href="https://github.com/AliAhmedKhalil-cs" style="color:#fff;"><i class="fab fa-github"></i></a>
-           <a href="https://linkedin.com/in/ali-ahmed00" style="color:#fff;"><i class="fab fa-linkedin"></i></a>
+    <div class="container">
+        <h1 class="title">I Engineer <span class="typing-text"></span><span style="color:var(--secondary); animation: blink 1s infinite;">|</span></h1>
+        <p class="description">Computer Science & AI Specialist. Architecting high-performance software and intelligent systems.</p>
+        <div style="margin-top:30px;">
+            <a href="#portfolio" class="btn-primary" style="text-decoration:none;">View Projects</a>
+            <a href="#contact" class="btn-primary" style="background:transparent; border:1px solid var(--border-color); margin-left:15px; text-decoration:none;">Contact Me</a>
         </div>
-      </div>
-
-      <form action="https://send.pageclip.co/0T79zesC0CK4msm712EJJYrhUW8WQ2lW" class="contact-form pageclip-form" method="post">
-        <div class="input-row">
-          <input type="text" name="name" placeholder="Name" required>
-          <input type="email" name="email" placeholder="Email" required>
-        </div>
-        <select name="service">
-          <option>AI Solutions</option>
-          <option>Web Development</option>
-          <option>Software Architecture</option>
-        </select>
-        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn-primary pageclip-form__submit">
-          <span>Submit Request</span>
-        </button>
-      </form>
     </div>
-  </div>
+    <div class="marquee-wrapper">
+        <div class="marquee-content" id="marquee-content">
+            <div class="marquee-item"><i class="fab fa-python"></i> Python</div>
+            <div class="marquee-item"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="marquee-item"><i class="fas fa-microchip"></i> Arduino</div>
+            <div class="marquee-item"><i class="fas fa-robot"></i> Artificial Intelligence</div>
+            <div class="marquee-item"><i class="fas fa-database"></i> SQL / MySQL</div>
+            <div class="marquee-item"><i class="fab fa-linux"></i> Linux</div>
+        </div>
+    </div>
 </section>
+
+<section id="portfolio" style="padding: 100px 0;">
+    <div class="container">
+        <h2 class="section-title">Selected Works</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item tilt-element">
+                <h3>Smart Pharmacy</h3>
+                <p style="color:var(--text-muted); margin-top:10px;">Intelligent inventory system with AI drug data.</p>
+                <div style="margin-top:20px; font-size:0.8rem; color:var(--secondary);">PYTHON / MYSQL</div>
+            </div>
+            <div class="portfolio-item tilt-element">
+                <h3>Fleet Management</h3>
+                <p style="color:var(--text-muted); margin-top:10px;">Scalable car booking & fleet tracking platform.</p>
+                <div style="margin-top:20px; font-size:0.8rem; color:var(--secondary);">JS / OOP</div>
+            </div>
+            <div class="portfolio-item tilt-element">
+                <h3>Pendulum Tracker</h3>
+                <p style="color:var(--text-muted); margin-top:10px;">IoT hardware for physics data monitoring.</p>
+                <div style="margin-top:20px; font-size:0.8rem; color:var(--secondary);">C++ / ARDUINO</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" style="padding: 100px 0;">
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info" style="padding:50px; background:rgba(255,255,255,0.02);">
+                <h2>Let's Talk Business</h2>
+                <p style="color:var(--text-muted); margin: 20px 0;">Connect with me to discuss your next big AI project.</p>
+                <div style="display:flex; gap:15px; font-size:1.5rem;">
+                    <a href="https://github.com/AliAhmedKhalil-cs" style="color:#fff;"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/ali-ahmed00" style="color:#fff;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <form action="https://send.pageclip.co/0T79zesC0CK4msm712EJJYrhUW8WQ2lW" class="contact-form pageclip-form" method="post">
+                <div class="input-row">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                <select name="service" required>
+                    <option value="AI">AI Solutions</option>
+                    <option value="Web">Web Platforms</option>
+                    <option value="Hardware">IoT & Hardware</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Briefly describe your project..." required></textarea>
+                <button type="submit" class="btn-primary pageclip-form__submit">
+                    <span>Send Proposal Request</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/201220487626" style="position:fixed; bottom:30px; right:30px; background:#25d366; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; z-index:9999; box-shadow:0 10px 20px rgba(0,0,0,0.3); text-decoration:none;">
+    <i class="fab fa-whatsapp" style="color:#fff; font-size:2rem;"></i>
+</a>
 
 <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 <script>
-  // معالجة الـ Form
-  var form = document.querySelector('.pageclip-form');
-  PageClip.form(form, {
-    onResponse: function (error, response) {
-      if (response) {
-        const toast = document.getElementById('success-toast');
-        toast.classList.add('show');
-        form.reset();
-        setTimeout(() => toast.classList.remove('show'), 4000);
-      }
-      return false;
+    // 1. Success Message Handler (The Gift)
+    var form = document.querySelector('.pageclip-form');
+    PageClip.form(form, {
+        onResponse: function (error, response) {
+            if (response) {
+                const toast = document.getElementById('success-toast');
+                toast.classList.add('show');
+                form.reset();
+                setTimeout(() => { toast.classList.remove('show'); }, 4000);
+            }
+            return false;
+        }
+    });
+
+    // 2. Typing Effect
+    const typeText = document.querySelector(".typing-text");
+    const words = ["AI Solutions", "Web Platforms", "System Architectures"];
+    let wIdx = 0, cIdx = 0;
+    function typeWord() {
+        if (cIdx < words[wIdx].length) { typeText.textContent += words[wIdx].charAt(cIdx++); setTimeout(typeWord, 100); } 
+        else { setTimeout(() => { eraseWord(); }, 2000); }
     }
-  });
+    function eraseWord() {
+        if (cIdx > 0) { typeText.textContent = words[wIdx].substring(0, --cIdx); setTimeout(eraseWord, 50); } 
+        else { wIdx = (wIdx + 1) % words.length; setTimeout(typeWord, 500); }
+    }
+    setTimeout(typeWord, 2000);
 
-  // Preloader
-  window.addEventListener('load', () => {
-    setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 1000);
-  });
+    // 3. Preloader
+    window.addEventListener('load', () => {
+        setTimeout(() => { 
+            document.getElementById('preloader').style.opacity = '0'; 
+            setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 800);
+        }, 1500);
+    });
 
-  // Cursor
-  const dot = document.querySelector('.cursor-dot');
-  const out = document.querySelector('.cursor-outline');
-  window.addEventListener('mousemove', (e) => {
-    dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
-    out.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 400, fill: "forwards" });
-  });
+    // 4. Cursor Follower
+    const dot = document.querySelector('.cursor-dot');
+    const out = document.querySelector('.cursor-outline');
+    window.addEventListener('mousemove', (e) => {
+        dot.style.left = e.clientX + 'px'; dot.style.top = e.clientY + 'px';
+        out.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 500, fill: "forwards" });
+    });
 
-  // Scroll Navbar
-  window.onscroll = () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  };
+    // 5. Terminal Logic
+    function openTerminal() { document.getElementById('terminal-overlay').style.display = 'flex'; document.getElementById('terminal-input').focus(); }
+    function closeTerminal() { document.getElementById('terminal-overlay').style.display = 'none'; }
+    const termInput = document.getElementById('terminal-input');
+    termInput.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') {
+            const cmd = termInput.value.toLowerCase();
+            const body = document.getElementById('terminal-body');
+            let res = '';
+            if(cmd === 'help') res = "Commands: skills, whoami, hire, clear";
+            else if(cmd === 'skills') res = "Python, JS, AI, SQL, C++, Linux";
+            else if(cmd === 'whoami') res = "Ali Kassap. AI Engineer & Tech Artist.";
+            else if(cmd === 'hire') { closeTerminal(); window.location.href='#contact'; return; }
+            else if(cmd === 'clear') { body.innerHTML = ''; termInput.value=''; return; }
+            else res = `Command not found: ${cmd}`;
+            
+            const div = document.createElement('div');
+            div.innerHTML = `<div style="margin-top:10px; color:#aaa;">> ${cmd}</div><div style="color:var(--secondary);">${res}</div>`;
+            body.appendChild(div);
+            termInput.value = '';
+            body.scrollTop = body.scrollHeight;
+        }
+    });
+
+    // 6. Particle System (Simplified for performance)
+    const canvas = document.getElementById('bg-canvas'); const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = [];
+    class Particle {
+        constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vX = (Math.random() - 0.5) * 0.5; this.vY = (Math.random() - 0.5) * 0.5; }
+        update() { this.x += this.vX; this.y += this.vY; if(this.x < 0 || this.x > canvas.width) this.vX *= -1; if(this.y < 0 || this.y > canvas.height) this.vY *= -1; }
+        draw() { ctx.fillStyle = 'rgba(6, 182, 212, 0.2)'; ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fill(); }
+    }
+    for(let i=0; i<80; i++) particles.push(new Particle());
+    function anim() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(anim); }
+    anim();
+
+    // 7. Navbar Scroll Effect
+    window.onscroll = () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); };
+
+    // 8. 3D Tilt Effect
+    document.querySelectorAll('.tilt-element').forEach(el => {
+        el.addEventListener('mousemove', e => {
+            const rect = el.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+            const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
+            el.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+        el.addEventListener('mouseleave', () => { el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'; });
+    });
 </script>
 </body>
 </html>
