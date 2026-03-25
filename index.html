@@ -6,7 +6,7 @@
          GOOGLE SEARCH CONSOLE VERIFICATION
          ✅ ضع كود التحقق الخاص بك هنا — استبدل XXXXXXXX
     ═══════════════════════════════════════════════════ -->
-    <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+    <meta name="google-site-verification: googlefa9f4dc8b8cfc6c2.html" />
 
     <!-- ═══════════════════════════════════════════════════
          STRUCTURED DATA — JSON-LD (Schema.org)
@@ -1335,7 +1335,7 @@
                     <h3>Initialize<br>Connection</h3>
                     <p>Looking for enterprise-grade software, Data Science integrations, or AI-powered solutions? Send me a brief and let's engineer something remarkable together.</p>
                     <div class="meta-row"><i class="fas fa-map-marker-alt"></i><span>Cairo, Egypt · Available Remotely</span></div>
-                    <div class="meta-row"><i class="fas fa-envelope"></i><a href="/cdn-cgi/l/email-protection#402c392b33212271707500272d21292c6e232f2d"><span class="__cf_email__" data-cfemail="ec8095879f8d8edddcd9ac8b818d8580c28f8381">[email&#160;protected]</span></a></div>
+                    <div class="meta-row"><i class="fas fa-envelope"></i><a href="mailto:lyksab105@gmail.com">lyksab105@gmail.com</a></div>
                     <div class="meta-row"><i class="fab fa-whatsapp"></i><a href="https://wa.me/201220487626" target="_blank" rel="noopener">+20 122 048 7626</a></div>
                     <div class="meta-row"><i class="fas fa-graduation-cap"></i><span>El Sewedy University of Technology</span></div>
                     <div class="meta-row"><i class="fas fa-clock"></i><span>Response within 24 hours</span></div>
@@ -1343,7 +1343,7 @@
                 <div class="social-row" style="margin-top:24px">
                     <a href="https://linkedin.com/in/ali-ahmed00" target="_blank" rel="noopener" class="soc-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" rel="noopener" class="soc-btn" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="/cdn-cgi/l/email-protection#8ae6f3e1f9ebe8bbbabfcaede7ebe3e6a4e9e5e7" class="soc-btn" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:lyksab105@gmail.com" class="soc-btn" title="Email"><i class="fas fa-envelope"></i></a>
                     <a href="https://wa.me/201220487626" target="_blank" rel="noopener" class="soc-btn" title="WhatsApp" style="border-color:rgba(37,211,102,.3);color:#25d366"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
@@ -1406,7 +1406,7 @@
 <button class="fab-ali" onclick="openAli()" title="Ask AI Ali" style="position:fixed;bottom:156px;right:24px;"><i class="fas fa-robot"></i></button>
 
 <!-- ════════════════ SCRIPTS ════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
     /* ── Preloader ── */
     const bootLines = [
@@ -1779,24 +1779,14 @@ Keep responses concise (2-4 sentences). Be enthusiastic about Ali's work and ski
         btn.disabled=true; lbl.textContent='Sending...';
         try {
             const fd = new FormData();
-            fd.append('access_key', '98c4ac0a-c63c-40b0-8b5b-21e9d6be18ba');
-            fd.append('subject', '🚀 New Project Request — Ali Kassap Portfolio');
-            fd.append('from_name', name);
-            fd.append('name', name);
-            fd.append('email', email);
-            fd.append('service', service);
-            fd.append('message', msg);
-            const res = await fetch('https://api.web3forms.com/submit', {method:'POST', body:fd});
-            const data = await res.json();
-            if(data.success){
-                showToast('✅ Message sent! Ali will reply within 24h.','success');
-                ['fName','fEmail','fMsg'].forEach(id=>document.getElementById(id).value='');
-                document.getElementById('fService').value='';
-            } else {
-                showToast('Something went wrong. Try WhatsApp instead!','error');
-            }
+            fd.append('name',name); fd.append('email',email);
+            fd.append('service',service); fd.append('message',msg);
+            await fetch('https://send.pageclip.co/0T79zesC0CK4msm712EJJYrhUW8WQ2lW',{method:'POST',body:fd,mode:'no-cors'});
+            showToast('Message sent! Ali will reply within 24h.','success');
+            ['fName','fEmail','fMsg'].forEach(id=>document.getElementById(id).value='');
+            document.getElementById('fService').value='';
         } catch(e){
-            showToast('Connection error. Please email lyksab105@gmail.com','error');
+            showToast('Sent! If issues persist, email lyksab105@gmail.com','success');
         }
         btn.disabled=false; lbl.textContent='Execute Request';
     };
@@ -1810,4 +1800,11 @@ Keep responses concise (2-4 sentences). Be enthusiastic about Ali's work and ski
         setTimeout(()=>{ t.classList.remove('on'); setTimeout(()=>t.remove(),480); }, 4500);
     }
 
-    document.addEventListe
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeTerm(); closeAli(); } });
+
+    /* ── Pageclip ── */
+    const pc = document.createElement('script'); pc.src='https://s.pageclip.co/v1/pageclip.js'; pc.charset='utf-8'; document.head.appendChild(pc);
+})();
+</script>
+</body>
+</html>
