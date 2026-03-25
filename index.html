@@ -2,13 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Enterprise Software Engineer & AI Specialist.">
-    <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil Gamil, El Sewedy University, AI Engineer Egypt, Software Developer Al Khusus, Python Developer, Smart Pharmacy AI, علي كساب">
-    <meta name="author" content="Ali Kassap">
-    <meta property="og:title" content="Ali Kassap | Premium AI & Software Engineering">
-    <meta property="og:description" content="Architecting high-performance software and intelligent systems.">
-    <title>Ali Kassap | Software Engineer & AI Specialist</title>
+    <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil Gamil, El Sewedy University, AI Engineer Egypt, Future Academy Instructor, Software Developer Al Khusus, علي كساب">
+    <title>Ali Kassap | AI & Software Engineer</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
@@ -19,18 +16,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         :root {
-            --bg-main: #050508; /* Deep Space Black */
-            --bg-card: rgba(15, 15, 22, 0.65);
-            --bg-card-hover: rgba(25, 25, 35, 0.85);
-            --bg-nav: rgba(5, 5, 8, 0.85);
+            --bg-main: #030305; /* Ultra Deep Space */
+            --bg-card: rgba(15, 15, 22, 0.5);
+            --bg-card-hover: rgba(25, 25, 35, 0.9);
+            --bg-nav: rgba(3, 3, 5, 0.85);
             
             --primary: #6366f1; /* Electric Indigo */
-            --primary-glow: rgba(99, 102, 241, 0.5);
-            
             --secondary: #0ea5e9; /* Neon Sky Blue */
-            --secondary-glow: rgba(14, 165, 233, 0.4);
-            
-            --linux-green: #22c55e; /* Hacker Green */
+            --linux-green: #10b981; /* Hacker Green */
             
             --text-main: #f8fafc;
             --text-muted: #94a3b8; 
@@ -42,10 +35,13 @@
             background-color: var(--bg-main); 
             color: var(--text-main); 
             overflow-x: hidden; 
-            cursor: none; /* Hidden for custom cursor */
             -webkit-font-smoothing: antialiased;
         }
+        
+        /* Hide default cursor only on devices that support hover */
+        @media (hover: hover) and (pointer: fine) { body { cursor: none !important; } }
 
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-main); }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -54,231 +50,218 @@
         /* ================= 2. LINUX BOOT PRELOADER ================= */
         #preloader { 
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
-            background-color: #030305; z-index: 999999999; 
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;
-            transition: opacity 0.8s ease, visibility 0.8s ease; 
-            font-family: 'Fira Code', monospace;
-            color: #cbd5e1; font-size: 0.95rem;
+            background-color: #000; z-index: 999999; 
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 50px 30px;
+            transition: opacity 0.6s ease, visibility 0.6s ease; 
+            font-family: 'Fira Code', monospace; color: #cbd5e1; font-size: 1rem;
         }
-        .boot-line { margin-bottom: 8px; opacity: 0; }
+        .boot-line { margin-bottom: 8px; opacity: 0; transform: translateY(10px); animation: bootFade 0.4s forwards; }
+        @keyframes bootFade { to { opacity: 1; transform: translateY(0); } }
         .boot-ok { color: var(--linux-green); font-weight: bold; }
-        .boot-fail { color: #ef4444; font-weight: bold; }
-        .boot-warning { color: #f59e0b; font-weight: bold; }
-        .cursor-blink-boot { display: inline-block; width: 8px; height: 15px; background: #cbd5e1; animation: blink 1s infinite; margin-left: 5px; vertical-align: middle; }
-        
-        /* ================= 3. AI NEURAL CANVAS & CURSOR ================= */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.8; }
-        
-        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; border-radius: 50%; z-index: 9999999; pointer-events: none; transform: translate(-50%, -50%); }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--secondary); box-shadow: 0 0 12px var(--secondary), 0 0 20px var(--primary); transition: opacity 0.2s; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(14, 165, 233, 0.5); transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s, border-color 0.3s; }
-        
-        /* Deep Space Glows */
-        .bg-glow { position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
-        .bg-glow-2 { position: fixed; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(14,165,233,0.05) 0%, rgba(0,0,0,0) 70%); z-index: -1; pointer-events: none; }
+        .cursor-blink-boot { display: inline-block; width: 10px; height: 18px; background: #cbd5e1; animation: blink 1s infinite; vertical-align: middle; margin-left: 5px;}
 
-        /* ================= 4. ENTERPRISE ANIMATIONS ================= */
-        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .reveal-up.is-visible { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        /* ================= 3. AI NEURAL CANVAS (FIXED & 100% WORKING) ================= */
+        #ai-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; opacity: 0.9; }
+        
+        .bg-glow { position: fixed; top: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, rgba(0,0,0,0) 70%); z-index: -3; }
+        .bg-glow-2 { position: fixed; bottom: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(14,165,233,0.04) 0%, rgba(0,0,0,0) 70%); z-index: -3; }
 
-        /* ================= 5. PREMIUM NAVBAR ================= */
-        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 2px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 9999; transition: width 0.1s ease-out; }
-        .navbar { position: fixed; width: 100%; padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .navbar.scrolled { padding: 15px 6%; background: var(--bg-nav); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-color); }
+        /* ================= 4. MAGIC CURSOR (DESKTOP ONLY) ================= */
+        .cursor-dot { position: fixed; top: 0; left: 0; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; z-index: 99999; pointer-events: none; box-shadow: 0 0 10px var(--secondary); transform: translate(-50%, -50%); display: none; }
+        .cursor-outline { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(14, 165, 233, 0.6); border-radius: 50%; z-index: 99998; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s; display: none; }
+        @media (hover: hover) and (pointer: fine) { .cursor-dot, .cursor-outline { display: block; } }
+
+        /* ================= 5. ENTERPRISE NAVBAR ================= */
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 2px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 10000; }
+        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
+        .navbar.scrolled { padding: 12px 5%; background: var(--bg-nav); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); }
         
-        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; } 
-        .logo i { color: var(--primary); font-size: 1.2rem; }
-        .logo span { color: var(--secondary); }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 5px; } 
+        .logo span { color: var(--primary); }
+        .logo:hover { text-shadow: 0 0 10px var(--primary-glow); }
         
-        .nav-right { display: flex; align-items: center; gap: 30px; }
-        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--linux-green); background: rgba(34, 197, 94, 0.05); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(34, 197, 94, 0.2); font-family: 'Fira Code', monospace;}
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--linux-green); background: rgba(16, 185, 129, 0.05); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.2); font-family: 'Fira Code', monospace;}
         .pulse-dot { width: 6px; height: 6px; background: var(--linux-green); border-radius: 50%; animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        /* ================= 6. HERO SECTION ================= */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 10; }
+        /* ================= 6. MOBILE BOTTOM APP BAR (GIFT) ================= */
+        .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(5,5,8,0.95); backdrop-filter: blur(15px); border-top: 1px solid var(--border-color); z-index: 1000; padding: 10px 20px; justify-content: space-between; align-items: center; padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+        .mobile-nav a { color: var(--text-muted); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; gap: 4px; transition: 0.3s; }
+        .mobile-nav a i { font-size: 1.2rem; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--secondary); }
+        @media (max-width: 768px) { .mobile-nav { display: flex; } .navbar .nav-right { display: none; } }
+
+        /* ================= 7. HERO SECTION ================= */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 5%; position: relative; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 10; }
         
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(99, 102, 241, 0.05); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 30px; margin-bottom: 30px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-        .title { font-size: clamp(3rem, 6vw, 6rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -2px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 15px; background: rgba(99, 102, 241, 0.1); color: #a5b4fc; border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 30px; margin-bottom: 25px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .title { font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1.5px; }
         
-        .typing-wrapper { display: inline-block; min-width: 350px; text-align: left; }
         .typing-text { background: linear-gradient(135deg, #fff 20%, var(--secondary) 100%); -webkit-background-clip: text; color: transparent; }
-        .cursor-blink { display: inline-block; width: 4px; height: 1em; background-color: var(--secondary); vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 2px; }
+        .cursor-blink { display: inline-block; width: 3px; height: 1em; background-color: var(--secondary); vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 2px; }
         @keyframes blink { 50% { opacity: 0; } }
         
-        .description { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 750px; margin: 0 auto 40px; line-height: 1.8; font-weight: 300; }
+        .description { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; line-height: 1.8; font-weight: 300; }
 
-        /* Enterprise Buttons */
-        .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 35px; font-weight: 600; border-radius: 10px; text-decoration: none; transition: all 0.3s ease; position: relative; font-size: 1rem; cursor: none; }
-        .btn-primary { background: var(--text-main); color: var(--bg-main); }
-        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
-        .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); }
-        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+        .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 32px; font-weight: 600; border-radius: 10px; text-decoration: none; transition: 0.3s; font-size: 1rem; }
+        .btn-primary { background: var(--text-main); color: var(--bg-main); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-color); backdrop-filter: blur(5px); }
+        .btn-primary:hover { background: #e2e8f0; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,255,255,0.2); }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); transform: translateY(-3px); border-color: var(--secondary); }
 
-        /* ================= 7. INFINITE MARQUEE ================= */
-        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(3, 3, 5, 0.9); padding: 20px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); z-index: 5; backdrop-filter: blur(5px); }
-        .marquee-content { display: flex; white-space: nowrap; animation: marquee 35s linear infinite; }
-        .marquee-item { font-size: 0.95rem; color: var(--text-muted); margin: 0 40px; display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+        /* ================= 8. INFINITE MARQUEE ================= */
+        .marquee-wrapper { width: 100%; overflow: hidden; background: rgba(3, 3, 5, 0.9); padding: 15px 0; display: flex; position: absolute; bottom: 0; left: 0; border-top: 1px solid var(--border-color); z-index: 5; }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-item { font-size: 0.9rem; color: var(--text-muted); margin: 0 30px; display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
         .marquee-item i { color: var(--primary); font-size: 1.2rem; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* ================= 8. EXPERTISE & SKILLS ================= */
-        section { padding: 130px 0; position: relative; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-subtitle { color: var(--primary); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 15px; display: block; letter-spacing: 2px; text-transform: uppercase; }
-        .section-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.2; }
+        /* ================= 9. REVEAL ANIMATIONS ================= */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .skill-card { background: var(--bg-card); padding: 45px; border-radius: 16px; border: 1px solid var(--border-color); transition: all 0.4s ease; position: relative; z-index: 1; overflow: hidden; }
-        .skill-card:hover { transform: translateY(-8px); border-color: rgba(99, 102, 241, 0.4); background: var(--bg-card-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .skill-icon { width: 60px; height: 60px; background: rgba(99, 102, 241, 0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 25px; border: 1px solid rgba(99, 102, 241, 0.1); transition: 0.4s; }
-        .skill-card:hover .skill-icon { background: var(--primary); color: #fff; transform: scale(1.1) rotate(-5deg); }
-        .skill-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 600; }
-        .skill-card p { color: var(--text-muted); line-height: 1.7; font-size: 1rem; font-weight: 300; }
+        /* ================= 10. EXPERTISE & EXPERIENCE ================= */
+        section { padding: 100px 5%; position: relative; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-subtitle { color: var(--primary); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 10px; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .section-title { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; line-height: 1.2; }
 
-        /* ================= 9. LINUX TIMELINE (EXPERIENCE) ================= */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 30px; border-left: 1px solid var(--border-color); }
-        .timeline-item { position: relative; padding-bottom: 50px; padding-left: 30px; }
-        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-main); border: 3px solid var(--linux-green); box-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
-        .timeline-date { font-family: 'Fira Code', monospace; color: var(--linux-green); font-size: 0.85rem; margin-bottom: 8px; display: inline-block; background: rgba(34, 197, 94, 0.05); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(34, 197, 94, 0.1); }
-        .timeline-content { background: var(--bg-card); padding: 35px; border-radius: 16px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .skill-card { background: var(--bg-card); padding: 40px; border-radius: 16px; border: 1px solid var(--border-color); transition: 0.4s; overflow: hidden; position: relative;}
+        .skill-card:hover { transform: translateY(-8px); border-color: var(--secondary); background: var(--bg-card-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .skill-icon { width: 55px; height: 55px; background: rgba(99, 102, 241, 0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; border: 1px solid rgba(99, 102, 241, 0.1); }
+        .skill-card h3 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 600; }
+        .skill-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+
+        /* Timeline (Added Future Academy) */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 25px; border-left: 1px solid var(--border-color); }
+        .timeline-item { position: relative; padding-bottom: 40px; padding-left: 20px; }
+        .timeline-item::before { content: ''; position: absolute; left: -31px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--bg-main); border: 2px solid var(--linux-green); box-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
+        .timeline-date { font-family: 'Fira Code', monospace; color: var(--linux-green); font-size: 0.8rem; margin-bottom: 8px; display: inline-block; background: rgba(34, 197, 94, 0.05); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(34, 197, 94, 0.1); }
+        .timeline-content { background: var(--bg-card); padding: 30px; border-radius: 16px; border: 1px solid var(--border-color); transition: 0.3s; }
         .timeline-content:hover { border-color: rgba(34, 197, 94, 0.3); background: var(--bg-card-hover); }
-        .timeline-content h3 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 600; }
-        .timeline-content h4 { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 400; }
-        .timeline-content p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; font-weight: 300; }
+        .timeline-content h3 { font-size: 1.2rem; margin-bottom: 5px; font-weight: 600; }
+        .timeline-content h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; }
+        .timeline-content p { color: var(--text-muted); line-height: 1.6; font-size: 0.9rem; }
 
-        /* ================= 10. PORTFOLIO ================= */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px; }
-        .project-card { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.4s ease; display: flex; flex-direction: column; }
-        .project-img { width: 100%; height: 240px; position: relative; overflow: hidden; background: #0a0a0a; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 0.8s ease, opacity 0.4s ease; }
+        /* ================= 11. PORTFOLIO ================= */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; }
+        .project-img { width: 100%; height: 220px; background: #0a0a0a; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.6s; }
         .project-card:hover .project-img img { opacity: 1; transform: scale(1.05); }
-        .project-info { padding: 35px; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-info h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 600; }
-        .project-info p { color: var(--text-muted); line-height: 1.7; flex-grow: 1; font-size: 0.95rem; font-weight: 300; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-color); }
-        .tag { font-size: 0.75rem; font-family: 'Fira Code', monospace; background: rgba(255,255,255,0.02); color: #cbd5e1; padding: 6px 12px; border-radius: 4px; border: 1px solid var(--border-color); transition: 0.3s; }
-        .project-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: var(--bg-card-hover); }
-        .project-card:hover .tag { color: var(--text-main); border-color: var(--secondary); background: rgba(14, 165, 233, 0.1); }
+        .project-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-info h3 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 600; }
+        .project-info p { color: var(--text-muted); line-height: 1.6; flex-grow: 1; font-size: 0.9rem; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color); }
+        .tag { font-size: 0.75rem; font-family: 'Fira Code', monospace; background: rgba(255,255,255,0.02); color: #cbd5e1; padding: 4px 10px; border-radius: 4px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.15); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .project-card:hover .tag { color: var(--secondary); border-color: var(--secondary); background: rgba(14, 165, 233, 0.1); }
 
-        /* ================= 11. LINUX TERMINAL EASTER EGG ================= */
-        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); opacity: 0; transition: opacity 0.3s ease; }
+        /* ================= 12. TERMINAL EASTER EGG ================= */
+        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 9999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); opacity: 0; transition: 0.3s; }
         #terminal-overlay.active { display: flex; opacity: 1; }
-        .terminal-window { width: 90%; max-width: 800px; height: 500px; background: #0a0a0c; border-radius: 12px; border: 1px solid #333; box-shadow: 0 30px 60px rgba(0,0,0,0.9); display: flex; flex-direction: column; overflow: hidden; transform: translateY(20px); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .terminal-window { width: 90%; max-width: 700px; height: 450px; background: #0a0a0c; border-radius: 12px; border: 1px solid #333; display: flex; flex-direction: column; transform: translateY(20px); transition: 0.4s; }
         #terminal-overlay.active .terminal-window { transform: translateY(0); }
-        .terminal-header { background: #141418; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-        .term-dots { display: flex; gap: 8px; }
-        .term-dot { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
-        .terminal-body { padding: 25px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; }
-        .term-input-wrapper { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
-        #terminal-input { background: transparent; border: none; color: var(--text-main); outline: none; flex-grow: 1; font-family: inherit; font-size: 1rem; caret-color: var(--linux-green); }
+        .terminal-header { background: #141418; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .term-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; cursor: pointer; margin-right: 5px;}
+        .terminal-body { padding: 20px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #cbd5e1; font-size: 0.9rem; line-height: 1.6; }
+        #terminal-input { background: transparent; border: none; color: #fff; outline: none; width: 80%; font-family: inherit; font-size: 0.95rem; caret-color: var(--linux-green); }
 
-        /* ================= 12. ENTERPRISE CONTACT FORM ================= */
-        .contact-wrapper { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .contact-info { padding: 60px; background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(99,102,241,0.05) 100%); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
-        .contact-info-text h3 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -1px; }
-        .contact-info-text p { color: var(--text-muted); line-height: 1.7; font-size: 1.05rem; margin-bottom: 40px; font-weight: 300;}
+        /* ================= 13. PAGECLIP CONTACT FORM ================= */
+        .contact-wrapper { background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .contact-info { padding: 50px; background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(99,102,241,0.05) 100%); border-right: 1px solid var(--border-color); }
+        .contact-info h3 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 800; }
+        .contact-info p { color: var(--text-muted); line-height: 1.6; font-size: 1rem; margin-bottom: 30px; }
         
-        .social-links { display: flex; gap: 15px; }
-        .social-btn { width: 45px; height: 45px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; cursor: none; }
-        .social-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-4px); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
+        .social-links { display: flex; gap: 12px; }
+        .social-btn { width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 1rem; text-decoration: none; transition: 0.3s; }
+        .social-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-3px); }
 
-        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 20px; }
+        .contact-form { padding: 50px; display: flex; flex-direction: column; gap: 20px; }
         .form-row { display: flex; gap: 20px; }
-        .input-group { position: relative; width: 100%; }
-        input, select, textarea { width: 100%; padding: 18px 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 0.95rem; transition: all 0.3s ease; cursor: none;}
-        input:focus, textarea:focus, select:focus { border-color: var(--primary); background: rgba(255,255,255,0.02); outline: none; box-shadow: 0 0 15px rgba(99, 102, 241, 0.1); }
+        input, select, textarea { width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-family: inherit; font-size: 0.95rem; transition: 0.3s;}
+        input:focus, textarea:focus, select:focus { border-color: var(--primary); background: rgba(255,255,255,0.02); outline: none; }
         select option { background: #111; color: #fff; }
 
-        /* SUCCESS TOAST VIP */
-        #success-toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background: #fff; color: #000; padding: 14px 30px; border-radius: 40px; font-weight: 600; font-size: 0.95rem; opacity: 0; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); z-index: 10000; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); display: flex; align-items: center; gap: 10px; }
+        #success-toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(100px); background: #fff; color: #000; padding: 12px 25px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; opacity: 0; transition: 0.5s; z-index: 10000; display: flex; align-items: center; gap: 10px; }
         #success-toast i { color: var(--linux-green); font-size: 1.2rem; }
         #success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        /* ================= 13. FOOTER & WHATSAPP ================= */
-        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 50px; }
-        .footer-text { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
-        
-        .whatsapp-fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); text-decoration: none; transition: 0.3s ease; cursor: none; }
-        .whatsapp-fab i { color: white; font-size: 1.8rem; }
-        .whatsapp-fab:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5); }
+        /* FOOTER */
+        footer { padding: 30px 0 80px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 50px; color: var(--text-muted); font-size: 0.85rem; }
 
-        /* ================= 14. RESPONSIVE ================= */
-        @media (max-width: 1024px) {
-            .contact-wrapper { grid-template-columns: 1fr; }
-            .title { font-size: clamp(3rem, 8vw, 4.5rem); }
-            .cursor-dot, .cursor-outline { display: none; }
-            body, .btn, .social-btn, input, textarea, select, .whatsapp-fab { cursor: auto; }
-            .bg-glow, .bg-glow-2 { display: none; }
-        }
         @media (max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
             .form-row { flex-direction: column; gap: 20px; }
-            .navbar { padding: 20px 5%; }
-            .nav-right a.btn { display: none; }
-            .marquee-wrapper { display: none; }
-            .contact-info, .contact-form { padding: 40px 25px; }
-            section { padding: 80px 0; }
+            .contact-info, .contact-form { padding: 30px 20px; }
+            section { padding: 80px 5%; }
+            .hero { padding-top: 100px; }
         }
     </style>
 </head>
 <body>
 
-    <div id="success-toast">
-        <i class="fas fa-check-circle"></i> 
-        <span>Request received successfully. I'll be in touch.</span>
-    </div>
+    <div id="success-toast"><i class="fas fa-check-circle"></i> <span>Message Sent Successfully.</span></div>
 
     <div id="preloader">
-        <div id="boot-sequence">
-            </div>
+        <div id="boot-sequence"></div>
         <div style="margin-top: 15px;">
             <span style="color: var(--linux-green);">root@kassap-ai:~$</span> <span id="boot-final"></span><span class="cursor-blink-boot"></span>
         </div>
     </div>
 
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="ai-canvas"></canvas>
     
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
     <div class="bg-glow"></div>
     <div class="bg-glow-2"></div>
 
-    <div class="scroll-progress"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <div class="scroll-progress" id="scroll-progress"></div>
     <nav class="navbar" id="navbar">
-        <div class="logo"><i class="fas fa-code"></i> Ali<span>.</span></div>
+        <div class="logo">Ali<span>.Kassap</span></div>
         <div class="nav-right">
             <div class="status-indicator">
-                <div class="pulse-dot"></div>
-                <span>System Online</span>
+                <div class="pulse-dot"></div><span>Online</span>
             </div>
-            <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Terminal" style="border:none; background:transparent;">
+            <div class="social-btn magnetic-btn" onclick="openTerminal()" title="Terminal" style="border:none; background:transparent; cursor:none;">
                 <i class="fas fa-terminal" style="color: var(--text-muted); font-size: 1.2rem;"></i>
             </div>
             <a href="#contact" class="btn btn-primary magnetic-btn" style="padding: 10px 20px; font-size: 0.9rem;">Hire Me</a>
         </div>
     </nav>
 
+    <div class="mobile-nav">
+        <a href="#home" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="#expertise"><i class="fas fa-brain"></i> Skills</a>
+        <a href="#experience"><i class="fas fa-briefcase"></i> Exp</a>
+        <a href="#portfolio"><i class="fas fa-laptop-code"></i> Work</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+
     <div id="terminal-overlay">
         <div class="terminal-window">
             <div class="terminal-header">
-                <div class="term-dots">
-                    <div class="term-dot" style="background: #ff5f56; cursor: pointer;" onclick="closeTerminal()"></div>
-                    <div class="term-dot" style="background: #ffbd2e;"></div>
-                    <div class="term-dot" style="background: #27c93f;"></div>
+                <div>
+                    <span class="term-dot" style="background: #ff5f56;" onclick="closeTerminal()"></span>
+                    <span class="term-dot" style="background: #ffbd2e;"></span>
+                    <span class="term-dot" style="background: #27c93f;"></span>
                 </div>
-                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">ali@ubuntu-server:~</div>
+                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">ali@ubuntu:~</div>
                 <div></div>
             </div>
             <div class="terminal-body" id="terminal-body">
                 <div style="color: var(--linux-green); margin-bottom: 10px; font-weight: 600;">Ali Kassap Root Access v2.0</div>
-                <div style="color: #666; margin-bottom: 25px;">Type <span style="color:#fff;">'help'</span> to view commands.</div>
+                <div style="color: #666; margin-bottom: 20px;">Type <span style="color:#fff;">'help'</span> to view commands.</div>
                 <div id="terminal-content"></div>
-                <div class="term-input-wrapper">
+                <div style="display:flex; align-items:center; gap:10px; margin-top:15px;">
                     <span style="color: var(--linux-green);">root@ali:~$</span>
                     <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
                 </div>
@@ -287,18 +270,15 @@
     </div>
 
     <header class="hero" id="home">
-        <div class="container reveal-up">
+        <div class="container reveal">
             <div class="hero-badge">
-                <i class="fas fa-shield-alt"></i>
-                Software Engineer & AI Specialist
+                <i class="fas fa-shield-alt"></i> Software Engineer & AI Specialist
             </div>
             <h1 class="title">Engineering <br>
-                <span class="typing-wrapper">
-                    <span class="typing-text"></span><span class="cursor-blink"></span>
-                </span>
+                <span class="typing-text" id="typing-text"></span><span class="cursor-blink"></span>
             </h1>
             <p class="description">
-                I am Ali Ahmed Khalil Gamil. A dedicated developer crafting scalable enterprise platforms, highly optimized backend systems, and intelligent solutions at El Sewedy University.
+                I am Ali Ahmed Khalil Gamil. A dedicated developer crafting scalable enterprise platforms, intelligent algorithms, and optimizing system architectures at El Sewedy University.
             </p>
             <div class="btn-group">
                 <a href="#contact" class="btn btn-primary magnetic-btn">Deploy Project</a>
@@ -320,22 +300,22 @@
 
     <section id="expertise">
         <div class="container">
-            <div class="section-header reveal-up">
+            <div class="section-header reveal">
                 <span class="section-subtitle">System Capabilities</span>
                 <h2 class="section-title">Technical Expertise</h2>
             </div>
             <div class="skills-grid">
-                <div class="skill-card reveal-up delay-100 magnetic-btn">
+                <div class="skill-card reveal magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-server"></i></div>
                     <h3>Backend Architecture</h3>
                     <p>Building high-performance backend systems, fleet management, and employee tracking platforms grounded in robust Object-Oriented programming.</p>
                 </div>
-                <div class="skill-card reveal-up delay-200 magnetic-btn">
+                <div class="skill-card reveal delay-100 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
                     <h3>AI & Data Engineering</h3>
                     <p>Developing smart pharmacy systems and healthcare data solutions, utilizing structured MySQL schemas integrated with Python analytics.</p>
                 </div>
-                <div class="skill-card reveal-up delay-300 magnetic-btn">
+                <div class="skill-card reveal delay-200 magnetic-btn">
                     <div class="skill-icon"><i class="fas fa-microchip"></i></div>
                     <h3>Hardware Integration</h3>
                     <p>Bridging hardware and software with C++ and Arduino. Developing real-time physics tracking intervals and intelligent embedded sensors.</p>
@@ -346,29 +326,37 @@
 
     <section id="experience" style="background: rgba(255,255,255,0.01);">
         <div class="container">
-            <div class="section-header reveal-up">
+            <div class="section-header reveal">
                 <span class="section-subtitle">Execution Logs</span>
                 <h2 class="section-title">Experience & Impact</h2>
             </div>
             <div class="timeline">
-                <div class="timeline-item reveal-up">
-                    <span class="timeline-date">[ Current_Process ]</span>
+                <div class="timeline-item reveal">
+                    <span class="timeline-date">[ Current ]</span>
                     <div class="timeline-content">
                         <h3>Computer Science & AI Studies</h3>
                         <h4>El Sewedy University of Technology (SUT)</h4>
                         <p>Specializing in Artificial Intelligence and scalable computing. Actively preparing for advanced MSc studies at the University of Liverpool.</p>
                     </div>
                 </div>
-                <div class="timeline-item reveal-up delay-100">
-                    <span class="timeline-date">[ Process_02 ]</span>
+                <div class="timeline-item reveal delay-100">
+                    <span class="timeline-date">[ Instructor ]</span>
+                    <div class="timeline-content">
+                        <h3>Programming Instructor for Kids</h3>
+                        <h4>Future Academy - Wadi Degla Club</h4>
+                        <p>Simplifying complex logic for young minds. Teaching core programming concepts, fostering the next generation of tech innovators through interactive methodologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal delay-200">
+                    <span class="timeline-date">[ Organizer ]</span>
                     <div class="timeline-content">
                         <h3>Official Organizer</h3>
                         <h4>Ministry of Youth and Sports, Egypt</h4>
                         <p>Managing and executing national events, demonstrating elite project management, teamwork, and organizational capabilities.</p>
                     </div>
                 </div>
-                <div class="timeline-item reveal-up delay-200">
-                    <span class="timeline-date">[ Process_03 ]</span>
+                <div class="timeline-item reveal delay-300">
+                    <span class="timeline-date">[ Volunteer ]</span>
                     <div class="timeline-content">
                         <h3>Art Therapy Volunteer</h3>
                         <h4>Children's Cancer Hospital 57357 & Baheya Hospital</h4>
@@ -381,13 +369,13 @@
 
     <section id="portfolio">
         <div class="container">
-            <div class="section-header reveal-up">
+            <div class="section-header reveal">
                 <span class="section-subtitle">Compiled Binaries</span>
                 <h2 class="section-title">Featured Engineering</h2>
             </div>
             <div class="portfolio-grid">
-                <div class="project-card reveal-up delay-100">
-                    <div class="project-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Pharmacy System" loading="lazy"></div>
+                <div class="project-card reveal">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Pharmacy System"></div>
                     <div class="project-info">
                         <h3>Smart Pharmacy AI</h3>
                         <p>A dynamic drug information and inventory management ecosystem. Powered by Python analytics and a centralized MySQL backbone.</p>
@@ -396,8 +384,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card reveal-up delay-200">
-                    <div class="project-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking" loading="lazy"></div>
+                <div class="project-card reveal delay-100">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking"></div>
                     <div class="project-info">
                         <h3>Fleet Booking Engine</h3>
                         <p>A scalable, state-managed car reservation platform. Built entirely with pure JavaScript applying strict Object-Oriented design patterns.</p>
@@ -406,8 +394,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card reveal-up delay-300">
-                    <div class="project-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Hardware" loading="lazy"></div>
+                <div class="project-card reveal delay-200">
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Hardware"></div>
                     <div class="project-info">
                         <h3>IoT Pendulum Tracker</h3>
                         <p>Real-time embedded hardware interface built with C++ and Arduino Nano for high-precision physics interval monitoring.</p>
@@ -422,9 +410,9 @@
 
     <section id="contact" style="padding-bottom: 60px;">
         <div class="container">
-            <div class="contact-wrapper reveal-up">
+            <div class="contact-wrapper reveal">
                 <div class="contact-info">
-                    <div class="contact-info-text">
+                    <div>
                         <h3>Initialize <br>Connection</h3>
                         <p>Looking for enterprise-grade software architecture or AI integrations? Send a brief outlining your requirements.</p>
                     </div>
@@ -457,7 +445,7 @@
                         <textarea name="message" rows="4" placeholder="Describe project specifications..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary pageclip-form__submit magnetic-btn" style="width: 100%; border-radius: 10px;">
+                    <button type="submit" class="btn btn-primary pageclip-form__submit magnetic-btn" style="width: 100%;">
                         <span>Execute Request</span>
                     </button>
                 </form>
@@ -466,27 +454,21 @@
     </section>
 
     <footer>
-        <div class="container reveal-up">
-            <p class="footer-text">&copy; 2026 Ali Ahmed Khalil. System Engineered with precision.</p>
+        <div class="container reveal">
+            <p>&copy; 2026 Ali Ahmed Khalil. System Engineered with precision.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/201220487626" target="_blank" class="whatsapp-fab magnetic-btn">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <script>
-        /**
-         * 1. LINUX BOOT SEQUENCE PRELOADER
-         * Creates a realistic terminal boot effect before revealing the site.
-         */
+        /* ==========================================================================
+           1. LINUX BOOT SEQUENCE
+           ========================================================================== */
         const bootLines = [
             "[ <span class='boot-ok'>OK</span> ] Started Initialize Hardware Components.",
             "[ <span class='boot-ok'>OK</span> ] Reached target Basic System.",
             "[ <span class='boot-ok'>OK</span> ] Started User Login Management.",
-            "[ <span class='boot-warning'>WARN</span> ] Ali_Kassap_AI_Core requires elevated privileges.",
-            "[ <span class='boot-ok'>OK</span> ] Granted Root Access.",
+            "[ <span class='boot-ok'>OK</span> ] Granted Root Access to Ali_Kassap.",
             "[ <span class='boot-ok'>OK</span> ] Started Neural Network Modules.",
             "Mounting UI Interface..."
         ];
@@ -500,20 +482,16 @@
             const preloader = document.getElementById('preloader');
             
             let delay = 0;
-            bootLines.forEach((line, index) => {
+            bootLines.forEach((line) => {
                 setTimeout(() => {
                     const div = document.createElement('div');
                     div.className = 'boot-line';
                     div.innerHTML = line;
                     container.appendChild(div);
-                    // Trigger reflow for fade in
-                    void div.offsetWidth; 
-                    div.style.opacity = '1';
                 }, delay);
-                delay += (Math.random() * 300) + 150; // Random delay between lines
+                delay += 200; 
             });
 
-            // Final command execution
             setTimeout(() => {
                 let txt = "./start_portfolio.sh";
                 let i = 0;
@@ -528,119 +506,67 @@
                             preloader.style.opacity = '0';
                             setTimeout(() => { 
                                 preloader.style.visibility = 'hidden'; 
-                                startEnterpriseTyping(); 
-                                initScrollObserver();    
-                            }, 800);
-                        }, 500);
+                                startTyping(); 
+                                initReveals();    
+                            }, 600);
+                        }, 400);
                     }
-                }, 50);
-            }, delay + 300);
+                }, 40);
+            }, delay + 200);
         }
 
-        // Start boot sequence when DOM is ready
         window.addEventListener('DOMContentLoaded', runLinuxBoot);
-        // Absolute fail-safe: hide preloader after 5 seconds no matter what
+        // Fail-safe
         setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            if(preloader.style.visibility !== 'hidden') {
-                preloader.style.opacity = '0';
-                setTimeout(() => { 
-                    preloader.style.visibility = 'hidden'; 
-                    startEnterpriseTyping(); 
-                    initScrollObserver(); 
-                }, 800);
+            const p = document.getElementById('preloader');
+            if(p.style.visibility !== 'hidden') {
+                p.style.opacity = '0'; setTimeout(() => { p.style.visibility = 'hidden'; startTyping(); initReveals(); }, 500);
             }
-        }, 5000);
+        }, 4000);
 
-
-        /**
-         * 2. INTERSECTION OBSERVER (Smooth Reveals)
-         */
-        function initScrollObserver() {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target); 
-                    }
-                });
-            }, { root: null, rootMargin: '0px', threshold: 0.1 });
-
-            document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
-        }
-
-        /**
-         * 3. PAGECLIP FORM HANDLER
-         */
-        const formEl = document.querySelector('.pageclip-form');
-        if(formEl) {
-            PageClip.form(formEl, {
-                onSubmit: function (event) { return true; },
-                onResponse: function (error, response) {
-                    if (response) {
-                        const toast = document.getElementById('success-toast');
-                        toast.classList.add('show');
-                        formEl.reset();
-                        setTimeout(() => { toast.classList.remove('show'); }, 4000);
-                    }
-                    return false; 
-                }
-            });
-        }
-
-        /**
-         * 4. BUG-FREE TYPING EFFECT
-         */
-        function startEnterpriseTyping() {
-            const el = document.querySelector('.typing-text');
-            if(!el) return;
-            const words = ["AI Solutions.", "Web Platforms.", "Secure Systems.", "Smart Architectures."];
-            let wordIdx = 0; let charIdx = 0; let isDeleting = false;
-
-            function typeRoutine() {
-                const currentWord = words[wordIdx];
-                if (isDeleting) {
-                    el.textContent = currentWord.substring(0, charIdx - 1);
-                    charIdx--;
-                } else {
-                    el.textContent = currentWord.substring(0, charIdx + 1);
-                    charIdx++;
-                }
-
-                let speed = isDeleting ? 30 : 80;
-                
-                if (!isDeleting && charIdx === currentWord.length) {
-                    speed = 2500; 
-                    isDeleting = true;
-                } else if (isDeleting && charIdx === 0) {
-                    isDeleting = false;
-                    wordIdx = (wordIdx + 1) % words.length;
-                    speed = 500; 
-                }
-                setTimeout(typeRoutine, speed);
-            }
-            typeRoutine();
-        }
-
-        /**
-         * 5. AI NEURAL CANVAS (INTERACTIVE PARTICLES)
-         * Connects particles with lines. Interacts with mouse.
-         */
-        const canvas = document.getElementById('bg-canvas');
+        /* ==========================================================================
+           2. AI NEURAL CANVAS (INTERACTIVE BACKGROUND) 100% WORKING
+           ========================================================================== */
+        const canvas = document.getElementById('ai-canvas');
         const ctx = canvas.getContext('2d');
-        let particlesArray = [];
+        let particles = [];
         let mouse = { x: null, y: null, radius: 150 };
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            initParticles();
         }
-        window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
         class Particle {
-            constructor(x, y, dx, dy, size) {
-                this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size;
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Bounce edges
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                // Mouse interaction
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        // Move towards mouse to create "Network" effect
+                        this.x += (dx / distance) * force * 1.5;
+                        this.y += (dy / distance) * force * 1.5;
+                    }
+                }
             }
             draw() {
                 ctx.beginPath();
@@ -648,111 +574,161 @@
                 ctx.fillStyle = 'rgba(14, 165, 233, 0.5)';
                 ctx.fill();
             }
-            update() {
-                // Bounce off edges
-                if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
-                if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
-                
-                // Mouse interaction
-                if(mouse.x != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        this.x -= (dx / distance) * force * 1.5;
-                        this.y -= (dy / distance) * force * 1.5;
-                    }
-                }
-                this.x += this.dx;
-                this.y += this.dy;
-                this.draw();
-            }
         }
 
         function initParticles() {
-            particlesArray = [];
-            // Calc amount based on screen size to prevent lag
-            let numberOfParticles = Math.min((canvas.width * canvas.height) / 12000, 80);
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 2 + 1;
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                let dx = (Math.random() - 0.5) * 0.8;
-                let dy = (Math.random() - 0.5) * 0.8;
-                particlesArray.push(new Particle(x, y, dx, dy, size));
+            particles = [];
+            // Optimize count for mobile/desktop
+            let count = window.innerWidth > 768 ? 70 : 35; 
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
             }
         }
-
+        
         function animateCanvas() {
-            requestAnimationFrame(animateCanvas);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            
-            // Connect particles
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let dx = particlesArray[a].x - particlesArray[b].x;
-                    let dy = particlesArray[a].y - particlesArray[b].y;
+            // Draw and update particles
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                
+                // Connect particles with lines
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
                     let distance = dx * dx + dy * dy;
+                    
                     if (distance < 15000) {
                         ctx.beginPath();
                         ctx.strokeStyle = `rgba(14, 165, 233, ${1 - distance/15000})`;
                         ctx.lineWidth = 1;
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
                     }
                 }
             }
+            requestAnimationFrame(animateCanvas);
         }
-        initParticles();
+        resizeCanvas();
         animateCanvas();
 
-        /**
-         * 6. MAGNETIC BUTTONS & CUSTOM CURSOR
-         */
-        if (window.innerWidth > 1024) {
-            const dot = document.querySelector('.cursor-dot');
-            const outline = document.querySelector('.cursor-outline');
+        /* ==========================================================================
+           3. MAGIC CURSOR & MAGNETIC BUTTONS (DESKTOP ONLY)
+           ========================================================================== */
+        // Check if device has a mouse
+        const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        
+        if (isDesktop) {
+            const cursorDot = document.getElementById('cursor-dot');
+            const cursorOutline = document.getElementById('cursor-outline');
             
             window.addEventListener('mousemove', (e) => {
+                // Update Canvas Mouse Info
                 mouse.x = e.clientX;
                 mouse.y = e.clientY;
                 
-                // Update Cursor position directly for zero lag
-                dot.style.left = e.clientX + 'px';
-                dot.style.top = e.clientY + 'px';
-                outline.style.left = e.clientX + 'px';
-                outline.style.top = e.clientY + 'px';
+                // Update Custom Cursors
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+                cursorOutline.style.left = e.clientX + 'px';
+                cursorOutline.style.top = e.clientY + 'px';
+            });
+            
+            window.addEventListener('mouseout', () => {
+                mouse.x = null; mouse.y = null;
             });
 
-            window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
-
+            // Magnetic Buttons
             document.querySelectorAll('.magnetic-btn').forEach(btn => {
                 btn.addEventListener('mousemove', (e) => {
                     const rect = btn.getBoundingClientRect();
                     const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
                     const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
-                    btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-                    outline.style.width = '60px'; outline.style.height = '60px'; outline.style.borderColor = 'var(--primary)';
-                    outline.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
+                    btn.style.transform = `translate(${x}px, ${y}px)`;
+                    
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.borderColor = 'var(--primary)';
+                    cursorOutline.style.backgroundColor = 'rgba(99, 102, 241, 0.1)';
                 });
                 btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = `translate3d(0, 0, 0)`;
-                    outline.style.width = '40px'; outline.style.height = '40px'; 
-                    outline.style.borderColor = 'rgba(14, 165, 233, 0.5)';
-                    outline.style.backgroundColor = 'transparent';
+                    btn.style.transform = `translate(0px, 0px)`;
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.borderColor = 'rgba(14, 165, 233, 0.6)';
+                    cursorOutline.style.backgroundColor = 'transparent';
                 });
             });
         }
 
-        /**
-         * 7. LINUX TERMINAL LOGIC
-         */
+        /* ==========================================================================
+           4. TYPING EFFECT
+           ========================================================================== */
+        function startTyping() {
+            const el = document.getElementById('typing-text');
+            if(!el) return;
+            const words = ["AI Architectures.", "Web Platforms.", "Secure Systems."];
+            let wIdx = 0, cIdx = 0, isDel = false;
+
+            function type() {
+                const current = words[wIdx];
+                if(isDel) {
+                    el.textContent = current.substring(0, cIdx - 1);
+                    cIdx--;
+                } else {
+                    el.textContent = current.substring(0, cIdx + 1);
+                    cIdx++;
+                }
+
+                let speed = isDel ? 40 : 100;
+                if(!isDel && cIdx === current.length) { speed = 2000; isDel = true; }
+                else if(isDel && cIdx === 0) { isDel = false; wIdx = (wIdx + 1) % words.length; speed = 500; }
+                
+                setTimeout(type, speed);
+            }
+            type();
+        }
+
+        /* ==========================================================================
+           5. SCROLL & REVEAL ANIMATIONS
+           ========================================================================== */
+        function initReveals() {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("scroll-progress").style.width = (winScroll / height) * 100 + "%";
+            
+            if(winScroll > 50) document.getElementById('navbar').classList.add('scrolled');
+            else document.getElementById('navbar').classList.remove('scrolled');
+
+            // Update mobile active nav state
+            let current = '';
+            document.querySelectorAll('section, header').forEach(sec => {
+                const secTop = sec.offsetTop;
+                if(scrollY >= secTop - 60) current = sec.getAttribute('id');
+            });
+            document.querySelectorAll('.mobile-nav a').forEach(a => {
+                a.classList.remove('active');
+                if(a.getAttribute('href').includes(current)) a.classList.add('active');
+            });
+        });
+
+        /* ==========================================================================
+           6. TERMINAL EASTER EGG
+           ========================================================================== */
         const termOverlay = document.getElementById('terminal-overlay');
         const termInput = document.getElementById('terminal-input');
         const termContent = document.getElementById('terminal-content');
@@ -761,47 +737,52 @@
         function closeTerminal() { termOverlay.classList.remove('active'); }
 
         termInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+            if(e.key === 'Enter') {
                 const cmd = this.value.trim().toLowerCase();
-                let output = '';
-                
+                let out = '';
                 switch(cmd) {
-                    case 'help': output = "Commands: skills, whoami, projects, clear, exit"; break;
-                    case 'skills': output = "[OK] Loaded: Python, JS, C++, SQL, Linux."; break;
-                    case 'whoami': output = "Ali Ahmed Khalil Gamil. Root User. AI Engineer."; break;
-                    case 'projects': output = "1. Smart Pharmacy <br>2. Fleet Booking <br>3. Pendulum Tracker"; break;
+                    case 'help': out = "Commands: skills, whoami, projects, clear, exit"; break;
+                    case 'skills': out = "Python, JS, C++, SQL, Linux."; break;
+                    case 'whoami': out = "Ali Kassap. AI Specialist & Future Academy Instructor."; break;
+                    case 'projects': out = "1. Smart Pharmacy <br>2. Fleet Booking <br>3. Pendulum Tracker"; break;
                     case 'exit': closeTerminal(); this.value = ''; return;
                     case 'clear': termContent.innerHTML = ''; this.value = ''; return;
                     case '': return;
-                    default: output = `bash: command not found: ${cmd}`;
+                    default: out = `bash: ${cmd}: command not found`;
                 }
-
-                const newLine = document.createElement('div');
-                newLine.innerHTML = `<div style="margin-top:10px; color:#666;">> ${cmd}</div><div style="color:var(--text-main);">${output}</div>`;
-                termContent.appendChild(newLine);
+                const div = document.createElement('div');
+                div.innerHTML = `<div style="margin-top:10px; color:#666;">> ${cmd}</div><div style="color:var(--text-main);">${out}</div>`;
+                termContent.appendChild(div);
                 this.value = '';
                 document.getElementById('terminal-body').scrollTop = document.getElementById('terminal-body').scrollHeight;
             }
         });
 
-        /**
-         * 8. NAVBAR SCROLL
-         */
-        window.addEventListener('scroll', () => {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.querySelector(".scroll-progress").style.width = (winScroll / height) * 100 + "%";
-            
-            if(winScroll > 50) document.getElementById('navbar').classList.add('scrolled');
-            else document.getElementById('navbar').classList.remove('scrolled');
-        }, { passive: true });
+        /* ==========================================================================
+           7. PAGECLIP FORM HANDLER
+           ========================================================================== */
+        const formEl = document.querySelector('.pageclip-form');
+        if(formEl) {
+            PageClip.form(formEl, {
+                onSubmit: function (event) { return true; },
+                onResponse: function (error, response) {
+                    if(response) {
+                        const toast = document.getElementById('success-toast');
+                        toast.classList.add('show');
+                        formEl.reset();
+                        setTimeout(() => toast.classList.remove('show'), 4000);
+                    }
+                    return false; 
+                }
+            });
+        }
 
-        /**
-         * 9. INFINITE MARQUEE CLONE
-         */
-        const marqueeContent = document.getElementById('marquee-content');
-        if(marqueeContent) {
-            document.querySelector('.marquee-wrapper').appendChild(marqueeContent.cloneNode(true));
+        /* ==========================================================================
+           8. INFINITE MARQUEE CLONE
+           ========================================================================== */
+        const mContent = document.getElementById('marquee-content');
+        if(mContent) {
+            document.querySelector('.marquee-wrapper').appendChild(mContent.cloneNode(true));
         }
 
     </script>
