@@ -2,16 +2,8 @@
 <html lang="ar" dir="ltr">
 
 <head>
-    <!-- ═══════════════════════════════════════════════════
-         GOOGLE SEARCH CONSOLE VERIFICATION
-         ✅ ضع كود التحقق الخاص بك هنا — استبدل XXXXXXXX
-    ═══════════════════════════════════════════════════ -->
     <meta name="google-site-verification: googlefa9f4dc8b8cfc6c2.html" />
 
-    <!-- ═══════════════════════════════════════════════════
-         STRUCTURED DATA — JSON-LD (Schema.org)
-         يساعد جوجل على فهم هويتك بشكل أفضل
-    ═══════════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -68,14 +60,10 @@
     }
     </script>
 
-    <!-- ═══════════════════════════════════════════════════
-         CORE META TAGS
-    ═══════════════════════════════════════════════════ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- SEO Primary Tags -->
     <title>علي كساب | Ali Kassap — Data Science & AI Specialist Cairo Egypt</title>
     <meta name="description" content="Ali Kassap (علي كساب) — Data Science & AI Specialist at El Sewedy University. Expert in Python, Machine Learning, MySQL & Full-Stack Development. Available for freelance projects from Cairo, Egypt. Contact: lyksab105@gmail.com">
     <meta name="keywords" content="علي كساب, Ali Kassap, Ali Ahmed Khalil, Data Scientist Egypt, AI Engineer Cairo, Python Developer Egypt, Machine Learning Cairo, Full Stack Developer Egypt, El Sewedy University, Future Academy, علي احمد خليل جميل, مطور ذكاء اصطناعي مصر, data science freelancer egypt">
@@ -83,14 +71,12 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://alikassap.me/">
 
-    <!-- Geographic SEO -->
     <meta name="geo.region" content="EG-C">
     <meta name="geo.placename" content="Cairo, Egypt">
     <meta name="geo.position" content="30.0444;31.2357">
     <meta name="ICBM" content="30.0444, 31.2357">
     <meta name="language" content="ar, en">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alikassap.me/">
     <meta property="og:title" content="علي كساب | Ali Kassap — Data Science & AI Specialist">
@@ -103,25 +89,21 @@
     <meta property="og:locale" content="ar_EG">
     <meta property="og:locale:alternate" content="en_US">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://alikassap.me/">
     <meta name="twitter:title" content="Ali Kassap | Data Science & AI Specialist">
     <meta name="twitter:description" content="Data Scientist & AI Engineer from Cairo, Egypt. Available for freelance projects.">
     <meta name="twitter:image" content="https://alikassap.me/ali-kassap-og.jpg">
 
-    <!-- Favicon & PWA -->
     <meta name="theme-color" content="#030305">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Ali Kassap">
 
-    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- Fonts — Unique pairing: Syne (display) + Fira Code (mono) -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -437,7 +419,7 @@
         }
 
         /* ════════════════════════════════════════════════════
-           SERVICES / PRICING CARDS (NEW — للدخل)
+           SERVICES / PRICING CARDS
         ════════════════════════════════════════════════════ */
         #services { background: rgba(255,255,255,.012); }
         .services-grid {
@@ -615,7 +597,7 @@
         .c4 { background: var(--green); }
 
         /* ════════════════════════════════════════════════════
-           TESTIMONIALS (NEW — يبني الثقة)
+           TESTIMONIALS
         ════════════════════════════════════════════════════ */
         #testimonials { background: rgba(255,255,255,.012); }
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
@@ -840,6 +822,14 @@
         .fab-ali:hover { transform: scale(1.1) translateY(-3px); }
         @media (max-width: 768px) { .fab-wa { bottom: 78px; right: 14px; } }
 
+        /* ════════════════ CV FAB ════════════════ */
+        .cv-fab { position: fixed; bottom: 30px; left: 30px; background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px); border: 1px solid var(--accent); color: var(--text); padding: 0 25px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 12px; z-index: 9999; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2); text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); font-weight: 600; letter-spacing: 0.5px; font-size: 0.95rem; cursor: none; }
+        .cv-fab i { color: var(--accent); font-size: 1.3rem; transition: 0.3s; }
+        .cv-fab:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.05); }
+        .cv-fab:hover i { transform: translateY(-2px); }
+        @media (max-width: 1024px) { .cv-fab { cursor: auto; } }
+        @media (max-width: 768px) { .cv-fab { bottom: 90px; left: 20px; height: 50px; padding: 0 18px; font-size: 0.85rem; } .cv-fab i { font-size: 1.1rem; } }
+
         /* ════════════════════════════════════════════════════
            FOOTER
         ════════════════════════════════════════════════════ */
@@ -868,7 +858,6 @@
 <div class="c-ring" id="cring"></div>
 <div class="scroll-bar" id="scrollbar"></div>
 
-<!-- ════════════════ PRELOADER ════════════════ -->
 <div id="preloader">
     <div id="boot-seq"></div>
     <div style="margin-top:14px; font-family:'Fira Code',monospace; color: #475569;">
@@ -877,7 +866,6 @@
     </div>
 </div>
 
-<!-- ════════════════ NAVBAR ════════════════ -->
 <nav class="navbar" id="navbar">
     <a href="#home" class="logo">Ali<span>.Kassap</span></a>
     <div class="nav-right">
@@ -888,7 +876,6 @@
     </div>
 </nav>
 
-<!-- Mobile nav -->
 <div class="mobile-nav">
     <a href="#home" class="active"><i class="fas fa-home"></i>Home</a>
     <a href="#services"><i class="fas fa-tag"></i>Services</a>
@@ -897,7 +884,6 @@
     <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
 </div>
 
-<!-- ════════════════ TERMINAL MODAL ════════════════ -->
 <div class="overlay" id="termOverlay" onclick="if(event.target===this)closeTerm()">
     <div class="term-win">
         <div class="term-hdr">
@@ -921,7 +907,6 @@
     </div>
 </div>
 
-<!-- ════════════════ ASK ALI MODAL ════════════════ -->
 <div class="overlay" id="aliOverlay" onclick="if(event.target===this)closeAli()">
     <div class="ali-win">
         <div class="ali-hdr">
@@ -951,9 +936,6 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════ -->
 <header class="hero" id="home">
     <div class="container">
         <div class="hero-badge reveal">Data Science & AI Specialist · Cairo, Egypt</div>
@@ -1003,9 +985,6 @@
     </div>
 </header>
 
-<!-- ═══════════════════════════════════════════════════════
-     SERVICES & PRICING (جديد — لتحقيق الدخل)
-═══════════════════════════════════════════════════════ -->
 <section id="services">
     <div class="container">
         <div class="sec-header reveal">
@@ -1013,7 +992,6 @@
             <h2 class="sec-title">Services & Pricing</h2>
         </div>
         <div class="services-grid">
-            <!-- Card 1 -->
             <div class="service-card reveal">
                 <div class="service-icon"><i class="fas fa-brain"></i></div>
                 <h3>Data Science & AI</h3>
@@ -1027,7 +1005,6 @@
                 </ul>
                 <a href="#contact" class="btn-service">Get Started <i class="fas fa-arrow-right"></i></a>
             </div>
-            <!-- Card 2 — FEATURED -->
             <div class="service-card featured reveal d1">
                 <span class="featured-badge">⭐ POPULAR</span>
                 <div class="service-icon" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.2);color:var(--accent)"><i class="fas fa-server"></i></div>
@@ -1043,7 +1020,6 @@
                 </ul>
                 <a href="#contact" class="btn-service primary">Hire Now <i class="fas fa-rocket"></i></a>
             </div>
-            <!-- Card 3 -->
             <div class="service-card reveal d2">
                 <div class="service-icon" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.18);color:var(--green)"><i class="fas fa-globe"></i></div>
                 <h3>Web & Portfolio Development</h3>
@@ -1057,7 +1033,6 @@
                 </ul>
                 <a href="#contact" class="btn-service">Get Started <i class="fas fa-arrow-right"></i></a>
             </div>
-            <!-- Card 4 -->
             <div class="service-card reveal d3">
                 <div class="service-icon" style="background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.18);color:var(--gold)"><i class="fas fa-microchip"></i></div>
                 <h3>IoT & Embedded Systems</h3>
@@ -1071,7 +1046,6 @@
                 </ul>
                 <a href="#contact" class="btn-service">Get Started <i class="fas fa-arrow-right"></i></a>
             </div>
-            <!-- Card 5 -->
             <div class="service-card reveal d1">
                 <div class="service-icon" style="background:rgba(248,113,113,.07);border-color:rgba(248,113,113,.18);color:var(--red-soft)"><i class="fas fa-graduation-cap"></i></div>
                 <h3>1-on-1 Tech Tutoring</h3>
@@ -1085,7 +1059,6 @@
                 </ul>
                 <a href="https://wa.me/201220487626" target="_blank" rel="noopener" class="btn-service">Book Session <i class="fab fa-whatsapp"></i></a>
             </div>
-            <!-- Card 6 -->
             <div class="service-card reveal d2">
                 <div class="service-icon" style="background:rgba(167,139,250,.07);border-color:rgba(167,139,250,.18);color:var(--primary-light)"><i class="fas fa-database"></i></div>
                 <h3>Database Design & MySQL</h3>
@@ -1103,9 +1076,6 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     EXPERTISE / SKILLS
-═══════════════════════════════════════════════════════ -->
 <section id="expertise">
     <div class="container">
         <div class="sec-header reveal">
@@ -1159,9 +1129,6 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     EXPERIENCE
-═══════════════════════════════════════════════════════ -->
 <section id="experience" style="background:rgba(255,255,255,.012)">
     <div class="container">
         <div class="sec-header reveal">
@@ -1205,9 +1172,6 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     PORTFOLIO
-═══════════════════════════════════════════════════════ -->
 <section id="portfolio">
     <div class="container">
         <div class="sec-header reveal">
@@ -1273,9 +1237,6 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     TESTIMONIALS (جديد — يبني المصداقية)
-═══════════════════════════════════════════════════════ -->
 <section id="testimonials">
     <div class="container">
         <div class="sec-header reveal">
@@ -1320,9 +1281,6 @@
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CONTACT
-═══════════════════════════════════════════════════════ -->
 <section id="contact" style="padding-bottom:60px">
     <div class="container">
         <div class="sec-header reveal">
@@ -1384,7 +1342,6 @@
     </div>
 </section>
 
-<!-- ════════════════ FOOTER ════════════════ -->
 <footer>
     <div class="container reveal">
         <p>&copy; 2026 Ali Ahmed Khalil Gamil (علي كساب) — Engineered with precision in Cairo, Egypt.</p>
@@ -1401,11 +1358,13 @@
     </div>
 </footer>
 
-<!-- FABs -->
+<a href="AliAhmed_CV_ATS_EN_Final_V4.pdf" target="_blank" rel="noopener" class="cv-fab" title="Download CV">
+    <i class="fas fa-file-pdf"></i>
+    <span>Extract Resume</span>
+</a>
 <a href="https://wa.me/201220487626" target="_blank" rel="noopener" class="fab-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
 <button class="fab-ali" onclick="openAli()" title="Ask AI Ali" style="position:fixed;bottom:156px;right:24px;"><i class="fas fa-robot"></i></button>
 
-<!-- ════════════════ SCRIPTS ════════════════ -->
 <script>
 (function(){
     /* ── Preloader ── */
