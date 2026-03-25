@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Premium Software Engineering & AI Solutions.">
+    <meta name="description" content="Ali Ahmed Khalil Gamil (Ali Kassap) | Neural Network Architect & Software Engineer.">
     <meta name="keywords" content="Ali Kassap, Ali Ahmed Khalil, El Sewedy University, AI Engineer Egypt, Software Developer Al Khusus, علي كساب">
-    <title>Ali Kassap | VIP Pro Plus Portfolio</title>
+    <title>Ali Ahmed Khalil | VIP Pro Plus Portfolio</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -26,15 +26,15 @@
             background-color: var(--bg-main); 
             color: var(--text-main); 
             overflow-x: hidden; 
-            cursor: none; /* Hide default cursor for custom one */
+            cursor: none; 
         }
 
-        /* Preloader - Matrix Style */
+        /* [FIXED] Preloader - Fail Safe Implementation */
         #preloader { 
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
             background-color: #000; z-index: 999999999; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            transition: opacity 0.8s, visibility 0.8s; 
+            transition: 0.8s cubic-bezier(0.65, 0, 0.35, 1); 
         }
         .loader-text { font-family: 'Fira Code', monospace; color: var(--secondary); font-size: 1.2rem; margin-bottom: 20px; }
         .loader-bar-bg { width: 250px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
@@ -44,100 +44,95 @@
         /* Custom Cursor */
         .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999999; pointer-events: none; }
         .cursor-dot { width: 8px; height: 8px; background-color: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
-        .cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(6, 182, 212, 0.5); transition: width 0.2s, height 0.2s, border-color 0.2s; }
+        .cursor-outline { width: 40px; height: 40px; border: 2px solid rgba(6, 182, 212, 0.5); transition: width 0.2s, height 0.2s; }
 
         /* Background Effects */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; }
-        .bg-glow { position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw; background: rgba(79, 70, 229, 0.15); filter: blur(150px); border-radius: 50%; z-index: -1; }
+        .bg-glow { position: fixed; top: -10%; left: -5%; width: 50vw; height: 50vw; background: rgba(79, 70, 229, 0.1); filter: blur(150px); border-radius: 50%; z-index: -1; }
 
         /* Navbar */
         .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); z-index: 9999; }
         .navbar { position: fixed; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: 0.4s; }
-        .navbar.scrolled { padding: 15px 5%; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border-color); }
-        .logo { font-size: 1.8rem; font-weight: 800; position: relative; } 
+        .navbar.scrolled { padding: 15px 5%; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); }
+        .logo { font-size: 1.8rem; font-weight: 800; } 
         .logo span { color: var(--primary); }
-        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--secondary); background: rgba(6, 182, 212, 0.05); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.2); }
-        .pulse-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+        .status-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--secondary); background: rgba(6, 182, 212, 0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        .pulse-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
 
         /* Hero Section */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
-        .title { font-size: 5.5rem; font-weight: 800; margin-bottom: 25px; line-height: 1.1; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: 80px; }
+        .title { font-size: 6rem; font-weight: 800; margin-bottom: 25px; line-height: 1.1; letter-spacing: -2px; }
         .typing-text { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; color: transparent; }
-        .description { font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 40px; }
+        .description { font-size: 1.4rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; line-height: 1.6; }
 
         /* Buttons & Ripple */
-        .btn { display: inline-flex; padding: 18px 40px; font-weight: 600; border-radius: 12px; text-decoration: none; transition: 0.3s; position: relative; overflow: hidden; border: none; }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 30px var(--primary-glow); }
-        .btn-outline { background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid var(--border-color); margin-left: 15px; }
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(79, 70, 229, 0.4); }
+        .btn { display: inline-flex; padding: 20px 45px; font-weight: 700; border-radius: 12px; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; border: none; letter-spacing: 1px; }
+        .btn-primary { background: linear-gradient(45deg, var(--primary), #3730a3); color: white; box-shadow: 0 15px 35px var(--primary-glow); }
+        .btn-outline { background: rgba(255, 255, 255, 0.03); color: white; border: 1px solid var(--border-color); margin-left: 20px; backdrop-filter: blur(10px); }
+        .btn:hover { transform: translateY(-8px) scale(1.02); }
 
-        /* Marquee */
-        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(17, 17, 17, 0.8); padding: 20px 0; display: flex; position: absolute; bottom: 0; border-top: 1px solid var(--border-color); }
-        .marquee-content { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
-        .marquee-item { font-size: 1.1rem; color: var(--text-muted); margin: 0 40px; display: flex; align-items: center; gap: 12px; }
+        /* Infinite Marquee */
+        .marquee-wrapper { width: 100vw; overflow: hidden; background: rgba(17, 17, 17, 0.9); padding: 25px 0; display: flex; position: absolute; bottom: 0; border-top: 1px solid var(--border-color); }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 40s linear infinite; }
+        .marquee-item { font-size: 1.2rem; color: var(--text-muted); margin: 0 50px; display: flex; align-items: center; gap: 15px; font-weight: 600; }
+        .marquee-item i { color: var(--secondary); font-size: 1.5rem; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Expertise & Portfolio */
-        section { padding: 120px 0; }
-        .container { width: 90%; max-width: 1250px; margin: 0 auto; }
-        .section-title { font-size: 3.5rem; text-align: center; margin-bottom: 80px; font-weight: 800; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .skill-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); transition: 0.4s; position: relative; overflow: hidden; }
-        .skill-card:hover { border-color: var(--secondary); transform: translateY(-10px) rotateX(5deg); }
-        .skill-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; display: block; }
+        /* Expertise Grid */
+        section { padding: 140px 0; }
+        .container { width: 90%; max-width: 1300px; margin: 0 auto; position: relative; }
+        .section-title { font-size: 4rem; text-align: center; margin-bottom: 100px; font-weight: 800; background: linear-gradient(to bottom, #fff, #666); -webkit-background-clip: text; color: transparent; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .skill-card { background: var(--bg-card); padding: 50px; border-radius: 24px; border: 1px solid var(--border-color); transition: 0.5s; position: relative; transform-style: preserve-3d; }
+        .skill-card:hover { border-color: var(--secondary); box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15); }
+        .skill-card i { font-size: 3.5rem; color: var(--secondary); margin-bottom: 30px; display: block; }
 
-        /* Portfolio Items */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .project-card { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.5s; position: relative; }
-        .project-img { width: 100%; height: 250px; background: #111; position: relative; overflow: hidden; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .project-card:hover .project-img img { transform: scale(1.1); }
-        .project-info { padding: 35px; }
-        .project-tags { display: flex; gap: 10px; margin-top: 20px; }
-        .tag { font-size: 0.8rem; background: rgba(6, 182, 212, 0.1); color: var(--secondary); padding: 5px 12px; border-radius: 6px; border: 1px solid rgba(6, 182, 212, 0.2); }
+        /* Project Cards */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
+        .project-card { background: var(--bg-card); border-radius: 28px; border: 1px solid var(--border-color); overflow: hidden; transition: 0.6s; }
+        .project-img { width: 100%; height: 280px; background: #0a0a0a; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.8s; }
+        .project-card:hover .project-img img { opacity: 1; transform: scale(1.1); }
+        .project-info { padding: 40px; }
+        .project-tags { display: flex; gap: 12px; margin-top: 25px; }
+        .tag { font-size: 0.85rem; background: rgba(79, 70, 229, 0.1); color: var(--primary); padding: 6px 15px; border-radius: 8px; border: 1px solid rgba(79, 70, 229, 0.2); }
 
-        /* Terminal Overlay */
-        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
-        .terminal-window { width: 90%; max-width: 800px; height: 500px; background: #111; border-radius: 12px; border: 1px solid #333; box-shadow: 0 30px 60px rgba(0,0,0,0.5); overflow: hidden; display: flex; flex-direction: column; }
-        .terminal-header { background: #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .term-dots { display: flex; gap: 8px; }
-        .term-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-body { padding: 25px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #fff; line-height: 1.6; }
-        #terminal-input { background: transparent; border: none; color: var(--secondary); outline: none; width: 100%; font-family: inherit; font-size: 1rem; }
+        /* Terminal - Advanced Edition */
+        #terminal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.92); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(15px); }
+        .terminal-window { width: 92%; max-width: 850px; height: 550px; background: #0d0d0d; border-radius: 15px; border: 1px solid #333; box-shadow: 0 50px 100px rgba(0,0,0,0.8); overflow: hidden; display: flex; flex-direction: column; }
+        .terminal-header { background: #1a1a1a; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .term-dots { display: flex; gap: 10px; }
+        .term-dot { width: 13px; height: 13px; border-radius: 50%; }
+        .terminal-body { padding: 30px; flex-grow: 1; overflow-y: auto; font-family: 'Fira Code', monospace; color: #d1d1d1; line-height: 1.8; font-size: 0.95rem; }
+        #terminal-input { background: transparent; border: none; color: var(--secondary); outline: none; width: 100%; font-family: inherit; font-size: 1rem; caret-color: #fff; }
 
-        /* Contact Section & PageClip Form */
-        .contact-wrapper { background: var(--bg-card); border-radius: 30px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.3fr; overflow: hidden; }
-        .contact-info { padding: 60px; background: rgba(255,255,255,0.02); }
-        .contact-form { padding: 60px; display: flex; flex-direction: column; gap: 25px; }
-        .form-row { display: flex; gap: 20px; }
-        input, select, textarea { width: 100%; padding: 18px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); border-radius: 12px; color: #fff; font-size: 1rem; transition: 0.3s; }
-        input:focus, textarea:focus { border-color: var(--secondary); background: rgba(6, 182, 212, 0.05); outline: none; }
+        /* Contact & Forms */
+        .contact-wrapper { background: var(--bg-card); border-radius: 40px; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1.4fr; overflow: hidden; }
+        .contact-info { padding: 70px; background: rgba(255,255,255,0.01); border-right: 1px solid var(--border-color); }
+        .contact-form { padding: 70px; display: flex; flex-direction: column; gap: 30px; }
+        .form-row { display: flex; gap: 25px; }
+        input, select, textarea { width: 100%; padding: 20px; background: rgba(0,0,0,0.6); border: 1px solid var(--border-color); border-radius: 15px; color: #fff; font-size: 1rem; transition: 0.4s; }
+        input:focus, textarea:focus { border-color: var(--secondary); background: rgba(6, 182, 212, 0.03); outline: none; box-shadow: 0 0 20px rgba(6, 182, 212, 0.1); }
         
-        /* Success Toast */
-        #success-toast { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%) translateY(100px); background: #22c55e; color: #fff; padding: 15px 35px; border-radius: 50px; font-weight: 700; opacity: 0; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10000; box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4); }
+        /* Success Notification */
+        #success-toast { position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%) translateY(150px); background: linear-gradient(45deg, #22c55e, #16a34a); color: #fff; padding: 18px 45px; border-radius: 60px; font-weight: 800; opacity: 0; transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 10000; box-shadow: 0 20px 40px rgba(34, 197, 94, 0.4); }
         #success-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        /* Mobile Adjustments */
-        @media (max-width: 992px) {
+        @media (max-width: 1024px) {
             .contact-wrapper { grid-template-columns: 1fr; }
-            .title { font-size: 3.5rem; }
-            .navbar { padding: 20px 5%; }
+            .title { font-size: 4rem; }
             .cursor-dot, .cursor-outline { display: none; }
             body { cursor: auto; }
-        }
-        @media (max-width: 600px) {
-            .form-row { flex-direction: column; }
-            .title { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="success-toast"><i class="fas fa-check-circle"></i> Connection Established! Message Sent.</div>
+    <div id="success-toast"><i class="fas fa-bolt"></i> ACCESS GRANTED: Message Sent!</div>
 
     <div id="preloader">
-        <div class="loader-text" id="loader-text">root@ali-kassap:~$ init_system</div>
+        <div class="loader-text" id="loader-text">root@ali-kassap:~$ boot_neural_core...</div>
         <div class="loader-bar-bg"><div class="loader-bar-fill"></div></div>
     </div>
 
@@ -149,13 +144,13 @@
     <div class="scroll-progress"></div>
     <nav class="navbar" id="navbar">
         <div class="logo">Ali<span>.Kassap</span></div>
-        <div class="nav-links" style="display: flex; align-items: center; gap: 30px;">
+        <div class="nav-links" style="display: flex; align-items: center; gap: 40px;">
             <div class="status-indicator">
                 <div class="pulse-dot"></div>
-                <span>Available for Hire</span>
+                <span>Available Today</span>
             </div>
-            <i class="fas fa-terminal" style="color: var(--secondary); font-size: 1.3rem; cursor: pointer;" onclick="openTerminal()" title="Execute Command"></i>
-            <a href="#contact" class="btn btn-primary" style="padding: 10px 25px; font-size: 0.9rem;">Hire Me</a>
+            <i class="fas fa-terminal" style="color: var(--secondary); font-size: 1.5rem; cursor: pointer; transition: 0.3s;" onclick="openTerminal()" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"></i>
+            <a href="#contact" class="btn btn-primary" style="padding: 12px 30px; font-size: 0.95rem;">Hire Me</a>
         </div>
     </nav>
 
@@ -167,15 +162,15 @@
                     <span class="term-dot" style="background: #ffbd2e;"></span>
                     <span class="term-dot" style="background: #27c93f;"></span>
                 </div>
-                <div style="color: #666; font-size: 0.8rem; font-family: 'Fira Code';">guest@alikassap.website:~</div>
+                <div style="color: #555; font-size: 0.85rem; font-family: 'Fira Code';">ali@neural-core:~/portfolio</div>
                 <div></div>
             </div>
             <div class="terminal-body" id="terminal-body">
-                <div style="color: var(--secondary); margin-bottom: 10px;">> Accessing Ali's Neural Core v2.0...</div>
-                <div style="color: #888; margin-bottom: 20px;">Type 'help' to see available protocols.</div>
+                <div style="color: var(--secondary); margin-bottom: 15px; font-weight: 800;">[SYSTEM READY] Ali Kassap Neural Shell v4.0</div>
+                <div style="color: #666; margin-bottom: 25px;">Type 'help' for available system commands.</div>
                 <div id="terminal-content"></div>
-                <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px;">
-                    <span style="color: #27c93f;">guest@ali:~$</span>
+                <div style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+                    <span style="color: #27c93f;">ali@kassap:~$</span>
                     <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
                 </div>
             </div>
@@ -184,86 +179,80 @@
 
     <header class="hero" id="home">
         <div class="container">
-            <h1 class="title">Innovating Through <br><span class="typing-text"></span></h1>
-            <p class="description">Architecting high-performance AI solutions, robust management systems, and next-gen web platforms. Computer Science & AI Specialist.</p>
-            <div class="cta-group">
+            <h1 class="title">I Engineer <br><span class="typing-text"></span></h1>
+            <p class="description">Leading-edge Artificial Intelligence specialist. Architecting robust software infrastructures and high-performance management systems at El Sewedy University.</p>
+            <div class="cta-group" style="margin-top: 50px;">
                 <a href="#contact" class="btn btn-primary magnetic-btn">Start A Project</a>
-                <a href="#portfolio" class="btn btn-outline magnetic-btn">View Selected Works</a>
+                <a href="#portfolio" class="btn btn-outline magnetic-btn">Explore Works</a>
             </div>
         </div>
         
         <div class="marquee-wrapper">
             <div class="marquee-content" id="marquee-content">
-                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON (AI & Automation)</div>
-                <div class="marquee-item"><i class="fab fa-js"></i> JAVASCRIPT (Full-Stack)</div>
-                <div class="marquee-item"><i class="fas fa-robot"></i> ARTIFICIAL INTELLIGENCE</div>
-                <div class="marquee-item"><i class="fas fa-microchip"></i> C++ & ARDUINO</div>
-                <div class="marquee-item"><i class="fas fa-database"></i> SQL / MYSQL ARCHITECTURE</div>
-                <div class="marquee-item"><i class="fab fa-linux"></i> LINUX / UBUNTU SYSTEMS</div>
+                <div class="marquee-item"><i class="fab fa-python"></i> PYTHON (AI & AUTOMATION)</div>
+                <div class="marquee-item"><i class="fab fa-js"></i> JAVASCRIPT (OOP & ARCHITECTURE)</div>
+                <div class="marquee-item"><i class="fas fa-brain"></i> NEURAL NETWORKS</div>
+                <div class="marquee-item"><i class="fas fa-microchip"></i> C++ & EMBEDDED IOT</div>
+                <div class="marquee-item"><i class="fas fa-database"></i> SQL / MYSQL SECURITY</div>
+                <div class="marquee-item"><i class="fab fa-linux"></i> LINUX / UBUNTU / TERMUX</div>
             </div>
         </div>
     </header>
 
     <section id="about">
         <div class="container">
-            <h2 class="section-title">Core Expertise</h2>
+            <h2 class="section-title">Technological DNA</h2>
             <div class="skills-grid">
                 <div class="skill-card tilt-element">
-                    <i class="fas fa-laptop-code"></i>
+                    <i class="fas fa-cubes"></i>
                     <h3>Platform Engineering</h3>
-                    <p style="color: var(--text-muted); line-height: 1.6;">Developing scalable, high-latency management systems with advanced OOP principles.</p>
+                    <p style="color: var(--text-muted); line-height: 1.8;">Building mission-critical fleet and employee management platforms with high-performance OOP logic.</p>
                 </div>
                 <div class="skill-card tilt-element">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI & Data Science</h3>
-                    <p style="color: var(--text-muted); line-height: 1.6;">Engineering intelligent algorithms and smart drug information systems for healthcare.</p>
+                    <i class="fas fa-robot"></i>
+                    <h3>AI & Health-Tech</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">Revolutionizing pharmacy systems with intelligent drug information and AI-driven inventory tracking.</p>
                 </div>
                 <div class="skill-card tilt-element">
-                    <i class="fas fa-network-wired"></i>
-                    <h3>Networking & Security</h3>
-                    <p style="color: var(--text-muted); line-height: 1.6;">Designing secure TCP communication systems and robust database architectures.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cyber-Architecture</h3>
+                    <p style="color: var(--text-muted); line-height: 1.8;">Designing secure, low-latency TCP communication networks and hardened database schemas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio">
+    <section id="portfolio" style="background: rgba(255,255,255,0.01);">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title">Elite Projects</h2>
             <div class="portfolio-grid">
                 <div class="project-card tilt-element">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&q=80&w=800" alt="Pharmacy System">
-                    </div>
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&q=80&w=800"></div>
                     <div class="project-info">
-                        <h3>Smart Pharmacy System</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">Intelligent inventory management with real-time drug analytics and MySQL backend.</p>
+                        <h3>Smart Pharmacy AI</h3>
+                        <p style="color: var(--text-muted); margin-top: 15px;">A complex drug management ecosystem with AI integration and MySQL cloud syncing.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">AI</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card tilt-element">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1558444479-27c49742fee2?auto=format&fit=crop&q=80&w=800" alt="Fleet Booking">
-                    </div>
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800"></div>
                     <div class="project-info">
-                        <h3>Automated Fleet Management</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">A comprehensive car booking system built on core Object-Oriented JavaScript.</p>
+                        <h3>Fleet Booking Engine</h3>
+                        <p style="color: var(--text-muted); margin-top: 15px;">Advanced car-booking architecture focused on high scalability and object-oriented performance.</p>
                         <div class="project-tags">
-                            <span class="tag">JavaScript</span><span class="tag">OOP</span><span class="tag">UI/UX</span>
+                            <span class="tag">JavaScript</span><span class="tag">OOP</span><span class="tag">Architecture</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card tilt-element">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Project">
-                    </div>
+                    <div class="project-img"><img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=800"></div>
                     <div class="project-info">
-                        <h3>Embedded Pendulum Tracker</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">IoT hardware integration for physics data tracking using C++ and Arduino Nano.</p>
+                        <h3>IoT Pendulum Hub</h3>
+                        <p style="color: var(--text-muted); margin-top: 15px;">Real-time hardware-software bridge using C++ and Arduino for high-accuracy physics tracking.</p>
                         <div class="project-tags">
-                            <span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">Hardware</span>
+                            <span class="tag">C++</span><span class="tag">Arduino</span><span class="tag">IoT</span>
                         </div>
                     </div>
                 </div>
@@ -275,50 +264,72 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Let's Ignite A <br>Conversation</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 40px;">Ready to build something revolutionary? Drop me a message or find me on socials.</p>
-                    <div style="display: flex; gap: 20px;">
-                        <a href="https://linkedin.com/in/ali-ahmed00" target="_blank" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/201220487626" target="_blank" style="color: #fff; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                    <h2 style="font-size: 3rem; margin-bottom: 25px;">Let's Ignite <br>Innovation</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 50px; font-size: 1.1rem;">Ready to build the future? Send your project brief and let's decode the possibilities.</p>
+                    <div style="display: flex; gap: 25px;">
+                        <a href="https://linkedin.com/in/ali-ahmed00" target="_blank" style="color: #fff; font-size: 1.8rem;"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" style="color: #fff; font-size: 1.8rem;"><i class="fab fa-github"></i></a>
+                        <a href="https://facebook.com/1Alikassap" target="_blank" style="color: #fff; font-size: 1.8rem;"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
                 <form action="https://send.pageclip.co/0T79zesC0CK4msm712EJJYrhUW8WQ2lW/default" class="contact-form pageclip-form" method="post">
                     <div class="form-row">
                         <input type="text" name="name" placeholder="Full Name" required>
-                        <input type="email" name="email" placeholder="Email Address" required>
+                        <input type="email" name="email" placeholder="Professional Email" required>
                     </div>
-                    <select name="project_type" required>
-                        <option value="" disabled selected>Select Project Nature</option>
-                        <option value="AI Solution">AI Solutions & Automation</option>
-                        <option value="System">Management Systems Architecture</option>
-                        <option value="Hardware">Hardware/IoT Integration</option>
-                        <option value="Web">Premium Web Platform</option>
+                    <select name="category" required>
+                        <option value="" disabled selected>Project Type</option>
+                        <option value="AI">AI & Machine Learning</option>
+                        <option value="System">Enterprise System Design</option>
+                        <option value="IoT">IoT / Hardware Integration</option>
+                        <option value="Web">Premium Web Architecture</option>
                     </select>
-                    <textarea name="message" rows="5" placeholder="Briefly describe your requirements..." required></textarea>
+                    <textarea name="message" rows="5" placeholder="Tell me about your vision..." required></textarea>
                     
                     <button type="submit" class="btn btn-primary pageclip-form__submit">
-                        <span>Initiate Project Inquiry</span>
+                        <span>Launch Inquiry</span>
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); font-size: 0.9rem; color: #555;">
-        &copy; 2026 Ali Kassap. Handcrafted with Passion & Intelligence.
+    <footer style="padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); color: #444; font-size: 0.95rem; font-weight: 500;">
+        &copy; 2026 Ali Kassap. Handcrafted with Neural Intelligence & Absolute Passion.
     </footer>
 
-    <a href="https://wa.me/201220487626" style="position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); text-decoration: none;">
-        <i class="fab fa-whatsapp" style="color: white; font-size: 2rem;"></i>
+    <a href="https://wa.me/201220487626" style="position: fixed; bottom: 40px; right: 40px; background: #25d366; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10001; box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5); transition: 0.3s;" onmouseover="this.style.transform='scale(1.1) translateY(-10px)'" onmouseout="this.style.transform='scale(1) translateY(0)'">
+        <i class="fab fa-whatsapp" style="color: white; font-size: 2.2rem;"></i>
     </a>
 
     <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
     <script>
         // ================= JAVASCRIPT LOGIC =================
 
-        // 1. Success Message Handler (The VIP Gift)
+        // [FIXED] PRELOADER SYSTEM
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            const loaderText = document.getElementById('loader-text');
+            loaderText.innerText = "System Ready. Initializing...";
+            loaderText.style.color = "#27c93f";
+            
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => { 
+                    preloader.style.visibility = 'hidden';
+                    // Trigger typing effect after site is visible
+                    setTimeout(type, 1000); 
+                }, 800);
+            }, 1000);
+        };
+
+        // Fallback: If assets take too long, force show site after 4 seconds
+        window.addEventListener('load', hidePreloader);
+        setTimeout(() => { if(document.getElementById('preloader').style.visibility !== 'hidden') hidePreloader(); }, 4000);
+
+
+        // 1. Success Notification
         var form = document.querySelector('.pageclip-form');
         PageClip.form(form, {
             onResponse: function (error, response) {
@@ -326,45 +337,29 @@
                     const toast = document.getElementById('success-toast');
                     toast.classList.add('show');
                     form.reset();
-                    setTimeout(() => { toast.classList.remove('show'); }, 4500);
+                    setTimeout(() => { toast.classList.remove('show'); }, 5000);
                 }
                 return false;
             }
         });
 
-        // 2. Advanced Preloader Logic
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            const loaderText = document.getElementById('loader-text');
-            setTimeout(() => {
-                loaderText.innerText = "Access Granted. Welcome Ali.";
-                loaderText.style.color = "#27c93f";
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => { preloader.style.visibility = 'hidden'; }, 800);
-                }, 800);
-            }, 1800);
-        });
-
-        // 3. Interactive Particles Background
+        // 2. Interactive Particles
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
         let particles = [];
-        let mouse = { x: null, y: null, radius: 150 };
-
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; initParticles(); });
 
         class Particle {
-            constructor(x, y, dx, dy, size) {
-                this.x = x; this.y = y; this.dx = dx; this.dy = dy; this.size = size;
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.dx = (Math.random() - 0.5) * 0.5;
+                this.dy = (Math.random() - 0.5) * 0.5;
             }
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(6, 182, 212, 0.4)';
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.3)'; ctx.fill();
             }
             update() {
                 if(this.x > canvas.width || this.x < 0) this.dx = -this.dx;
@@ -373,27 +368,11 @@
                 this.draw();
             }
         }
+        function initP() { for(let i=0; i<80; i++) particles.push(new Particle()); }
+        function animP() { ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p => p.update()); requestAnimationFrame(animP); }
+        initP(); animP();
 
-        function initParticles() {
-            particles = [];
-            for(let i=0; i<100; i++) {
-                let size = Math.random() * 2 + 1;
-                let x = Math.random() * canvas.width;
-                let y = Math.random() * canvas.height;
-                let dx = (Math.random() - 0.5) * 0.8;
-                let dy = (Math.random() - 0.5) * 0.8;
-                particles.push(new Particle(x, y, dx, dy, size));
-            }
-        }
-
-        function animateParticles() {
-            requestAnimationFrame(animateParticles);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => p.update());
-        }
-        initParticles(); animateParticles();
-
-        // 4. Custom Cursor Movement
+        // 3. Custom Cursor
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
         window.addEventListener('mousemove', (e) => {
@@ -401,52 +380,51 @@
             outline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 500, fill: "forwards" });
         });
 
-        // 5. Typing Effect
-        const typingElement = document.querySelector(".typing-text");
-        const roles = ["Neural Networks", "Scalable Architectures", "Secure Systems", "Intelligent Apps"];
-        let roleIdx = 0, charIdx = 0, isDeleting = false;
+        // 4. Typing Effect
+        const typingEl = document.querySelector(".typing-text");
+        const words = ["AI Neural Networks", "Scalable Platforms", "IoT Ecosystems", "Secure Databases"];
+        let wIdx = 0, cIdx = 0, isDel = false;
 
         function type() {
-            const current = roles[roleIdx];
-            if (isDeleting) {
-                typingElement.textContent = current.substring(0, charIdx--);
-                if (charIdx < 0) { isDeleting = false; roleIdx = (roleIdx + 1) % roles.length; }
+            const current = words[wIdx];
+            if (isDel) {
+                typingEl.textContent = current.substring(0, cIdx--);
+                if (cIdx < 0) { isDel = false; wIdx = (wIdx + 1) % words.length; }
             } else {
-                typingElement.textContent = current.substring(0, charIdx++);
-                if (charIdx > current.length) isDeleting = true;
+                typingEl.textContent = current.substring(0, cIdx++);
+                if (cIdx > current.length) isDel = true;
             }
-            setTimeout(type, isDeleting ? 50 : 150);
+            setTimeout(type, isDel ? 60 : 120);
         }
-        setTimeout(type, 2500);
 
-        // 6. Terminal Protocol Logic
+        // 5. Terminal Logic
         const overlay = document.getElementById('terminal-overlay');
-        const termInput = document.getElementById('terminal-input');
-        const termContent = document.getElementById('terminal-content');
-        function openTerminal() { overlay.style.display = 'flex'; termInput.focus(); }
+        const tInput = document.getElementById('terminal-input');
+        const tContent = document.getElementById('terminal-content');
+        function openTerminal() { overlay.style.display = 'flex'; tInput.focus(); }
         function closeTerminal() { overlay.style.display = 'none'; }
 
-        termInput.addEventListener('keypress', (e) => {
+        tInput.addEventListener('keypress', (e) => {
             if(e.key === 'Enter') {
-                const cmd = termInput.value.toLowerCase().trim();
-                let output = '';
-                if(cmd === 'help') output = "Available: skills, whoami, hire, clear, social";
-                else if(cmd === 'skills') output = "AI: Neural Networks, Data Science <br>Languages: Python, JS, C++, SQL <br>Systems: Linux, Networking";
-                else if(cmd === 'whoami') output = "Ali Kassap. AI Specialist. CS student at SUT. Innovator.";
-                else if(cmd === 'social') output = "Linked: /in/ali-ahmed00 <br>GitHub: /AliAhmedKhalil-cs";
-                else if(cmd === 'hire') { closeTerminal(); window.location.hash = "contact"; return; }
-                else if(cmd === 'clear') { termContent.innerHTML = ''; termInput.value = ''; return; }
-                else output = "bash: protocol not recognized: " + cmd;
+                const cmd = tInput.value.toLowerCase().trim();
+                let out = '';
+                if(cmd === 'help') out = "Available: skills, whoami, clear, contact, social";
+                else if(cmd === 'skills') out = "[+] Python, JavaScript, AI, C++, SQL, Linux, Networking";
+                else if(cmd === 'whoami') out = "Ali Ahmed Khalil Gamil. AI Specialist. CS Student at SUT.";
+                else if(cmd === 'contact') { closeTerminal(); window.location.hash = "contact"; return; }
+                else if(cmd === 'clear') { tContent.innerHTML = ''; tInput.value = ''; return; }
+                else if(cmd === 'social') out = "Linked: /in/ali-ahmed00 <br>GitHub: /AliAhmedKhalil-cs";
+                else out = "bash: command not found: " + cmd;
 
                 const line = document.createElement('div');
-                line.innerHTML = `<div style="color: #666; margin-top: 10px;">> ${cmd}</div><div style="color: var(--secondary);">${output}</div>`;
-                termContent.appendChild(line);
-                termInput.value = '';
+                line.innerHTML = `<div style="margin-top:15px; color:#555;">> ${cmd}</div><div style="color:var(--secondary);">${out}</div>`;
+                tContent.appendChild(line);
+                tInput.value = '';
                 document.getElementById('terminal-body').scrollTop = document.getElementById('terminal-body').scrollHeight;
             }
         });
 
-        // 7. Scroll & Navbar Effects
+        // 6. Navbar & Progress
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -455,24 +433,23 @@
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // 8. 3D Tilt Effect for Cards
+        // 7. 3D Tilt
         document.querySelectorAll('.tilt-element').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-                const centerX = rect.width / 2; const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10; const rotateY = (centerX - x) / 10;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                const x = (e.clientX - rect.left - rect.width/2) / 12;
+                const y = (e.clientY - rect.top - rect.height/2) / -12;
+                card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg) scale3d(1.04, 1.04, 1.04)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             });
         });
 
-        // Clone Marquee for seamless loop
-        const marquee = document.getElementById('marquee-content');
-        const clone = marquee.cloneNode(true);
-        document.querySelector('.marquee-wrapper').appendChild(clone);
+        // Marquee Clone
+        const mContent = document.getElementById('marquee-content');
+        const mClone = mContent.cloneNode(true);
+        document.querySelector('.marquee-wrapper').appendChild(mClone);
     </script>
 </body>
 </html>
