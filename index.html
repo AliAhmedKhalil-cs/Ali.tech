@@ -96,7 +96,7 @@
     <meta name="twitter:image" content="https://alikassap.website/ali-kassap-og.jpg">
 
     <meta name="theme-color" content="#030305">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Ali Kassap">
 
@@ -793,9 +793,12 @@
 
         /* ════════════════ CV FAB ════════════════ */
         .cv-fab { position: fixed; bottom: 30px; left: 30px; background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px); border: 1px solid var(--accent); color: var(--text); padding: 0 25px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 12px; z-index: 9999; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2); text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); font-weight: 600; letter-spacing: 0.5px; font-size: 0.95rem; cursor: pointer; }
-        ..cv-fab i { color: var(--accent); font-size: 1.3rem; transition: transform 0.3s, color 0.3s; }
+        .cv-fab i { color: var(--accent); font-size: 1.3rem; transition: transform 0.3s, color 0.3s; }
         .cv-fab:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.05); }
         .cv-fab:hover i { transform: translateY(-2px); }
+        /* Fix CLS for icons */
+        .cv-fab i { width: 22px; text-align: center; }
+        .mobile-nav a i { min-height: 16px; }
         @media (max-width: 768px) { .cv-fab { bottom: 90px; left: 20px; height: 50px; padding: 0 18px; font-size: 0.85rem; } .cv-fab i { font-size: 1.1rem; } }
 
         /* ════════════════════════════════════════════════════
@@ -899,8 +902,8 @@
         <div class="hero-badge reveal">Data Science & AI Specialist · Cairo, Egypt</div>
 
         <h1 class="headline">
-            <span class="decode-span" data-val="Engineering"></span><br>
-            <span class="type-wrap"><span class="grad-text" id="typer"></span><span class="type-cursor"></span></span>
+            <span class="decode-span" data-val="Engineering">Engineering</span><br>
+            <span class="type-wrap"><span class="grad-text" id="typer">Data Science.</span><span class="type-cursor"></span></span>
         </h1>
 
         <p class="hero-desc">
@@ -1334,7 +1337,7 @@
         dupTicker();
     }
 
-    /* ── Decode effect ── */
+/* ── Decode effect ── */
     function decodeHero(){
         const el = document.querySelector('.decode-span');
         if(!el) return;
@@ -1348,12 +1351,12 @@
         }, 26);
     }
 
-    /* ── Typing effect ── */
+    /* ── Typing effect (Optimized for LCP) ── */
     function startTyper(){
         const el = document.getElementById('typer');
         if(!el) return;
         const words = ['Data Science.','AI Models.','Robust Systems.','Smart Analytics.','Clean Architectures.'];
-        let wi = 0, ci = 0, del = false;
+        let wi = 0, ci = words[0].length, del = true;
         function type(){
             const w = words[wi];
             if(del){ el.textContent = w.substring(0, ci-1); ci--; }
@@ -1363,7 +1366,7 @@
             else if(del && ci === 0){ del = false; wi = (wi+1) % words.length; spd = 400; }
             setTimeout(type, spd);
         }
-        type();
+        setTimeout(type, 2200); 
     }
 
     /* ── Reveal ── */
