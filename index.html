@@ -108,12 +108,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
-
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
@@ -326,12 +324,12 @@
         .hero-desc {
             font-size: clamp(.95rem, 1.7vw, 1.15rem); color: var(--text-2);
             max-width: 680px; margin: 0 auto 40px; line-height: 1.95; font-weight: 300;
-            min-height: 4em; /* Fix CLS jumping */
+            min-height: 6em; /* Fix CLS jumping */
         }
         .hero-desc strong { color: var(--text); font-weight: 500; }
 
         /* ── Hire Me Button (CTA) — bigger & prominent ── */
-        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; min-height: 50px; }
         .btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 15px 30px; font-weight: 700; border-radius: 10px;
