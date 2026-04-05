@@ -375,7 +375,7 @@
             letter-spacing: 2.5px; text-transform: uppercase;
         }
         .ticker-item i { color: var(--primary-light); }
-        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes ticker { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
 
         /* ════════════════════════════════════════════════════
            SECTION SHARED
@@ -1420,18 +1420,29 @@
     }
 
     /* ── Scroll ── */
+    /* ── Scroll (Optimized for Mobile) ── */
     function initScroll(){
-        window.addEventListener('scroll',()=>{
-            const s=document.documentElement.scrollTop;
-            const t=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-            document.getElementById('scrollbar').style.width=(s/t*100)+'%';
-            document.getElementById('navbar').classList.toggle('scrolled',s>50);
-            let cur='';
-            document.querySelectorAll('section,header').forEach(sec=>{ if(scrollY>=sec.offsetTop-80) cur=sec.getAttribute('id'); });
-            document.querySelectorAll('.mobile-nav a').forEach(a=>{ a.classList.toggle('active',a.getAttribute('href')==='#'+cur); });
-        });
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const s = document.documentElement.scrollTop;
+                    const t = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    document.getElementById('scrollbar').style.width = (s/t*100) + '%';
+                    document.getElementById('navbar').classList.toggle('scrolled', s > 50);
+                    let cur = '';
+                    document.querySelectorAll('section,header').forEach(sec => { 
+                        if(s >= sec.offsetTop - 100) cur = sec.getAttribute('id'); 
+                    });
+                    document.querySelectorAll('.mobile-nav a').forEach(a => { 
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + cur); 
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     }
-
     /* ── Terminal ── */
     window.openTerm = () => { document.getElementById('termOverlay').classList.add('on'); setTimeout(()=>document.getElementById('t-input').focus(),80); };
     window.closeTerm = () => document.getElementById('termOverlay').classList.remove('on');
