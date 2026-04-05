@@ -100,18 +100,22 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Ali Kassap">
 
+    <link rel="icon" href="https://alikassap.website/ali-kassap.jpg" type="image/jpeg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
 
     <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     </noscript>
 
@@ -159,6 +163,9 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary), var(--accent)); border-radius: 4px; }
 
+        /* Fix for FontAwesome non-composited animation warning */
+        i.fas, i.fab { transition: transform 0.3s ease, color 0.3s ease !important; }
+
         /* ════════════════════════════════════════════════════
            ANIMATED BACKGROUND MESH
         ════════════════════════════════════════════════════ */
@@ -166,17 +173,13 @@
             position: fixed; inset: 0; z-index: -3; overflow: hidden; pointer-events: none;
         }
         .mesh-bg::before {
-            content: '';
-            position: absolute;
-            top: -30%; right: -10%;
+            content: ''; position: absolute; top: -30%; right: -10%;
             width: 70vw; height: 70vw;
             background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 65%);
             animation: floatMesh 12s ease-in-out infinite alternate;
         }
         .mesh-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -20%; left: -10%;
+            content: ''; position: absolute; bottom: -20%; left: -10%;
             width: 60vw; height: 60vw;
             background: radial-gradient(ellipse, rgba(6,182,212,0.06) 0%, transparent 65%);
             animation: floatMesh 16s ease-in-out infinite alternate-reverse;
@@ -235,7 +238,6 @@
         }
         .pulse { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulseGreen 2s infinite; }
         
-        /* تعديل الأنيميشن لحل مشكلة Performance */
         @keyframes pulseGreen {
             0% { transform: scale(0.85); opacity: 1; }
             50% { transform: scale(1.4); opacity: 0.4; }
@@ -272,12 +274,8 @@
             font-size: .65rem; gap: 4px; transition: .25s;
             padding: 4px 10px; border-radius: 9px;
         }
-        .mobile-nav a i { font-size: 1rem; }
+        .mobile-nav a i { font-size: 1rem; min-height: 16px; }
         .mobile-nav a.active, .mobile-nav a:hover { color: var(--accent); background: rgba(6,182,212,.08); }
-        @media (max-width: 768px) {
-            .mobile-nav { display: flex; }
-            .nav-right .status-pill, .nav-right .nav-icon-btn { display: none; }
-        }
 
         /* ════════════════════════════════════════════════════
            REVEAL ANIMATIONS
@@ -288,7 +286,7 @@
         .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
 
         /* ════════════════════════════════════════════════════
-           HERO
+           HERO (Optimized for CLS)
         ════════════════════════════════════════════════════ */
         .hero {
             min-height: 100vh; display: flex; align-items: center;
@@ -314,20 +312,21 @@
         h1.headline {
             font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 6rem);
             font-weight: 800; line-height: 1.05; letter-spacing: -3px;
-            margin-bottom: 20px;
+            margin-bottom: 20px; min-height: 2.2em; /* Fix CLS jumping */
         }
-        .decode-span { display: inline-block; }
+        .decode-span { display: inline-block; min-height: 1.1em; }
         .grad-text {
             background: linear-gradient(135deg, #fff 0%, var(--primary-light) 50%, var(--accent) 100%);
             -webkit-background-clip: text; background-clip: text; color: transparent;
         }
-        .type-wrap { display: block; min-height: 1.1em; }
+        .type-wrap { display: inline-block; min-height: 1.1em; }
         .type-cursor { display: inline-block; width: 3px; height: .85em; background: var(--accent); vertical-align: bottom; animation: blink 1s step-end infinite; margin-left: 2px; }
         @keyframes blink { 50% { opacity: 0; } }
 
         .hero-desc {
             font-size: clamp(.95rem, 1.7vw, 1.15rem); color: var(--text-2);
             max-width: 680px; margin: 0 auto 40px; line-height: 1.95; font-weight: 300;
+            min-height: 4em; /* Fix CLS jumping */
         }
         .hero-desc strong { color: var(--text); font-weight: 500; }
 
@@ -604,7 +603,7 @@
         .contact-info-col h3 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 13px; line-height: 1.2; }
         .contact-info-col p { color: var(--text-2); font-size: .92rem; line-height: 1.78; margin-bottom: 30px; }
         .meta-row { display: flex; align-items: center; gap: 11px; font-size: .87rem; color: var(--text-2); margin-bottom: 12px; }
-        .meta-row i { color: var(--primary-light); width: 16px; }
+        .meta-row i { color: var(--primary-light); width: 16px; text-align: center; }
         .meta-row a { color: var(--text-2); text-decoration: none; transition: color .2s; }
         .meta-row a:hover { color: var(--accent); }
         .social-row { display: flex; gap: 9px; margin-top: 6px; }
@@ -645,15 +644,6 @@
         }
         .btn-submit:hover { background: #e2e8f0; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,255,255,.12); }
         .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-
-        @media (max-width: 768px) {
-            .contact-wrap { grid-template-columns: 1fr; }
-            .contact-info-col { border-right: none; border-bottom: 1px solid var(--border); padding: 30px 22px; }
-            .contact-form-col { padding: 30px 22px; }
-            .form-row2 { flex-direction: column; gap: 13px; }
-            section { padding: 80px 5%; }
-            .hero { padding-top: 95px; }
-        }
 
         /* ════════════════════════════════════════════════════
            TERMINAL MODAL
@@ -789,17 +779,36 @@
             position: fixed;
         }
         .fab-ali:hover { transform: scale(1.1) translateY(-3px); }
-        @media (max-width: 768px) { .fab-wa { bottom: 78px; right: 14px; } }
-
+        
         /* ════════════════ CV FAB ════════════════ */
         .cv-fab { position: fixed; bottom: 30px; left: 30px; background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(12px); border: 1px solid var(--accent); color: var(--text); padding: 0 25px; height: 60px; border-radius: 30px; display: flex; align-items: center; gap: 12px; z-index: 9999; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2); text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); font-weight: 600; letter-spacing: 0.5px; font-size: 0.95rem; cursor: pointer; }
-        .cv-fab i { color: var(--accent); font-size: 1.3rem; transition: transform 0.3s, color 0.3s; }
         .cv-fab:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.05); }
-        .cv-fab:hover i { transform: translateY(-2px); }
-        /* Fix CLS for icons */
         .cv-fab i { width: 22px; text-align: center; }
-        .mobile-nav a i { min-height: 16px; }
-        @media (max-width: 768px) { .cv-fab { bottom: 90px; left: 20px; height: 50px; padding: 0 18px; font-size: 0.85rem; } .cv-fab i { font-size: 1.1rem; } }
+
+        /* ════════════════════════════════════════════════════
+           MOBILE CSS (Optimized for Mobile CLS & FCP)
+        ════════════════════════════════════════════════════ */
+        @media (max-width: 768px) { 
+            /* Kill Heavy FX */
+            .mesh-bg, .noise-overlay { display: none !important; }
+            
+            .mobile-nav { display: flex; }
+            .nav-right .status-pill, .nav-right .nav-icon-btn { display: none; }
+            .contact-wrap { grid-template-columns: 1fr; }
+            .contact-info-col { border-right: none; border-bottom: 1px solid var(--border); padding: 30px 22px; }
+            .contact-form-col { padding: 30px 22px; }
+            .form-row2 { flex-direction: column; gap: 13px; }
+            section { padding: 80px 5%; }
+            
+            /* CLS Fixes for Mobile Hero */
+            .hero { min-height: 85vh; padding-top: 120px; display: flex; flex-direction: column; justify-content: center; }
+            h1.headline { font-size: 2.5rem; min-height: 3em; line-height: 1.2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+            .hero-desc { min-height: 6em; font-size: 0.95rem; }
+            .fab-wa { bottom: 78px; right: 14px; } 
+            .cv-fab { bottom: 90px; left: 20px; height: 50px; padding: 0 18px; font-size: 0.85rem; } 
+            .cv-fab i { font-size: 1.1rem; } 
+            .fab-ali { width: 50px; height: 50px; bottom: 140px; right: 14px; }
+        }
 
         /* ════════════════════════════════════════════════════
            FOOTER
@@ -899,7 +908,7 @@
 <main>
 <header class="hero" id="home">
     <div class="container">
-        <div class="hero-badge reveal">Data Science & AI Specialist · Cairo, Egypt</div>
+        <div class="hero-badge">Data Science & AI Specialist · Cairo, Egypt</div>
 
         <h1 class="headline">
             <span class="decode-span" data-val="Engineering">Engineering</span><br>
@@ -916,7 +925,7 @@
             <a href="https://github.com/AliAhmedKhalil-cs" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
         </div>
 
-        <div class="text-align:center">
+        <div style="text-align:center">
             <div class="hero-price-badge">
                 <i class="fas fa-dollar-sign"></i>
                 Starting from $30 / project · Fast delivery · Remote worldwide
@@ -1320,7 +1329,7 @@
     <span>Extract Resume</span>
 </a>
 <a href="https://wa.me/201220487626" target="_blank" rel="noopener" class="fab-wa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<button class="fab-ali" onclick="openAli()" title="Ask AI Ali" style="position:fixed;bottom:156px;right:24px;"><i class="fas fa-robot"></i></button>
+<button class="fab-ali" onclick="openAli()" title="Ask AI Ali"><i class="fas fa-robot"></i></button>
 
 <script>
 (function(){
@@ -1328,8 +1337,9 @@
     window.addEventListener('DOMContentLoaded', initAll);
 
     function initAll(){
-        decodeHero();
-        startTyper();
+        // Delay heavy manipulations until after initial paint
+        setTimeout(decodeHero, 300);
+        setTimeout(startTyper, 2000);
         initReveal();
         initCounters();
         buildContrib();
@@ -1337,7 +1347,7 @@
         dupTicker();
     }
 
-/* ── Decode effect ── */
+    /* ── Decode effect ── */
     function decodeHero(){
         const el = document.querySelector('.decode-span');
         if(!el) return;
@@ -1366,7 +1376,7 @@
             else if(del && ci === 0){ del = false; wi = (wi+1) % words.length; spd = 400; }
             setTimeout(type, spd);
         }
-        setTimeout(type, 2200); 
+        type(); // Start immediately after the 2000ms delay in initAll
     }
 
     /* ── Reveal ── */
@@ -1422,7 +1432,6 @@
         if(t) t.innerHTML += t.innerHTML;
     }
 
-    /* ── Scroll ── */
     /* ── Scroll (Optimized for Mobile) ── */
     function initScroll(){
         let ticking = false;
@@ -1446,6 +1455,7 @@
             }
         }, { passive: true });
     }
+
     /* ── Terminal ── */
     window.openTerm = () => { document.getElementById('termOverlay').classList.add('on'); setTimeout(()=>document.getElementById('t-input').focus(),80); };
     window.closeTerm = () => document.getElementById('termOverlay').classList.remove('on');
