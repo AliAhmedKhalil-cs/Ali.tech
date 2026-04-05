@@ -104,8 +104,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    </noscript>
 
     <style>
         /* ════════════════════════════════════════════════════
@@ -226,11 +234,14 @@
             color: var(--green);
         }
         .pulse { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulseGreen 2s infinite; }
+        
+        /* تعديل الأنيميشن لحل مشكلة Performance */
         @keyframes pulseGreen {
-            0% { box-shadow: 0 0 0 0 rgba(16,185,129,.7); }
-            70% { box-shadow: 0 0 0 8px transparent; }
-            100% { box-shadow: 0 0 0 0 transparent; }
+            0% { transform: scale(0.85); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.4; }
+            100% { transform: scale(0.85); opacity: 1; }
         }
+
         .nav-icon-btn {
             width: 38px; height: 38px; border-radius: 9px;
             background: rgba(255,255,255,0.04); border: 1px solid var(--border);
@@ -882,6 +893,7 @@
     </div>
 </div>
 
+<main>
 <header class="hero" id="home">
     <div class="container">
         <div class="hero-badge reveal">Data Science & AI Specialist · Cairo, Egypt</div>
@@ -1258,7 +1270,7 @@
                     </div>
                 </div>
                 <div>
-                    <select id="fService">
+                    <select id="fService" aria-label="Select a service">
                         <option value="" disabled selected>Select Service</option>
                         <option value="AI_Data">Data Science & AI</option>
                         <option value="Backend">Backend / System Logic</option>
@@ -1281,6 +1293,8 @@
         </div>
     </div>
 </section>
+
+</main>
 
 <footer>
     <div class="container reveal">
